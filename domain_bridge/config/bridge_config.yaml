@@ -1,0 +1,14 @@
+# Name of the domain bridge, used for node naming and logging
+name: my_bridge
+from_domain: 10
+to_domain: 42
+topics:
+  # The topic produced by our native perception node
+  /ds7/lidar/bounding_boxes:
+    # IMPORTANT: Ensure this type matches your actual msg type exactly
+    type: example_interfaces/msg/String 
+    # This changes the name so the Cube:ITS sees it as its input
+    remap: /its/cpm_provided
+    # Optional: Reliability setting. 'reliable' is safer for V2X data
+    qos:
+      reliability: reliable
