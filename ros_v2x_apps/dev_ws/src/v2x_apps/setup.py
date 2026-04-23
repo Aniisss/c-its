@@ -26,6 +26,8 @@ setup(
                 'cpm_provider = v2x_apps.cpm_provider:main',
                 'vam_provider = v2x_apps.vam_provider:main',
                 'stationary_vehicle = c2c.stationary_vehicle_trigger:main',
+                'poim_pa_provider = v2x_apps.poim_pa_provider:main',
+                'poim_pa_listener = v2x_apps.poim_pa_listener:main',
         ],
 },
 )
