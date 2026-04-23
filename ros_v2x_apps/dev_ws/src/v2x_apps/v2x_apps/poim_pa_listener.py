@@ -44,7 +44,7 @@ class PoimPaListener(Node):
         try:
             info = PoimPaEncoder.decode(raw)
         except Exception as exc:
-            self.get_logger().warn(
+            self.get_logger().warning(
                 f"Received {len(raw)}-byte POIM-PA packet that could not be decoded: {exc}"
             )
             return

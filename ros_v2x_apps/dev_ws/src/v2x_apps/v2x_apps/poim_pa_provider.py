@@ -130,9 +130,15 @@ class PoimPaEncoder:
             return 800001
 
         def _semi(m: float) -> int:
-            if math.isfinite(m):
-                return cls._clamp(round(m * ALTITUDE_SCALE), 0, 4093, 4094)
-            return 4095
+            # Valid range: [0, 4093] in 0.01 m units.
+            # 4094 = out-of-range (finite but exceeds maximum);
+            # 4095 = unavailable (non-finite or unknown).
+            if not math.isfinite(m):
+                return 4095  # unavailable
+            v = round(m * ALTITUDE_SCALE)
+            if v < 0 or v > 4093:
+                return 4094  # out-of-range
+            return v
 
         ref_lat_i = _lat(ref_lat)
         ref_lon_i = _lon(ref_lon)
@@ -206,8 +212,8 @@ class PoimPaEncoder:
             "ref_latitude_deg": ref_lat_raw / LAT_LON_SCALE if ref_lat_raw != 900000001 else None,
             "ref_longitude_deg": ref_lon_raw / LAT_LON_SCALE if ref_lon_raw != 1800000001 else None,
             "ref_altitude_m": ref_alt_raw / ALTITUDE_SCALE if ref_alt_raw != 800001 else None,
-            "semi_major_conf_m": semi_major_raw / ALTITUDE_SCALE if semi_major_raw != 4095 else None,
-            "semi_minor_conf_m": semi_minor_raw / ALTITUDE_SCALE if semi_minor_raw != 4095 else None,
+            "semi_major_conf_m": semi_major_raw / ALTITUDE_SCALE if semi_major_raw < 4094 else None,
+            "semi_minor_conf_m": semi_minor_raw / ALTITUDE_SCALE if semi_minor_raw < 4094 else None,
             "poi_type": poi_type,
             "poi_id": poi_id,
             "total_capacity": total_capacity if total_capacity != 65535 else None,
@@ -302,7 +308,7 @@ class PoimPaProvider(Node):
         if response.confirm == BtpData.Response.CONFIRM_ACCEPTED:
             self.get_logger().info("POIM-PA broadcast accepted by BTP service")
         else:
-            self.get_logger().warn(
+            self.get_logger().warning(
                 f"POIM-PA broadcast rejected (confirm={response.confirm})"
             )
 
