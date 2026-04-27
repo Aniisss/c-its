@@ -15,7 +15,8 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.2 [Decentralized Environmental Notification Message (DENM)](#decentralized-environmental-notification-message)
    - 4.3 [Collective Perception Message (CPM)](#collective-perception-message)
    - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-awareness-message)
-   - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
+   - 4.5 [Point of Interest Message – Parking Availability (POIM-PA)](#point-of-interest-message--parking-availability-poim-pa)
+   - 4.6 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
 6. [Real-world deployments](#real-world-deployments)
 
@@ -63,6 +64,7 @@ The *cube-its* framework incorporates the [`etsi_its_messages`](https://github.c
 | :white_check_mark: | DENM | Decentralized Environmental Notification Message | [EN 302 637-3 V1.3.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263703/01.03.01_60/en_30263703v010301p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/denm_en302637_3)) | - | >=v1.0.0 |
 | :white_check_mark: | CPM | Collective Perception Message | - | [TS 103 324 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103324/02.01.01_60/ts_103324v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cpm_ts103324)) | >=v1.2.0 |
 | :white_check_mark: | VAM | Vulnerable Road User Awareness Message | - | [TS 103 300-3 V2.2.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/10330003/02.02.01_60/ts_10330003v020201p.pdf) | >=v1.3.0 |
+| :soon: | POIM-PA | Point of Interest Message – Parking Availability | [TS 103 916 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103900_103999/103916/02.01.01_60/ts_103916v020101p.pdf) | - | via raw BTP (port 2009) |
 | :soon: | MAPEM | Map Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
 | :soon: | SPATEM | Signal Phase and Timing Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
 
@@ -123,6 +125,8 @@ dev_ws
 │   ├── cam_listener.py
 │   ├── cpm_provider.py
 │   ├── denm_node.py
+│   ├── poim_pa_listener.py
+│   ├── poim_pa_provider.py
 │   └── vam_provider.py
 │   └── c2c
 |       ├── stationary_vehicle_trigger.py
@@ -174,6 +178,69 @@ In the following example, we regularly create a Vulnerable Road User Awareness M
 
 **Publisher:**
 - **/its/vam_provided:** The *vam_provider* provides the generated VAM to *cube-its* on this topic for transmission.
+
+### Point of Interest Message – Parking Availability (POIM-PA)
+
+[ETSI TS 103 916 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103900_103999/103916/02.01.01_60/ts_103916v020101p.pdf) defines the **POIM-PA** (Point of Interest Message – Parking Availability) standard for broadcasting real-time parking space availability over ITS-G5.
+
+Because cube-its does not yet expose a dedicated POIM facility service, these two nodes operate at the **raw BTP/GeoNetworking layer** using the ETSI-assigned BTP-B destination port **2009**.  The payload is UPER-encoded using the `asn1tools` library with a bundled self-contained schema (`v2x_apps/asn1/POIM-PA-Standalone.asn`) that mirrors the ETSI TS 103 916 v2.1.1 type definitions.  Encoding and decoding are handled by the `encode` / `decode` functions in `poim_pa_codec.py`.
+
+#### poim_pa_provider
+
+The [*poim_pa_provider*](dev_ws/src/v2x_apps/v2x_apps/poim_pa_provider.py) periodically encodes a POIM-PA message containing parking facility data and transmits it via the Vanetza BTP service.  All parking parameters are exposed as ROS 2 node parameters so they can be adjusted at runtime without recompiling.
+
+**Subscriptions:**
+- **/its/position_vector:** Used to set the GeoNetworking destination area centred on the vehicle's current position.
+
+**Services called:**
+- **/vanetza/btp_request:** Transmits the encoded POIM-PA payload over ITS-G5 targeting BTP port 2009.
+
+**Node parameters:**
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `block_id` | int | 1 | POI Information Block identifier (0–65535) |
+| `facility_name` | str | "Parking" | Name of the parking facility (≤31 characters) |
+| `total_spaces` | int | 100 | Total number of parking spaces |
+| `free_spaces` | int | 42 | Currently free parking spaces |
+| `opening_status` | str | "open" | Facility status: `"open"`, `"closed"`, or `"unknown"` |
+| `facility_lat` | float | 48.135 | Parking facility latitude (degrees, WGS-84) |
+| `facility_lon` | float | 11.582 | Parking facility longitude (degrees, WGS-84) |
+| `publish_period` | float | 1.0 | Broadcast interval in seconds |
+| `geo_radius_m` | float | 1000.0 | GeoNetworking circle radius in metres |
+
+Run the provider and override parameters:
+
+```bash
+ros2 run v2x_apps poim_pa_provider \
+  --ros-args \
+  -p block_id:=42 \
+  -p facility_name:="Central Parking" \
+  -p total_spaces:=200 \
+  -p free_spaces:=75 \
+  -p opening_status:=open \
+  -p facility_lat:=48.137 \
+  -p facility_lon:=11.575
+```
+
+#### poim_pa_listener
+
+The [*poim_pa_listener*](dev_ws/src/v2x_apps/v2x_apps/poim_pa_listener.py) subscribes to the raw BTP indication topic, filters for POIM port 2009, decodes the payload, and logs the parking availability data.
+
+**Subscriptions:**
+- **/vanetza/btp_indication:** Raw BTP packets received from the ITS-G5 channel.
+
+Run the listener:
+
+```bash
+ros2 run v2x_apps poim_pa_listener
+```
+
+Expected output when a POIM-PA broadcast is received:
+
+```
+[INFO] [poim_pa_listener]: POIM-PA from station 12345 | Block-ID=42 | "Central Parking" | Status=open | Free=75/200 spaces | Occupancy=62% | Position=(48.137000, 11.575000)
+```
 
 ### Stationary Vehicle Warning Trigger
 
