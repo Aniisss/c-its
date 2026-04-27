@@ -11,7 +11,10 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    package_data={
+        'v2x_apps': ['asn1/*.asn'],
+    },
+    install_requires=['setuptools', 'asn1tools'],
     zip_safe=True,
     maintainer='Apostolos Georgiadis',
     maintainer_email='apostolos.georgiadis@nfiniity.com',
@@ -31,3 +34,4 @@ setup(
         ],
 },
 )
+

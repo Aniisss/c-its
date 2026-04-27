@@ -1,0 +1,140 @@
+-- Self-contained POIM-PA (Point of Interest Message - Parking Availability) ASN.1 schema.
+-- This file mirrors relevant type definitions from:
+--   ETSI TS 103 916 v2.1.1  (POIM-ParkingAvailability, POIM-CommonContainers)
+--   ETSI TS 102 894-2 v2.4.1 (ETSI-ITS-CDD, inlined types only)
+-- It is self-contained so that it can be compiled by the asn1tools Python library.
+-- Only the types actually used by POIM-PA are included.
+-- IMPORTANT: ASN.1 comments must not contain consecutive dashes (would end the comment).
+--
+-- Wire framing (manual 9-byte POIM envelope prepended to UPER block):
+--   Byte 0   : protocolVersion  = 1
+--   Byte 1   : messageId        = 6  (poim, ETSI TS 102 894-2)
+--   Bytes 2-5: stationId        (uint32, big-endian)
+--   Byte 6   : poiType          = 1  (parkingAvailability)
+--   Bytes 7-8: blockLength      (uint16, big-endian, byte-length of UPER block)
+--   Bytes 9.. : UPER-encoded ParkingAvailabilityBlock
+
+POIM-PA-Standalone DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+-- === Types inlined from ETSI-ITS-CDD (TS 102 894-2 v2.4.1) ===
+
+-- Latitude: 1e-7 degrees; 900000001 = unavailable
+Latitude ::= INTEGER (-900000000..900000001)
+
+-- Longitude: 1e-7 degrees; 1800000001 = unavailable
+Longitude ::= INTEGER (-1800000000..1800000001)
+
+-- Altitude: 0.01 m; 800001 = unavailable
+AltitudeValue ::= INTEGER (-100000..800001)
+
+-- Geographic position
+GeoPosition ::= SEQUENCE {
+    latitude   Latitude,
+    longitude  Longitude,
+    altitude   AltitudeValue DEFAULT 800001
+}
+
+-- 16-bit unsigned identifier
+Identifier2B ::= INTEGER (0..65535)
+
+-- Milliseconds since 2004-01-01 00:00:00.000 UTC
+TimestampIts ::= INTEGER (0..4398046511103)
+
+-- Confidence level: 0-100 %; 101 = unavailable
+ConfidenceLevel ::= INTEGER (0..101)
+
+-- ISO 3166-1 alpha-2 country code as 10-bit BIT STRING (MSB first)
+CountryCode ::= BIT STRING (SIZE(10))
+
+-- Service provider identity (simplified from ETSI-ITS-CDD Provider)
+Provider ::= SEQUENCE {
+    countryCode          CountryCode,
+    providerIdentifier   INTEGER (0..65535)
+}
+
+-- === POIM-CommonContainers types (TS 103 916 v2.1.1) ===
+
+-- Common management container for all POI Information Blocks
+PoiBlockManagementContainer ::= SEQUENCE {
+    serviceProviderId          Provider,
+    blockIdentificationNumber  Identifier2B,
+    timestamp                  TimestampIts,
+    ...
+}
+
+-- === POIM-ParkingAvailability types (TS 103 916 v2.1.1) ===
+
+-- Time of day in local time
+TimeOfDay ::= SEQUENCE {
+    hours  INTEGER (0..23),
+    mins   INTEGER (0..59)
+}
+
+-- Days of the week as a bit mask (bit 0 unused, bits 1-7 = Mon-Sun)
+DayOfWeek ::= BIT STRING (SIZE(8))
+
+-- Opening period on given days of the week
+Period ::= SEQUENCE {
+    days     DayOfWeek,
+    opening  TimeOfDay,
+    closing  TimeOfDay
+}
+
+-- List of up to 8 opening periods
+Periods ::= SEQUENCE (SIZE(1..8)) OF Period
+
+-- General information about the parking facility
+GeneralParkingPlaceContainer ::= SEQUENCE {
+    position        GeoPosition,
+    name            UTF8String (SIZE(1..31)),
+    openingPeriods  Periods OPTIONAL,
+    address         UTF8String (SIZE(1..255)) OPTIONAL,
+    phoneNumber     UTF8String (SIZE(1..31)) OPTIONAL,
+    website         UTF8String (SIZE(1..31)) OPTIONAL,
+    ...
+}
+
+-- Operational status of the facility
+OpeningStatus ::= ENUMERATED { open(0), closed(1), unknown(2), ... }
+
+-- Occupancy rate as a percentage (0-100)
+OccupancyRate ::= INTEGER (0..100)
+
+-- Trend of occupancy change
+OccupancyTrend ::= ENUMERATED {
+    increasing  (0),
+    stable      (1),
+    decreasing  (2),
+    unknown     (3),
+    ...
+}
+
+-- Number of parking spaces (0-65535)
+NumberOfSpaces ::= INTEGER (0..65535)
+
+-- Aggregated occupancy information
+OccupancyInformation ::= SEQUENCE {
+    rate         OccupancyRate,
+    trend        OccupancyTrend,
+    freeSpaces   NumberOfSpaces,
+    totalSpaces  NumberOfSpaces,
+    confidence   ConfidenceLevel,
+    ...
+}
+
+-- Aggregated status of the parking facility
+ParkingStatusContainer ::= SEQUENCE {
+    currentFacilityStatus  OpeningStatus,
+    currentOccupancy       OccupancyInformation OPTIONAL,
+    ...
+}
+
+-- Top-level POI Information Block for parking availability
+ParkingAvailabilityBlock ::= SEQUENCE {
+    managementContainer  PoiBlockManagementContainer,
+    placeInfo            GeneralParkingPlaceContainer,
+    aggregatedStatus     ParkingStatusContainer,
+    ...
+}
+
+END
