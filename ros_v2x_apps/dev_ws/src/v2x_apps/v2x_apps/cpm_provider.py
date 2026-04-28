@@ -1,11 +1,12 @@
 import math
 import rclpy
-import etsi_its_cpm_ts_msgs.msg as cpm_msg
-
-from typing import Optional
 from rclpy.node import Node
-from vanetza_msgs.msg import PositionVector
+from typing import Optional
 
+# Messages
+import etsi_its_cpm_ts_msgs.msg as cpm_msg
+from vanetza_msgs.msg import PositionVector
+from visualization_msgs.msg import MarkerArray
 
 class CpmValue:
     """ Represents a CPM value with scaling and range checking. """
@@ -33,24 +34,21 @@ class CpmValue:
         else:
             return int(self.unavailable_value)
 
-
+# --- Scaled Value Helper Classes ---
 class CpmLatitudeValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e7, cpm_msg.Latitude.UNAVAILABLE)
         self.range(cpm_msg.Latitude.MIN, cpm_msg.Latitude.MAX)
-
 
 class CpmLongitudeValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e7, cpm_msg.Longitude.UNAVAILABLE)
         self.range(cpm_msg.Longitude.MIN, cpm_msg.Longitude.MAX)
 
-
 class CpmSemiAxisLengthValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e2, cpm_msg.SemiAxisLength.UNAVAILABLE)
         self.range(cpm_msg.SemiAxisLength.MIN, cpm_msg.SemiAxisLength.MAX, cpm_msg.SemiAxisLength.OUT_OF_RANGE)
-
 
 class CpmAltitudeValue(CpmValue):
     def __init__(self, value):
@@ -63,28 +61,35 @@ class CpmProvider(Node):
         super().__init__('cpm_provider')
         self.get_logger().info(f'Node "{self.get_name()}" started')
 
-        # We are interested in our own position so we can set a reasonable destination area
+        # 1. Own Position Subscription
         self.position_vector: Optional[PositionVector] = None
         self.pos_vector_subscription = self.create_subscription(
             PositionVector, '/its/position_vector', self.position_update, 1)
 
-        # Publisher who provides CPM to cube-its
+        # 2. Lidar Detection Subscription
+        self.latest_marker_array: Optional[MarkerArray] = None
+        self.marker_subscription = self.create_subscription(
+            MarkerArray, '/perception/detected_objects_markers', self.marker_callback, 10)
+
+        # 3. CPM Publisher
         self.cpm_publisher = self.create_publisher(
             cpm_msg.CollectivePerceptionMessage, '/its/cpm_provided', 1)
 
-        # Here we just provide a CPM to cube-its every 1 seconds.
+        # Timer for 1Hz publication
         self.create_timer(timer_period_sec=1.0, callback=self.publish)
 
     def position_update(self, msg: PositionVector) -> None:
-        """Remember last position vector"""
         self.position_vector = msg
 
+    def marker_callback(self, msg: MarkerArray) -> None:
+        """Store the latest detected objects from Lidar"""
+        if msg.markers:
+            self.latest_marker_array = msg
+
     def get_reference_position(self) -> cpm_msg.ReferencePosition:
-        """Reference position is at our own position for this example."""
         if self.position_vector is None:
             raise RuntimeError('No position vector available')
 
-        # Reference position
         pos = cpm_msg.ReferencePosition()
         pos.latitude.value = CpmLatitudeValue(self.position_vector.latitude).get()
         pos.longitude.value = CpmLongitudeValue(self.position_vector.longitude).get()
@@ -95,34 +100,54 @@ class CpmProvider(Node):
         return pos
 
     def generate_perceived_object_cpm(self) -> cpm_msg.CollectivePerceptionMessage:
-        """Generate a CPM with use-case specific data."""
+        """Generate CPM. Uses Lidar data if available, else uses Hardcoded Defaults."""
         
-        # Perceived object
+        # --- Default Values (Used if Lidar is quiet) ---
+        obj_x, obj_y, obj_z = 8.0, -5.0, 0.0 # Meters
+        dim_x, dim_y, dim_z = 3.0, 2.0, 1.0  # Meters
+        
+        # --- Override with Lidar Data if available ---
+        if self.latest_marker_array and self.latest_marker_array.markers:
+            m = self.latest_marker_array.markers[0]
+            obj_x, obj_y, obj_z = m.pose.position.x, m.pose.position.y, m.pose.position.z
+            dim_x, dim_y, dim_z = m.scale.x, m.scale.y, m.scale.z
+            self.get_logger().info(f'CPM using REAL LIDAR data: x={obj_x:.2f}')
+        else:
+            self.get_logger().warn('No Lidar markers received yet - using hardcoded defaults')
+
+        # Mapping to ETSI CPM structure
         perceived_object = cpm_msg.PerceivedObject()
         perceived_object.measurement_delta_time.value = 1
-        perceived_object.position.x_coordinate.value.value = 800
+        
+        # Position (ETSI uses cm or dm depending on version, here using your scale logic)
+        # Note: 1 unit in your original code = 0.01m (800 = 8m)
+        perceived_object.position.x_coordinate.value.value = int(obj_x * 100)
         perceived_object.position.x_coordinate.confidence.value = 1
-        perceived_object.position.y_coordinate.value.value = -500
+        perceived_object.position.y_coordinate.value.value = int(obj_y * 100)
         perceived_object.position.y_coordinate.confidence.value = 1
+        
         perceived_object.angles.z_angle.value.value = 900
         perceived_object.angles.z_angle.confidence.value = 1
+
+        # Dimensions
         perceived_object.object_dimension_z_is_present = True
-        perceived_object.object_dimension_z.value.value = 10
+        perceived_object.object_dimension_z.value.value = int(dim_z * 10)
         perceived_object.object_dimension_z.confidence.value = 1
+        
         perceived_object.object_dimension_y_is_present = True
-        perceived_object.object_dimension_y.value.value = 20
+        perceived_object.object_dimension_y.value.value = int(dim_y * 10)
         perceived_object.object_dimension_y.confidence.value = 1
+        
         perceived_object.object_dimension_x_is_present = True
-        perceived_object.object_dimension_x.value.value = 30
+        perceived_object.object_dimension_x.value.value = int(dim_x * 10)
         perceived_object.object_dimension_x.confidence.value = 1
 
-        # Container
+        # Container Assembly
         container = cpm_msg.WrappedCpmContainer()
         container.container_id.value = cpm_msg.WrappedCpmContainer.CHOICE_CONTAINER_DATA_PERCEIVED_OBJECT_CONTAINER
         container.container_data_perceived_object_container = cpm_msg.PerceivedObjectContainer()
         container.container_data_perceived_object_container.number_of_perceived_objects.value = 1
-        container.container_data_perceived_object_container.perceived_objects.array = [
-            perceived_object]
+        container.container_data_perceived_object_container.perceived_objects.array = [perceived_object]
 
         cpm = cpm_msg.CollectivePerceptionMessage()
         cpm.payload.management_container.reference_position = self.get_reference_position()
@@ -130,20 +155,24 @@ class CpmProvider(Node):
         return cpm
 
     def publish(self) -> None:
-        """Publish on topic"""
         if self.position_vector:
-            cpm = self.generate_perceived_object_cpm()
-            self.cpm_publisher.publish(cpm)
-            self.get_logger().info('CPM provided')
+            try:
+                cpm = self.generate_perceived_object_cpm()
+                self.cpm_publisher.publish(cpm)
+            except Exception as e:
+                self.get_logger().error(f'Failed to publish CPM: {str(e)}')
 
 
 def main(args=None):
     rclpy.init(args=args)
-    cpm_provider = CpmProvider()
-    rclpy.spin(cpm_provider)
-    cpm_provider.destroy_node()
-    rclpy.shutdown()
-
+    node = CpmProvider()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

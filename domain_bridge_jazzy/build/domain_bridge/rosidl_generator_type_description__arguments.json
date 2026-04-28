@@ -1,0 +1,7 @@
+{
+  "package_name": "domain_bridge",
+  "output_dir": "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/rosidl_generator_type_description/domain_bridge",
+  "idl_tuples": [
+    "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/rosidl_adapter/domain_bridge:msg/CompressedMsg.idl"
+  ]
+}

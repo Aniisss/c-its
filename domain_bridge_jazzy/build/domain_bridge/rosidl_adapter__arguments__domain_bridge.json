@@ -1,0 +1,6 @@
+{
+  "package_name": "domain_bridge",
+  "non_idl_tuples": [
+    "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/src:msg/CompressedMsg.msg"
+  ]
+}

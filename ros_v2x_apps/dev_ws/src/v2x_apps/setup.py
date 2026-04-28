@@ -26,6 +26,7 @@ setup(
                 'cpm_provider = v2x_apps.cpm_provider:main',
                 'vam_provider = v2x_apps.vam_provider:main',
                 'stationary_vehicle = c2c.stationary_vehicle_trigger:main',
+                'cpm_bridge = v2x_apps.cpm_bridge:main'
         ],
 },
 )

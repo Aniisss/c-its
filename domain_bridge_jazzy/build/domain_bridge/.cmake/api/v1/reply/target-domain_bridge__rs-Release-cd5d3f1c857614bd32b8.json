@@ -1,0 +1,73 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target"
+		],
+		"files" : 
+		[
+			"/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/domain_bridge__rs/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 35,
+				"parent" : 0
+			}
+		]
+	},
+	"id" : "domain_bridge__rs::@4ab8aa919aed4f75a81c",
+	"name" : "domain_bridge__rs",
+	"paths" : 
+	{
+		"build" : "domain_bridge__rs",
+		"source" : "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/domain_bridge__rs"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/domain_bridge__rs/CMakeFiles/domain_bridge__rs",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/domain_bridge__rs/CMakeFiles/domain_bridge__rs.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/rosidl_generator_rs/domain_bridge/rust/src/lib.rs.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

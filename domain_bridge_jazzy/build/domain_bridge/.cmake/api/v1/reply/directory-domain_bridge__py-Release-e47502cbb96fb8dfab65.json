@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "domain_bridge__py",
+		"source" : "/home/syfra/Hybridation_Anis/c-its/domain_bridge_jazzy/build/domain_bridge/domain_bridge__py"
+	}
+}
