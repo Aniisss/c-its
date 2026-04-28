@@ -1,0 +1,1626 @@
+[0.000000] (-) TimerEvent: {}
+[0.000293] (domain_bridge) JobQueued: {'identifier': 'domain_bridge', 'dependencies': OrderedDict()}
+[0.000338] (domain_bridge) JobStarted: {'identifier': 'domain_bridge'}
+[0.101298] (-) TimerEvent: {}
+[0.139442] (domain_bridge) JobProgress: {'identifier': 'domain_bridge', 'progress': 'cmake'}
+[0.141303] (domain_bridge) Command: {'cmd': ['/usr/bin/cmake', '/home/uphf/c-its/domain_bridge', '-DCMAKE_INSTALL_PREFIX=/home/uphf/c-its/domain_bridge/install/domain_bridge'], 'cwd': '/home/uphf/c-its/domain_bridge/build/domain_bridge', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'fr_FR:en'), ('USER', 'uphf'), ('LC_TIME', 'fr_FR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/uphf'), ('OLDPWD', '/home/uphf/c-its'), ('DESKTOP_SESSION', 'ubuntu'), ('P2P_HOSTNAME', 'ec2-35-181-51-77.eu-west-3.compute.amazonaws.com'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'fr_FR.UTF-8'), ('SYSTEMD_EXEC_PID', '2406'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'uphf'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'uphf'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/uphf/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/uphf-ec-01:@/tmp/.ICE-unix/1663,unix/uphf-ec-01:/tmp/.ICE-unix/1663'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'fr_FR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/c72441f7_9be3_43e2_9268_db64d752b241'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'fr_FR.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'fr_FR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('P2P_STATION', 'uphf-ec-01'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.93'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'fr_FR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'fr_FR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'fr_FR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/uphf/c-its/domain_bridge/build/domain_bridge'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'fr_FR.UTF-8'), ('LC_PAPER', 'fr_FR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('P2P_PORT', '1234'), ('CMAKE_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge:/opt/ros/humble')]), 'shell': False}
+[0.202347] (-) TimerEvent: {}
+[0.302978] (-) TimerEvent: {}
+[0.328122] (domain_bridge) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.403063] (-) TimerEvent: {}
+[0.477995] (domain_bridge) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.502268] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.506263] (-) TimerEvent: {}
+[0.606626] (-) TimerEvent: {}
+[0.627909] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.662599] (domain_bridge) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.663465] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.667153] (domain_bridge) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.674408] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.706776] (-) TimerEvent: {}
+[0.807090] (-) TimerEvent: {}
+[0.810391] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.823651] (domain_bridge) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.823967] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.824556] (domain_bridge) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.830685] (domain_bridge) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.907847] (-) TimerEvent: {}
+[1.008155] (-) TimerEvent: {}
+[1.108467] (-) TimerEvent: {}
+[1.116252] (domain_bridge) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[1.208676] (-) TimerEvent: {}
+[1.283316] (domain_bridge) StdoutLine: {'line': b'-- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[1.311271] (-) TimerEvent: {}
+[1.385695] (domain_bridge) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[1.393280] (domain_bridge) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.407820] (domain_bridge) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[1.411436] (-) TimerEvent: {}
+[1.444227] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.491923] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.511915] (-) TimerEvent: {}
+[1.612235] (-) TimerEvent: {}
+[1.640469] (domain_bridge) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.643455] (domain_bridge) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.712360] (-) TimerEvent: {}
+[1.812727] (-) TimerEvent: {}
+[1.816590] (domain_bridge) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.864404] (domain_bridge) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.912867] (-) TimerEvent: {}
+[1.922910] (domain_bridge) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.940584] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[2.014149] (-) TimerEvent: {}
+[2.085723] (domain_bridge) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.086529] (domain_bridge) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.114966] (-) TimerEvent: {}
+[2.216307] (-) TimerEvent: {}
+[2.220040] (domain_bridge) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[2.221372] (domain_bridge) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.316396] (-) TimerEvent: {}
+[2.416650] (-) TimerEvent: {}
+[2.517338] (-) TimerEvent: {}
+[2.548889] (domain_bridge) StdoutLine: {'line': b'-- Found rclcpp_components: 16.0.7 (/opt/ros/humble/share/rclcpp_components/cmake)\n'}
+[2.626450] (-) TimerEvent: {}
+[2.681020] (domain_bridge) StdoutLine: {'line': b'-- Found rosbag2_cpp: 0.15.8 (/opt/ros/humble/share/rosbag2_cpp/cmake)\n'}
+[2.726516] (-) TimerEvent: {}
+[2.736344] (domain_bridge) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[2.761794] (domain_bridge) StdoutLine: {'line': b'-- Found zstd_vendor: 0.15.8 (/opt/ros/humble/share/zstd_vendor/cmake)\n'}
+[2.762169] (domain_bridge) StdoutLine: {'line': b'-- Found zstd: /opt/ros/humble/lib/libzstd.so  \n'}
+[2.826712] (-) TimerEvent: {}
+[2.929365] (-) TimerEvent: {}
+[3.030014] (-) TimerEvent: {}
+[3.130671] (-) TimerEvent: {}
+[3.220530] (domain_bridge) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[3.231972] (-) TimerEvent: {}
+[3.332444] (-) TimerEvent: {}
+[3.435935] (-) TimerEvent: {}
+[3.536285] (-) TimerEvent: {}
+[3.636687] (-) TimerEvent: {}
+[3.737071] (-) TimerEvent: {}
+[3.743851] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.838286] (-) TimerEvent: {}
+[3.938617] (-) TimerEvent: {}
+[3.943120] (domain_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.996818] (domain_bridge) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[3.997011] (domain_bridge) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[4.038766] (-) TimerEvent: {}
+[4.041254] (domain_bridge) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[4.041621] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[4.041736] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[4.041827] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[4.074882] (domain_bridge) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[4.139211] (-) TimerEvent: {}
+[4.159973] (domain_bridge) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[4.161807] (domain_bridge) StdoutLine: {'line': b'-- Found test_msgs: 1.2.2 (/opt/ros/humble/share/test_msgs/cmake)\n'}
+[4.242921] (-) TimerEvent: {}
+[4.343260] (-) TimerEvent: {}
+[4.443577] (-) TimerEvent: {}
+[4.544285] (-) TimerEvent: {}
+[4.644717] (-) TimerEvent: {}
+[4.656341] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[4.656527] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[4.656630] (domain_bridge) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[4.697405] (domain_bridge) StdoutLine: {'line': b"-- Found gmock sources under '/opt/ros/humble/src/gmock_vendor': C++ tests using 'Google Mock' will be built\n"}
+[4.711387] (domain_bridge) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[4.745200] (domain_bridge) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[4.745595] (-) TimerEvent: {}
+[4.759066] (domain_bridge) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[4.760487] (domain_bridge) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_c>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_fastrtps_c>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_cpp>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_fastrtps_cpp>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_introspection_cpp>;/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_c;/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_py;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/include>\n'}
+[4.760688] (domain_bridge) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[4.775241] (domain_bridge) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[4.775582] (domain_bridge) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[4.780657] (domain_bridge) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[4.784239] (domain_bridge) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.786886] (domain_bridge) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[4.800142] (domain_bridge) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[4.800362] (domain_bridge) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[4.803355] (domain_bridge) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.807372] (domain_bridge) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.846523] (-) TimerEvent: {}
+[4.910301] (domain_bridge) StdoutLine: {'line': b'-- Generating done\n'}
+[4.916348] (domain_bridge) StdoutLine: {'line': b'-- Build files have been written to: /home/uphf/c-its/domain_bridge/build/domain_bridge\n'}
+[4.937775] (domain_bridge) CommandEnded: {'returncode': 0}
+[4.938894] (domain_bridge) JobProgress: {'identifier': 'domain_bridge', 'progress': 'build'}
+[4.939909] (domain_bridge) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/uphf/c-its/domain_bridge/build/domain_bridge', '--', '-j8', '-l8'], 'cwd': '/home/uphf/c-its/domain_bridge/build/domain_bridge', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'fr_FR:en'), ('USER', 'uphf'), ('LC_TIME', 'fr_FR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/uphf'), ('OLDPWD', '/home/uphf/c-its'), ('DESKTOP_SESSION', 'ubuntu'), ('P2P_HOSTNAME', 'ec2-35-181-51-77.eu-west-3.compute.amazonaws.com'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'fr_FR.UTF-8'), ('SYSTEMD_EXEC_PID', '2406'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'uphf'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'uphf'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/uphf/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/uphf-ec-01:@/tmp/.ICE-unix/1663,unix/uphf-ec-01:/tmp/.ICE-unix/1663'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'fr_FR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/c72441f7_9be3_43e2_9268_db64d752b241'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'fr_FR.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'fr_FR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('P2P_STATION', 'uphf-ec-01'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.93'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'fr_FR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'fr_FR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'fr_FR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/uphf/c-its/domain_bridge/build/domain_bridge'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'fr_FR.UTF-8'), ('LC_PAPER', 'fr_FR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('P2P_PORT', '1234'), ('CMAKE_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge:/opt/ros/humble')]), 'shell': False}
+[4.948340] (-) TimerEvent: {}
+[5.036557] (domain_bridge) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[5.048428] (-) TimerEvent: {}
+[5.149308] (-) TimerEvent: {}
+[5.250732] (-) TimerEvent: {}
+[5.351040] (-) TimerEvent: {}
+[5.451364] (-) TimerEvent: {}
+[5.466079] (domain_bridge) StdoutLine: {'line': b'[  1%] Built target domain_bridge__cpp\n'}
+[5.499031] (domain_bridge) StdoutLine: {'line': b'[  3%] \x1b[32mBuilding CXX object gmock/CMakeFiles/gmock.dir/opt/ros/humble/src/gtest_vendor/src/gtest-all.cc.o\x1b[0m\n'}
+[5.551763] (-) TimerEvent: {}
+[5.655336] (-) TimerEvent: {}
+[5.755767] (-) TimerEvent: {}
+[5.856108] (-) TimerEvent: {}
+[5.956714] (-) TimerEvent: {}
+[6.057097] (-) TimerEvent: {}
+[6.157396] (-) TimerEvent: {}
+[6.257685] (-) TimerEvent: {}
+[6.362319] (-) TimerEvent: {}
+[6.462753] (-) TimerEvent: {}
+[6.563139] (-) TimerEvent: {}
+[6.663604] (-) TimerEvent: {}
+[6.765314] (-) TimerEvent: {}
+[6.866913] (-) TimerEvent: {}
+[6.967446] (-) TimerEvent: {}
+[7.067877] (-) TimerEvent: {}
+[7.169110] (-) TimerEvent: {}
+[7.269508] (-) TimerEvent: {}
+[7.370050] (-) TimerEvent: {}
+[7.470386] (-) TimerEvent: {}
+[7.571823] (-) TimerEvent: {}
+[7.672244] (-) TimerEvent: {}
+[7.772625] (-) TimerEvent: {}
+[7.873138] (-) TimerEvent: {}
+[7.975285] (-) TimerEvent: {}
+[8.075638] (-) TimerEvent: {}
+[8.176116] (-) TimerEvent: {}
+[8.279227] (-) TimerEvent: {}
+[8.379615] (-) TimerEvent: {}
+[8.479874] (-) TimerEvent: {}
+[8.580121] (-) TimerEvent: {}
+[8.682882] (-) TimerEvent: {}
+[8.783175] (-) TimerEvent: {}
+[8.883452] (-) TimerEvent: {}
+[8.983700] (-) TimerEvent: {}
+[9.085795] (-) TimerEvent: {}
+[9.186076] (-) TimerEvent: {}
+[9.286634] (-) TimerEvent: {}
+[9.386907] (-) TimerEvent: {}
+[9.491434] (-) TimerEvent: {}
+[9.591723] (-) TimerEvent: {}
+[9.692086] (-) TimerEvent: {}
+[9.792557] (-) TimerEvent: {}
+[9.893723] (-) TimerEvent: {}
+[9.994134] (-) TimerEvent: {}
+[10.094744] (-) TimerEvent: {}
+[10.195032] (-) TimerEvent: {}
+[10.295541] (-) TimerEvent: {}
+[10.395828] (-) TimerEvent: {}
+[10.497479] (-) TimerEvent: {}
+[10.598042] (-) TimerEvent: {}
+[10.706353] (-) TimerEvent: {}
+[10.806719] (-) TimerEvent: {}
+[10.907177] (-) TimerEvent: {}
+[11.007462] (-) TimerEvent: {}
+[11.107736] (-) TimerEvent: {}
+[11.172721] (domain_bridge) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding CXX object gmock/CMakeFiles/gmock.dir/src/gmock-all.cc.o\x1b[0m\n'}
+[11.207856] (-) TimerEvent: {}
+[11.308129] (-) TimerEvent: {}
+[11.408630] (-) TimerEvent: {}
+[11.509130] (-) TimerEvent: {}
+[11.609511] (-) TimerEvent: {}
+[11.710653] (-) TimerEvent: {}
+[11.812122] (-) TimerEvent: {}
+[11.914089] (-) TimerEvent: {}
+[12.015856] (-) TimerEvent: {}
+[12.116299] (-) TimerEvent: {}
+[12.218279] (-) TimerEvent: {}
+[12.318634] (-) TimerEvent: {}
+[12.418891] (-) TimerEvent: {}
+[12.519198] (-) TimerEvent: {}
+[12.620729] (-) TimerEvent: {}
+[12.721008] (-) TimerEvent: {}
+[12.821271] (-) TimerEvent: {}
+[12.921551] (-) TimerEvent: {}
+[13.022673] (-) TimerEvent: {}
+[13.122994] (-) TimerEvent: {}
+[13.223324] (-) TimerEvent: {}
+[13.324877] (-) TimerEvent: {}
+[13.425392] (-) TimerEvent: {}
+[13.525764] (-) TimerEvent: {}
+[13.626257] (-) TimerEvent: {}
+[13.726636] (-) TimerEvent: {}
+[13.827311] (-) TimerEvent: {}
+[13.933272] (-) TimerEvent: {}
+[14.033601] (-) TimerEvent: {}
+[14.134149] (-) TimerEvent: {}
+[14.234734] (-) TimerEvent: {}
+[14.335361] (-) TimerEvent: {}
+[14.405832] (domain_bridge) StdoutLine: {'line': b'[  6%] \x1b[32m\x1b[1mLinking CXX static library libgmock.a\x1b[0m\n'}
+[14.439378] (-) TimerEvent: {}
+[14.524361] (domain_bridge) StdoutLine: {'line': b'[  6%] Built target gmock\n'}
+[14.539534] (-) TimerEvent: {}
+[14.544760] (domain_bridge) StdoutLine: {'line': b'[  8%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[14.639677] (-) TimerEvent: {}
+[14.740106] (-) TimerEvent: {}
+[14.840522] (-) TimerEvent: {}
+[14.940654] (domain_bridge) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/domain_bridge/msg/detail/dds_fastrtps/compressed_msg__type_support.cpp.o\x1b[0m\n'}
+[14.940907] (-) TimerEvent: {}
+[15.041232] (-) TimerEvent: {}
+[15.141625] (-) TimerEvent: {}
+[15.242361] (-) TimerEvent: {}
+[15.344505] (-) TimerEvent: {}
+[15.445066] (-) TimerEvent: {}
+[15.545558] (-) TimerEvent: {}
+[15.608232] (domain_bridge) StdoutLine: {'line': b'[ 11%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[15.645663] (-) TimerEvent: {}
+[15.749343] (-) TimerEvent: {}
+[15.751924] (domain_bridge) StdoutLine: {'line': b'[ 11%] Built target domain_bridge__rosidl_typesupport_fastrtps_cpp\n'}
+[15.773182] (domain_bridge) StdoutLine: {'line': b'[ 13%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[15.849466] (-) TimerEvent: {}
+[15.949799] (-) TimerEvent: {}
+[16.050093] (-) TimerEvent: {}
+[16.157404] (domain_bridge) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/domain_bridge/msg/detail/compressed_msg__type_support.cpp.o\x1b[0m\n'}
+[16.157642] (-) TimerEvent: {}
+[16.257927] (-) TimerEvent: {}
+[16.358476] (-) TimerEvent: {}
+[16.459112] (-) TimerEvent: {}
+[16.560087] (-) TimerEvent: {}
+[16.660567] (-) TimerEvent: {}
+[16.760827] (-) TimerEvent: {}
+[16.796811] (domain_bridge) StdoutLine: {'line': b'[ 16%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[16.860927] (-) TimerEvent: {}
+[16.930100] (domain_bridge) StdoutLine: {'line': b'[ 16%] Built target domain_bridge__rosidl_typesupport_introspection_cpp\n'}
+[16.943489] (domain_bridge) StdoutLine: {'line': b'[ 18%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[16.967834] (-) TimerEvent: {}
+[17.068121] (-) TimerEvent: {}
+[17.168415] (-) TimerEvent: {}
+[17.269327] (-) TimerEvent: {}
+[17.288535] (domain_bridge) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/domain_bridge/msg/compressed_msg__type_support.cpp.o\x1b[0m\n'}
+[17.369568] (-) TimerEvent: {}
+[17.469915] (-) TimerEvent: {}
+[17.570175] (-) TimerEvent: {}
+[17.670497] (-) TimerEvent: {}
+[17.724435] (domain_bridge) StdoutLine: {'line': b'[ 21%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[17.770633] (-) TimerEvent: {}
+[17.793796] (domain_bridge) StdoutLine: {'line': b'[ 21%] Built target domain_bridge__rosidl_typesupport_cpp\n'}
+[17.823516] (domain_bridge) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o\x1b[0m\n'}
+[17.870737] (-) TimerEvent: {}
+[17.971851] (-) TimerEvent: {}
+[18.072121] (-) TimerEvent: {}
+[18.174474] (-) TimerEvent: {}
+[18.275521] (-) TimerEvent: {}
+[18.376018] (-) TimerEvent: {}
+[18.477060] (-) TimerEvent: {}
+[18.578453] (-) TimerEvent: {}
+[18.678748] (-) TimerEvent: {}
+[18.779034] (-) TimerEvent: {}
+[18.883755] (-) TimerEvent: {}
+[18.984314] (-) TimerEvent: {}
+[19.084579] (-) TimerEvent: {}
+[19.185446] (-) TimerEvent: {}
+[19.285756] (-) TimerEvent: {}
+[19.386080] (-) TimerEvent: {}
+[19.486492] (-) TimerEvent: {}
+[19.587540] (-) TimerEvent: {}
+[19.687852] (-) TimerEvent: {}
+[19.788126] (-) TimerEvent: {}
+[19.789624] (domain_bridge) StdoutLine: {'line': b'[ 24%] \x1b[32m\x1b[1mLinking CXX static library libgmock_main.a\x1b[0m\n'}
+[19.839015] (domain_bridge) StdoutLine: {'line': b'[ 24%] Built target gmock_main\n'}
+[19.883748] (domain_bridge) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/component_manager.cpp.o\x1b[0m\n'}
+[19.888244] (-) TimerEvent: {}
+[19.989305] (-) TimerEvent: {}
+[20.089617] (-) TimerEvent: {}
+[20.189893] (-) TimerEvent: {}
+[20.291012] (-) TimerEvent: {}
+[20.393454] (-) TimerEvent: {}
+[20.493827] (-) TimerEvent: {}
+[20.596998] (-) TimerEvent: {}
+[20.697269] (-) TimerEvent: {}
+[20.797561] (-) TimerEvent: {}
+[20.897850] (-) TimerEvent: {}
+[20.998117] (-) TimerEvent: {}
+[21.099651] (-) TimerEvent: {}
+[21.199987] (-) TimerEvent: {}
+[21.305575] (-) TimerEvent: {}
+[21.405975] (-) TimerEvent: {}
+[21.506325] (-) TimerEvent: {}
+[21.606739] (-) TimerEvent: {}
+[21.707055] (-) TimerEvent: {}
+[21.808729] (-) TimerEvent: {}
+[21.909172] (-) TimerEvent: {}
+[22.012488] (-) TimerEvent: {}
+[22.112907] (-) TimerEvent: {}
+[22.213542] (-) TimerEvent: {}
+[22.313858] (-) TimerEvent: {}
+[22.414718] (-) TimerEvent: {}
+[22.517539] (-) TimerEvent: {}
+[22.623649] (-) TimerEvent: {}
+[22.724045] (-) TimerEvent: {}
+[22.824504] (-) TimerEvent: {}
+[22.924979] (-) TimerEvent: {}
+[23.025548] (-) TimerEvent: {}
+[23.126537] (-) TimerEvent: {}
+[23.226850] (-) TimerEvent: {}
+[23.327147] (-) TimerEvent: {}
+[23.427547] (-) TimerEvent: {}
+[23.527826] (-) TimerEvent: {}
+[23.628133] (-) TimerEvent: {}
+[23.729818] (-) TimerEvent: {}
+[23.830157] (-) TimerEvent: {}
+[23.930501] (-) TimerEvent: {}
+[24.030864] (-) TimerEvent: {}
+[24.131167] (-) TimerEvent: {}
+[24.231559] (-) TimerEvent: {}
+[24.339321] (-) TimerEvent: {}
+[24.439781] (-) TimerEvent: {}
+[24.540455] (-) TimerEvent: {}
+[24.646856] (-) TimerEvent: {}
+[24.747305] (-) TimerEvent: {}
+[24.848697] (-) TimerEvent: {}
+[24.949088] (-) TimerEvent: {}
+[25.051964] (-) TimerEvent: {}
+[25.152441] (-) TimerEvent: {}
+[25.189026] (domain_bridge) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge_options.cpp.o\x1b[0m\n'}
+[25.252705] (-) TimerEvent: {}
+[25.356001] (-) TimerEvent: {}
+[25.456297] (-) TimerEvent: {}
+[25.556651] (-) TimerEvent: {}
+[25.656955] (-) TimerEvent: {}
+[25.721673] (domain_bridge) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/parse_domain_bridge_yaml_config.cpp.o\x1b[0m\n'}
+[25.757427] (-) TimerEvent: {}
+[25.860423] (-) TimerEvent: {}
+[25.960827] (-) TimerEvent: {}
+[26.061327] (-) TimerEvent: {}
+[26.161902] (-) TimerEvent: {}
+[26.269559] (-) TimerEvent: {}
+[26.370416] (-) TimerEvent: {}
+[26.470749] (-) TimerEvent: {}
+[26.572179] (-) TimerEvent: {}
+[26.672880] (-) TimerEvent: {}
+[26.773155] (-) TimerEvent: {}
+[26.873467] (-) TimerEvent: {}
+[26.974136] (-) TimerEvent: {}
+[27.076361] (-) TimerEvent: {}
+[27.176850] (-) TimerEvent: {}
+[27.277300] (-) TimerEvent: {}
+[27.378011] (-) TimerEvent: {}
+[27.479562] (-) TimerEvent: {}
+[27.579983] (-) TimerEvent: {}
+[27.680238] (-) TimerEvent: {}
+[27.780484] (-) TimerEvent: {}
+[27.881826] (-) TimerEvent: {}
+[27.983591] (-) TimerEvent: {}
+[28.083861] (-) TimerEvent: {}
+[28.184573] (-) TimerEvent: {}
+[28.284949] (-) TimerEvent: {}
+[28.388320] (-) TimerEvent: {}
+[28.488619] (-) TimerEvent: {}
+[28.588879] (-) TimerEvent: {}
+[28.690792] (-) TimerEvent: {}
+[28.791148] (-) TimerEvent: {}
+[28.891640] (-) TimerEvent: {}
+[28.996425] (-) TimerEvent: {}
+[29.096817] (-) TimerEvent: {}
+[29.197202] (-) TimerEvent: {}
+[29.205822] (domain_bridge) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/qos_options.cpp.o\x1b[0m\n'}
+[29.297300] (-) TimerEvent: {}
+[29.397960] (-) TimerEvent: {}
+[29.501530] (-) TimerEvent: {}
+[29.601808] (-) TimerEvent: {}
+[29.702082] (-) TimerEvent: {}
+[29.804812] (-) TimerEvent: {}
+[29.905115] (-) TimerEvent: {}
+[30.005381] (-) TimerEvent: {}
+[30.105803] (-) TimerEvent: {}
+[30.184929] (domain_bridge) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/service_bridge_options.cpp.o\x1b[0m\n'}
+[30.206231] (-) TimerEvent: {}
+[30.306551] (-) TimerEvent: {}
+[30.406834] (-) TimerEvent: {}
+[30.507618] (-) TimerEvent: {}
+[30.607890] (-) TimerEvent: {}
+[30.708193] (-) TimerEvent: {}
+[30.808450] (-) TimerEvent: {}
+[30.909269] (-) TimerEvent: {}
+[31.009643] (-) TimerEvent: {}
+[31.112084] (-) TimerEvent: {}
+[31.213471] (-) TimerEvent: {}
+[31.313850] (-) TimerEvent: {}
+[31.414260] (-) TimerEvent: {}
+[31.516010] (-) TimerEvent: {}
+[31.616394] (-) TimerEvent: {}
+[31.718688] (-) TimerEvent: {}
+[31.819003] (-) TimerEvent: {}
+[31.919319] (-) TimerEvent: {}
+[32.019867] (-) TimerEvent: {}
+[32.120826] (-) TimerEvent: {}
+[32.172240] (domain_bridge) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/topic_bridge_options.cpp.o\x1b[0m\n'}
+[32.220957] (-) TimerEvent: {}
+[32.321264] (-) TimerEvent: {}
+[32.421538] (-) TimerEvent: {}
+[32.522035] (-) TimerEvent: {}
+[32.622467] (-) TimerEvent: {}
+[32.722748] (-) TimerEvent: {}
+[32.823916] (-) TimerEvent: {}
+[32.929326] (-) TimerEvent: {}
+[33.029772] (-) TimerEvent: {}
+[33.130076] (-) TimerEvent: {}
+[33.230666] (-) TimerEvent: {}
+[33.331058] (-) TimerEvent: {}
+[33.433684] (-) TimerEvent: {}
+[33.534659] (-) TimerEvent: {}
+[33.636939] (-) TimerEvent: {}
+[33.737272] (-) TimerEvent: {}
+[33.837630] (-) TimerEvent: {}
+[33.938095] (-) TimerEvent: {}
+[34.038550] (-) TimerEvent: {}
+[34.142515] (-) TimerEvent: {}
+[34.159286] (domain_bridge) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge.cpp.o\x1b[0m\n'}
+[34.242641] (-) TimerEvent: {}
+[34.343177] (-) TimerEvent: {}
+[34.443932] (-) TimerEvent: {}
+[34.544602] (-) TimerEvent: {}
+[34.645261] (-) TimerEvent: {}
+[34.747417] (-) TimerEvent: {}
+[34.847816] (-) TimerEvent: {}
+[34.948118] (-) TimerEvent: {}
+[35.048471] (-) TimerEvent: {}
+[35.149279] (-) TimerEvent: {}
+[35.253700] (-) TimerEvent: {}
+[35.354044] (-) TimerEvent: {}
+[35.454301] (-) TimerEvent: {}
+[35.556505] (-) TimerEvent: {}
+[35.660972] (-) TimerEvent: {}
+[35.761356] (-) TimerEvent: {}
+[35.862471] (-) TimerEvent: {}
+[35.964296] (-) TimerEvent: {}
+[36.066724] (-) TimerEvent: {}
+[36.167015] (-) TimerEvent: {}
+[36.267270] (-) TimerEvent: {}
+[36.367532] (-) TimerEvent: {}
+[36.467822] (-) TimerEvent: {}
+[36.568151] (-) TimerEvent: {}
+[36.668530] (-) TimerEvent: {}
+[36.770701] (-) TimerEvent: {}
+[36.871000] (-) TimerEvent: {}
+[36.971331] (-) TimerEvent: {}
+[37.072819] (-) TimerEvent: {}
+[37.173103] (-) TimerEvent: {}
+[37.273386] (-) TimerEvent: {}
+[37.374790] (-) TimerEvent: {}
+[37.479374] (-) TimerEvent: {}
+[37.579701] (-) TimerEvent: {}
+[37.680053] (-) TimerEvent: {}
+[37.780317] (-) TimerEvent: {}
+[37.880933] (-) TimerEvent: {}
+[37.985444] (-) TimerEvent: {}
+[38.085770] (-) TimerEvent: {}
+[38.186046] (-) TimerEvent: {}
+[38.286418] (-) TimerEvent: {}
+[38.387190] (-) TimerEvent: {}
+[38.487709] (-) TimerEvent: {}
+[38.591276] (-) TimerEvent: {}
+[38.691591] (-) TimerEvent: {}
+[38.791946] (-) TimerEvent: {}
+[38.892912] (-) TimerEvent: {}
+[38.994400] (-) TimerEvent: {}
+[39.095468] (-) TimerEvent: {}
+[39.196150] (-) TimerEvent: {}
+[39.300355] (-) TimerEvent: {}
+[39.400830] (-) TimerEvent: {}
+[39.501186] (-) TimerEvent: {}
+[39.602294] (-) TimerEvent: {}
+[39.702669] (-) TimerEvent: {}
+[39.803042] (-) TimerEvent: {}
+[39.903318] (-) TimerEvent: {}
+[40.004303] (-) TimerEvent: {}
+[40.105588] (-) TimerEvent: {}
+[40.205867] (-) TimerEvent: {}
+[40.306143] (-) TimerEvent: {}
+[40.406458] (-) TimerEvent: {}
+[40.506905] (-) TimerEvent: {}
+[40.607272] (-) TimerEvent: {}
+[40.707537] (-) TimerEvent: {}
+[40.807825] (-) TimerEvent: {}
+[40.908438] (-) TimerEvent: {}
+[41.010115] (-) TimerEvent: {}
+[41.112319] (-) TimerEvent: {}
+[41.214763] (-) TimerEvent: {}
+[41.320272] (-) TimerEvent: {}
+[41.420555] (-) TimerEvent: {}
+[41.520868] (-) TimerEvent: {}
+[41.621136] (-) TimerEvent: {}
+[41.721426] (-) TimerEvent: {}
+[41.823318] (-) TimerEvent: {}
+[41.923744] (-) TimerEvent: {}
+[42.027311] (-) TimerEvent: {}
+[42.127737] (-) TimerEvent: {}
+[42.228115] (-) TimerEvent: {}
+[42.332534] (-) TimerEvent: {}
+[42.432843] (-) TimerEvent: {}
+[42.533204] (-) TimerEvent: {}
+[42.633966] (-) TimerEvent: {}
+[42.734439] (-) TimerEvent: {}
+[42.834840] (-) TimerEvent: {}
+[42.935205] (-) TimerEvent: {}
+[43.037408] (-) TimerEvent: {}
+[43.137767] (-) TimerEvent: {}
+[43.238209] (-) TimerEvent: {}
+[43.338664] (-) TimerEvent: {}
+[43.442270] (-) TimerEvent: {}
+[43.542641] (-) TimerEvent: {}
+[43.643447] (-) TimerEvent: {}
+[43.744009] (-) TimerEvent: {}
+[43.845434] (-) TimerEvent: {}
+[43.945780] (-) TimerEvent: {}
+[44.046305] (-) TimerEvent: {}
+[44.149136] (-) TimerEvent: {}
+[44.250388] (-) TimerEvent: {}
+[44.350704] (-) TimerEvent: {}
+[44.451400] (-) TimerEvent: {}
+[44.553383] (-) TimerEvent: {}
+[44.653798] (-) TimerEvent: {}
+[44.754140] (-) TimerEvent: {}
+[44.854868] (-) TimerEvent: {}
+[44.955337] (-) TimerEvent: {}
+[45.055983] (-) TimerEvent: {}
+[45.156533] (-) TimerEvent: {}
+[45.259609] (-) TimerEvent: {}
+[45.359987] (-) TimerEvent: {}
+[45.460292] (-) TimerEvent: {}
+[45.560734] (-) TimerEvent: {}
+[45.661270] (-) TimerEvent: {}
+[45.761842] (-) TimerEvent: {}
+[45.862598] (-) TimerEvent: {}
+[45.962888] (-) TimerEvent: {}
+[46.063192] (-) TimerEvent: {}
+[46.166478] (-) TimerEvent: {}
+[46.266756] (-) TimerEvent: {}
+[46.367039] (-) TimerEvent: {}
+[46.467335] (-) TimerEvent: {}
+[46.567850] (-) TimerEvent: {}
+[46.668226] (-) TimerEvent: {}
+[46.768501] (-) TimerEvent: {}
+[46.869199] (-) TimerEvent: {}
+[46.969569] (-) TimerEvent: {}
+[47.070015] (-) TimerEvent: {}
+[47.170548] (-) TimerEvent: {}
+[47.271911] (-) TimerEvent: {}
+[47.373988] (-) TimerEvent: {}
+[47.474271] (-) TimerEvent: {}
+[47.574569] (-) TimerEvent: {}
+[47.676446] (-) TimerEvent: {}
+[47.779285] (-) TimerEvent: {}
+[47.879713] (-) TimerEvent: {}
+[47.980245] (-) TimerEvent: {}
+[48.080578] (-) TimerEvent: {}
+[48.184288] (-) TimerEvent: {}
+[48.284634] (-) TimerEvent: {}
+[48.384900] (-) TimerEvent: {}
+[48.485186] (-) TimerEvent: {}
+[48.586161] (-) TimerEvent: {}
+[48.686478] (-) TimerEvent: {}
+[48.786726] (-) TimerEvent: {}
+[48.889238] (-) TimerEvent: {}
+[48.989733] (-) TimerEvent: {}
+[49.090161] (-) TimerEvent: {}
+[49.193734] (-) TimerEvent: {}
+[49.307105] (-) TimerEvent: {}
+[49.407570] (-) TimerEvent: {}
+[49.507883] (-) TimerEvent: {}
+[49.609972] (-) TimerEvent: {}
+[49.710297] (-) TimerEvent: {}
+[49.810808] (-) TimerEvent: {}
+[49.911342] (-) TimerEvent: {}
+[50.012144] (-) TimerEvent: {}
+[50.115315] (-) TimerEvent: {}
+[50.215708] (-) TimerEvent: {}
+[50.316202] (-) TimerEvent: {}
+[50.417001] (-) TimerEvent: {}
+[50.518298] (-) TimerEvent: {}
+[50.618545] (-) TimerEvent: {}
+[50.718965] (-) TimerEvent: {}
+[50.792657] (domain_bridge) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/compress_messages.cpp.o\x1b[0m\n'}
+[50.819445] (-) TimerEvent: {}
+[50.919722] (-) TimerEvent: {}
+[51.020009] (-) TimerEvent: {}
+[51.120315] (-) TimerEvent: {}
+[51.220662] (-) TimerEvent: {}
+[51.321136] (-) TimerEvent: {}
+[51.394373] (domain_bridge) StdoutLine: {'line': b'[ 39%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge.so\x1b[0m\n'}
+[51.422324] (-) TimerEvent: {}
+[51.522729] (-) TimerEvent: {}
+[51.623088] (-) TimerEvent: {}
+[51.723705] (-) TimerEvent: {}
+[51.828397] (-) TimerEvent: {}
+[51.928784] (-) TimerEvent: {}
+[52.029301] (-) TimerEvent: {}
+[52.129768] (-) TimerEvent: {}
+[52.230124] (-) TimerEvent: {}
+[52.332863] (-) TimerEvent: {}
+[52.433775] (-) TimerEvent: {}
+[52.516019] (domain_bridge) StdoutLine: {'line': b'[ 39%] Built target domain_bridge_lib\n'}
+[52.536334] (-) TimerEvent: {}
+[52.563256] (domain_bridge) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/test_component.dir/rclcpp_components/node_main_test_component.cpp.o\x1b[0m\n'}
+[52.636432] (-) TimerEvent: {}
+[52.736896] (-) TimerEvent: {}
+[52.837286] (-) TimerEvent: {}
+[52.937688] (-) TimerEvent: {}
+[53.038204] (-) TimerEvent: {}
+[53.138535] (-) TimerEvent: {}
+[53.239005] (-) TimerEvent: {}
+[53.341452] (-) TimerEvent: {}
+[53.442676] (-) TimerEvent: {}
+[53.543013] (-) TimerEvent: {}
+[53.644193] (-) TimerEvent: {}
+[53.746351] (-) TimerEvent: {}
+[53.846793] (-) TimerEvent: {}
+[53.947159] (-) TimerEvent: {}
+[54.047422] (-) TimerEvent: {}
+[54.148380] (-) TimerEvent: {}
+[54.248731] (-) TimerEvent: {}
+[54.349068] (-) TimerEvent: {}
+[54.449405] (-) TimerEvent: {}
+[54.549788] (-) TimerEvent: {}
+[54.656471] (-) TimerEvent: {}
+[54.756830] (-) TimerEvent: {}
+[54.857306] (-) TimerEvent: {}
+[54.957884] (-) TimerEvent: {}
+[55.061366] (-) TimerEvent: {}
+[55.161840] (-) TimerEvent: {}
+[55.262812] (-) TimerEvent: {}
+[55.364066] (-) TimerEvent: {}
+[55.466953] (-) TimerEvent: {}
+[55.567282] (-) TimerEvent: {}
+[55.668424] (-) TimerEvent: {}
+[55.772794] (-) TimerEvent: {}
+[55.873261] (-) TimerEvent: {}
+[55.973529] (-) TimerEvent: {}
+[56.073927] (-) TimerEvent: {}
+[56.176245] (-) TimerEvent: {}
+[56.276651] (-) TimerEvent: {}
+[56.376944] (-) TimerEvent: {}
+[56.477247] (-) TimerEvent: {}
+[56.577519] (-) TimerEvent: {}
+[56.677874] (-) TimerEvent: {}
+[56.778154] (-) TimerEvent: {}
+[56.878499] (-) TimerEvent: {}
+[56.979758] (-) TimerEvent: {}
+[57.080459] (-) TimerEvent: {}
+[57.180733] (-) TimerEvent: {}
+[57.281279] (-) TimerEvent: {}
+[57.382552] (-) TimerEvent: {}
+[57.482836] (-) TimerEvent: {}
+[57.583112] (-) TimerEvent: {}
+[57.683479] (-) TimerEvent: {}
+[57.703192] (domain_bridge) StdoutLine: {'line': b'[ 42%] \x1b[32m\x1b[1mLinking CXX executable test_component\x1b[0m\n'}
+[57.787486] (-) TimerEvent: {}
+[57.887816] (-) TimerEvent: {}
+[57.920828] (domain_bridge) StdoutLine: {'line': b'[ 42%] Built target test_component\n'}
+[57.966478] (domain_bridge) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object test/CMakeFiles/test_qos_matching__rmw_fastrtps_cpp.dir/domain_bridge/test_qos_matching.cpp.o\x1b[0m\n'}
+[57.987908] (-) TimerEvent: {}
+[58.088226] (-) TimerEvent: {}
+[58.191273] (-) TimerEvent: {}
+[58.291548] (-) TimerEvent: {}
+[58.391824] (-) TimerEvent: {}
+[58.494311] (-) TimerEvent: {}
+[58.594757] (-) TimerEvent: {}
+[58.695411] (-) TimerEvent: {}
+[58.795896] (-) TimerEvent: {}
+[58.896360] (-) TimerEvent: {}
+[58.997534] (-) TimerEvent: {}
+[59.098154] (-) TimerEvent: {}
+[59.199027] (-) TimerEvent: {}
+[59.299515] (-) TimerEvent: {}
+[59.402603] (-) TimerEvent: {}
+[59.503066] (-) TimerEvent: {}
+[59.603672] (-) TimerEvent: {}
+[59.705619] (-) TimerEvent: {}
+[59.805897] (-) TimerEvent: {}
+[59.906240] (-) TimerEvent: {}
+[60.006700] (-) TimerEvent: {}
+[60.107062] (-) TimerEvent: {}
+[60.207583] (-) TimerEvent: {}
+[60.308075] (-) TimerEvent: {}
+[60.409673] (-) TimerEvent: {}
+[60.510583] (-) TimerEvent: {}
+[60.611193] (-) TimerEvent: {}
+[60.713548] (-) TimerEvent: {}
+[60.820269] (-) TimerEvent: {}
+[60.920538] (-) TimerEvent: {}
+[61.020831] (-) TimerEvent: {}
+[61.121629] (-) TimerEvent: {}
+[61.222063] (-) TimerEvent: {}
+[61.322348] (-) TimerEvent: {}
+[61.422766] (-) TimerEvent: {}
+[61.524829] (-) TimerEvent: {}
+[61.625120] (-) TimerEvent: {}
+[61.725394] (-) TimerEvent: {}
+[61.825686] (-) TimerEvent: {}
+[61.926927] (-) TimerEvent: {}
+[62.027831] (-) TimerEvent: {}
+[62.128208] (-) TimerEvent: {}
+[62.229877] (-) TimerEvent: {}
+[62.331079] (-) TimerEvent: {}
+[62.432483] (-) TimerEvent: {}
+[62.532822] (-) TimerEvent: {}
+[62.634726] (-) TimerEvent: {}
+[62.735708] (-) TimerEvent: {}
+[62.836158] (-) TimerEvent: {}
+[62.936614] (-) TimerEvent: {}
+[63.037157] (-) TimerEvent: {}
+[63.137848] (-) TimerEvent: {}
+[63.238237] (-) TimerEvent: {}
+[63.338905] (-) TimerEvent: {}
+[63.439954] (-) TimerEvent: {}
+[63.543556] (-) TimerEvent: {}
+[63.644027] (-) TimerEvent: {}
+[63.745555] (-) TimerEvent: {}
+[63.847301] (-) TimerEvent: {}
+[63.947679] (-) TimerEvent: {}
+[64.049540] (-) TimerEvent: {}
+[64.149869] (-) TimerEvent: {}
+[64.250656] (-) TimerEvent: {}
+[64.350968] (-) TimerEvent: {}
+[64.451290] (-) TimerEvent: {}
+[64.494547] (domain_bridge) StdoutLine: {'line': b'[ 45%] \x1b[32m\x1b[1mLinking CXX executable test_qos_matching__rmw_fastrtps_cpp\x1b[0m\n'}
+[64.551459] (-) TimerEvent: {}
+[64.651887] (-) TimerEvent: {}
+[64.752311] (-) TimerEvent: {}
+[64.853532] (-) TimerEvent: {}
+[64.953910] (-) TimerEvent: {}
+[65.060437] (-) TimerEvent: {}
+[65.160792] (-) TimerEvent: {}
+[65.263452] (-) TimerEvent: {}
+[65.364133] (-) TimerEvent: {}
+[65.467466] (-) TimerEvent: {}
+[65.572231] (-) TimerEvent: {}
+[65.603228] (domain_bridge) StdoutLine: {'line': b'[ 45%] Built target test_qos_matching__rmw_fastrtps_cpp\n'}
+[65.655240] (domain_bridge) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object test/CMakeFiles/test_domain_bridge_end_to_end__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_end_to_end.cpp.o\x1b[0m\n'}
+[65.672350] (-) TimerEvent: {}
+[65.772756] (-) TimerEvent: {}
+[65.874003] (-) TimerEvent: {}
+[65.974496] (-) TimerEvent: {}
+[66.074848] (-) TimerEvent: {}
+[66.175215] (-) TimerEvent: {}
+[66.275698] (-) TimerEvent: {}
+[66.376532] (-) TimerEvent: {}
+[66.477341] (-) TimerEvent: {}
+[66.577710] (-) TimerEvent: {}
+[66.679495] (-) TimerEvent: {}
+[66.783284] (-) TimerEvent: {}
+[66.883907] (-) TimerEvent: {}
+[66.984192] (-) TimerEvent: {}
+[67.084499] (-) TimerEvent: {}
+[67.185513] (-) TimerEvent: {}
+[67.285824] (-) TimerEvent: {}
+[67.386079] (-) TimerEvent: {}
+[67.486307] (-) TimerEvent: {}
+[67.587329] (-) TimerEvent: {}
+[67.687812] (-) TimerEvent: {}
+[67.789109] (-) TimerEvent: {}
+[67.889422] (-) TimerEvent: {}
+[67.989724] (-) TimerEvent: {}
+[68.090671] (-) TimerEvent: {}
+[68.191200] (-) TimerEvent: {}
+[68.291859] (-) TimerEvent: {}
+[68.392156] (-) TimerEvent: {}
+[68.493882] (-) TimerEvent: {}
+[68.595101] (-) TimerEvent: {}
+[68.695983] (-) TimerEvent: {}
+[68.796487] (-) TimerEvent: {}
+[68.898084] (-) TimerEvent: {}
+[68.998458] (-) TimerEvent: {}
+[69.098987] (-) TimerEvent: {}
+[69.200089] (-) TimerEvent: {}
+[69.303102] (-) TimerEvent: {}
+[69.403512] (-) TimerEvent: {}
+[69.503830] (-) TimerEvent: {}
+[69.604314] (-) TimerEvent: {}
+[69.707714] (-) TimerEvent: {}
+[69.808104] (-) TimerEvent: {}
+[69.908918] (-) TimerEvent: {}
+[70.010806] (-) TimerEvent: {}
+[70.111902] (-) TimerEvent: {}
+[70.212392] (-) TimerEvent: {}
+[70.313571] (-) TimerEvent: {}
+[70.414564] (-) TimerEvent: {}
+[70.514933] (-) TimerEvent: {}
+[70.615778] (-) TimerEvent: {}
+[70.717981] (-) TimerEvent: {}
+[70.818649] (-) TimerEvent: {}
+[70.918948] (-) TimerEvent: {}
+[71.019303] (-) TimerEvent: {}
+[71.119857] (-) TimerEvent: {}
+[71.220140] (-) TimerEvent: {}
+[71.320407] (-) TimerEvent: {}
+[71.420711] (-) TimerEvent: {}
+[71.523312] (-) TimerEvent: {}
+[71.623692] (-) TimerEvent: {}
+[71.724031] (-) TimerEvent: {}
+[71.826453] (-) TimerEvent: {}
+[71.927294] (-) TimerEvent: {}
+[72.027695] (-) TimerEvent: {}
+[72.128240] (-) TimerEvent: {}
+[72.228688] (-) TimerEvent: {}
+[72.328976] (-) TimerEvent: {}
+[72.429281] (-) TimerEvent: {}
+[72.529640] (-) TimerEvent: {}
+[72.639650] (-) TimerEvent: {}
+[72.739937] (-) TimerEvent: {}
+[72.840282] (-) TimerEvent: {}
+[72.942307] (-) TimerEvent: {}
+[73.042893] (-) TimerEvent: {}
+[73.143268] (-) TimerEvent: {}
+[73.243667] (-) TimerEvent: {}
+[73.346734] (-) TimerEvent: {}
+[73.447157] (-) TimerEvent: {}
+[73.547561] (-) TimerEvent: {}
+[73.649014] (-) TimerEvent: {}
+[73.751608] (-) TimerEvent: {}
+[73.852109] (-) TimerEvent: {}
+[73.952423] (-) TimerEvent: {}
+[74.053761] (-) TimerEvent: {}
+[74.154277] (-) TimerEvent: {}
+[74.254739] (-) TimerEvent: {}
+[74.356459] (-) TimerEvent: {}
+[74.458967] (-) TimerEvent: {}
+[74.559942] (-) TimerEvent: {}
+[74.660390] (-) TimerEvent: {}
+[74.760911] (-) TimerEvent: {}
+[74.865977] (-) TimerEvent: {}
+[74.966460] (-) TimerEvent: {}
+[75.066956] (-) TimerEvent: {}
+[75.168462] (-) TimerEvent: {}
+[75.274397] (-) TimerEvent: {}
+[75.374881] (-) TimerEvent: {}
+[75.475369] (-) TimerEvent: {}
+[75.576661] (-) TimerEvent: {}
+[75.678468] (-) TimerEvent: {}
+[75.778839] (-) TimerEvent: {}
+[75.879100] (-) TimerEvent: {}
+[75.982092] (-) TimerEvent: {}
+[76.083460] (-) TimerEvent: {}
+[76.183966] (-) TimerEvent: {}
+[76.285437] (-) TimerEvent: {}
+[76.387649] (-) TimerEvent: {}
+[76.487991] (-) TimerEvent: {}
+[76.588465] (-) TimerEvent: {}
+[76.689157] (-) TimerEvent: {}
+[76.789498] (-) TimerEvent: {}
+[76.890135] (-) TimerEvent: {}
+[76.990705] (-) TimerEvent: {}
+[77.092474] (-) TimerEvent: {}
+[77.192958] (-) TimerEvent: {}
+[77.293278] (-) TimerEvent: {}
+[77.393654] (-) TimerEvent: {}
+[77.494100] (-) TimerEvent: {}
+[77.594966] (-) TimerEvent: {}
+[77.695488] (-) TimerEvent: {}
+[77.795801] (-) TimerEvent: {}
+[77.896091] (-) TimerEvent: {}
+[77.996427] (-) TimerEvent: {}
+[78.099363] (-) TimerEvent: {}
+[78.201149] (-) TimerEvent: {}
+[78.301475] (-) TimerEvent: {}
+[78.404268] (-) TimerEvent: {}
+[78.504568] (-) TimerEvent: {}
+[78.605066] (-) TimerEvent: {}
+[78.705387] (-) TimerEvent: {}
+[78.805667] (-) TimerEvent: {}
+[78.905933] (-) TimerEvent: {}
+[79.006211] (-) TimerEvent: {}
+[79.107279] (-) TimerEvent: {}
+[79.207657] (-) TimerEvent: {}
+[79.308533] (-) TimerEvent: {}
+[79.409596] (-) TimerEvent: {}
+[79.510019] (-) TimerEvent: {}
+[79.610439] (-) TimerEvent: {}
+[79.711057] (-) TimerEvent: {}
+[79.811413] (-) TimerEvent: {}
+[79.911689] (-) TimerEvent: {}
+[80.013827] (-) TimerEvent: {}
+[80.114367] (-) TimerEvent: {}
+[80.214632] (-) TimerEvent: {}
+[80.314930] (-) TimerEvent: {}
+[80.418292] (-) TimerEvent: {}
+[80.518599] (-) TimerEvent: {}
+[80.621325] (-) TimerEvent: {}
+[80.721835] (-) TimerEvent: {}
+[80.822307] (-) TimerEvent: {}
+[80.923742] (-) TimerEvent: {}
+[81.024688] (-) TimerEvent: {}
+[81.125010] (-) TimerEvent: {}
+[81.225523] (-) TimerEvent: {}
+[81.325951] (-) TimerEvent: {}
+[81.427321] (-) TimerEvent: {}
+[81.527643] (-) TimerEvent: {}
+[81.627966] (-) TimerEvent: {}
+[81.730153] (-) TimerEvent: {}
+[81.830660] (-) TimerEvent: {}
+[81.931178] (-) TimerEvent: {}
+[82.034488] (-) TimerEvent: {}
+[82.136768] (-) TimerEvent: {}
+[82.237148] (-) TimerEvent: {}
+[82.337690] (-) TimerEvent: {}
+[82.438126] (-) TimerEvent: {}
+[82.542521] (-) TimerEvent: {}
+[82.645651] (-) TimerEvent: {}
+[82.746042] (-) TimerEvent: {}
+[82.846396] (-) TimerEvent: {}
+[82.947087] (-) TimerEvent: {}
+[83.047412] (-) TimerEvent: {}
+[83.147729] (-) TimerEvent: {}
+[83.248935] (-) TimerEvent: {}
+[83.349562] (-) TimerEvent: {}
+[83.451407] (-) TimerEvent: {}
+[83.551664] (-) TimerEvent: {}
+[83.652251] (-) TimerEvent: {}
+[83.752528] (-) TimerEvent: {}
+[83.852811] (-) TimerEvent: {}
+[83.953133] (-) TimerEvent: {}
+[84.056243] (-) TimerEvent: {}
+[84.156580] (-) TimerEvent: {}
+[84.256878] (-) TimerEvent: {}
+[84.360976] (-) TimerEvent: {}
+[84.462622] (-) TimerEvent: {}
+[84.563490] (-) TimerEvent: {}
+[84.664166] (-) TimerEvent: {}
+[84.766381] (-) TimerEvent: {}
+[84.867482] (-) TimerEvent: {}
+[84.968094] (-) TimerEvent: {}
+[85.068779] (-) TimerEvent: {}
+[85.169729] (-) TimerEvent: {}
+[85.275863] (-) TimerEvent: {}
+[85.376177] (-) TimerEvent: {}
+[85.476455] (-) TimerEvent: {}
+[85.578320] (-) TimerEvent: {}
+[85.678620] (-) TimerEvent: {}
+[85.778921] (-) TimerEvent: {}
+[85.881204] (-) TimerEvent: {}
+[85.982749] (-) TimerEvent: {}
+[86.084344] (-) TimerEvent: {}
+[86.184752] (-) TimerEvent: {}
+[86.285117] (-) TimerEvent: {}
+[86.385465] (-) TimerEvent: {}
+[86.485740] (-) TimerEvent: {}
+[86.586002] (-) TimerEvent: {}
+[86.686898] (-) TimerEvent: {}
+[86.787335] (-) TimerEvent: {}
+[86.887801] (-) TimerEvent: {}
+[86.989436] (-) TimerEvent: {}
+[87.090891] (-) TimerEvent: {}
+[87.191154] (-) TimerEvent: {}
+[87.291475] (-) TimerEvent: {}
+[87.391838] (-) TimerEvent: {}
+[87.492131] (-) TimerEvent: {}
+[87.592468] (-) TimerEvent: {}
+[87.693480] (-) TimerEvent: {}
+[87.794013] (-) TimerEvent: {}
+[87.895824] (-) TimerEvent: {}
+[87.996231] (-) TimerEvent: {}
+[88.096753] (-) TimerEvent: {}
+[88.199326] (-) TimerEvent: {}
+[88.299784] (-) TimerEvent: {}
+[88.400079] (-) TimerEvent: {}
+[88.502667] (-) TimerEvent: {}
+[88.604625] (-) TimerEvent: {}
+[88.707975] (-) TimerEvent: {}
+[88.808489] (-) TimerEvent: {}
+[88.908772] (-) TimerEvent: {}
+[89.009070] (-) TimerEvent: {}
+[89.109486] (-) TimerEvent: {}
+[89.211903] (-) TimerEvent: {}
+[89.312368] (-) TimerEvent: {}
+[89.413030] (-) TimerEvent: {}
+[89.513419] (-) TimerEvent: {}
+[89.615372] (-) TimerEvent: {}
+[89.715774] (-) TimerEvent: {}
+[89.779031] (domain_bridge) StdoutLine: {'line': b'[ 49%] \x1b[32m\x1b[1mLinking CXX executable test_domain_bridge_end_to_end__rmw_fastrtps_cpp\x1b[0m\n'}
+[89.815870] (-) TimerEvent: {}
+[89.916163] (-) TimerEvent: {}
+[90.016474] (-) TimerEvent: {}
+[90.118317] (-) TimerEvent: {}
+[90.218611] (-) TimerEvent: {}
+[90.318879] (-) TimerEvent: {}
+[90.423139] (-) TimerEvent: {}
+[90.523475] (-) TimerEvent: {}
+[90.623839] (-) TimerEvent: {}
+[90.726372] (-) TimerEvent: {}
+[90.827896] (-) TimerEvent: {}
+[90.932151] (-) TimerEvent: {}
+[91.032501] (-) TimerEvent: {}
+[91.132980] (-) TimerEvent: {}
+[91.233530] (-) TimerEvent: {}
+[91.334807] (-) TimerEvent: {}
+[91.435626] (-) TimerEvent: {}
+[91.536053] (-) TimerEvent: {}
+[91.636522] (-) TimerEvent: {}
+[91.736968] (-) TimerEvent: {}
+[91.804672] (domain_bridge) StdoutLine: {'line': b'[ 49%] Built target test_domain_bridge_end_to_end__rmw_fastrtps_cpp\n'}
+[91.835767] (domain_bridge) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o\x1b[0m\n'}
+[91.837075] (-) TimerEvent: {}
+[91.937442] (-) TimerEvent: {}
+[92.040318] (-) TimerEvent: {}
+[92.140778] (-) TimerEvent: {}
+[92.241277] (-) TimerEvent: {}
+[92.341691] (-) TimerEvent: {}
+[92.442043] (-) TimerEvent: {}
+[92.544294] (-) TimerEvent: {}
+[92.646010] (-) TimerEvent: {}
+[92.749418] (-) TimerEvent: {}
+[92.849749] (-) TimerEvent: {}
+[92.950271] (-) TimerEvent: {}
+[93.050855] (-) TimerEvent: {}
+[93.152965] (-) TimerEvent: {}
+[93.253334] (-) TimerEvent: {}
+[93.353699] (-) TimerEvent: {}
+[93.454026] (-) TimerEvent: {}
+[93.554470] (-) TimerEvent: {}
+[93.655485] (-) TimerEvent: {}
+[93.756946] (-) TimerEvent: {}
+[93.857278] (-) TimerEvent: {}
+[93.957760] (-) TimerEvent: {}
+[94.058050] (-) TimerEvent: {}
+[94.158283] (-) TimerEvent: {}
+[94.258571] (-) TimerEvent: {}
+[94.359106] (-) TimerEvent: {}
+[94.459942] (-) TimerEvent: {}
+[94.560492] (-) TimerEvent: {}
+[94.660902] (-) TimerEvent: {}
+[94.761268] (-) TimerEvent: {}
+[94.861543] (-) TimerEvent: {}
+[94.963716] (-) TimerEvent: {}
+[95.064093] (-) TimerEvent: {}
+[95.164631] (-) TimerEvent: {}
+[95.266515] (-) TimerEvent: {}
+[95.366924] (-) TimerEvent: {}
+[95.467275] (-) TimerEvent: {}
+[95.567535] (-) TimerEvent: {}
+[95.668281] (-) TimerEvent: {}
+[95.772689] (-) TimerEvent: {}
+[95.873201] (-) TimerEvent: {}
+[95.973687] (-) TimerEvent: {}
+[96.074677] (-) TimerEvent: {}
+[96.175455] (-) TimerEvent: {}
+[96.275709] (-) TimerEvent: {}
+[96.376094] (-) TimerEvent: {}
+[96.476434] (-) TimerEvent: {}
+[96.576770] (-) TimerEvent: {}
+[96.677053] (-) TimerEvent: {}
+[96.784378] (-) TimerEvent: {}
+[96.884775] (-) TimerEvent: {}
+[96.985112] (-) TimerEvent: {}
+[97.085387] (-) TimerEvent: {}
+[97.188269] (-) TimerEvent: {}
+[97.288552] (-) TimerEvent: {}
+[97.389059] (-) TimerEvent: {}
+[97.489535] (-) TimerEvent: {}
+[97.589906] (-) TimerEvent: {}
+[97.690611] (-) TimerEvent: {}
+[97.790879] (-) TimerEvent: {}
+[97.891350] (-) TimerEvent: {}
+[97.993175] (-) TimerEvent: {}
+[98.093593] (-) TimerEvent: {}
+[98.193928] (-) TimerEvent: {}
+[98.294203] (-) TimerEvent: {}
+[98.394699] (-) TimerEvent: {}
+[98.495084] (-) TimerEvent: {}
+[98.596966] (-) TimerEvent: {}
+[98.698151] (-) TimerEvent: {}
+[98.798427] (-) TimerEvent: {}
+[98.904101] (-) TimerEvent: {}
+[98.964846] (domain_bridge) StdoutLine: {'line': b'[ 52%] \x1b[32m\x1b[1mLinking CXX executable test_domain_bridge_services__rmw_fastrtps_cpp\x1b[0m\n'}
+[99.004201] (-) TimerEvent: {}
+[99.104476] (-) TimerEvent: {}
+[99.205154] (-) TimerEvent: {}
+[99.308466] (-) TimerEvent: {}
+[99.411971] (-) TimerEvent: {}
+[99.512398] (-) TimerEvent: {}
+[99.612886] (-) TimerEvent: {}
+[99.713652] (-) TimerEvent: {}
+[99.814114] (-) TimerEvent: {}
+[99.914683] (-) TimerEvent: {}
+[100.019433] (-) TimerEvent: {}
+[100.071942] (domain_bridge) StdoutLine: {'line': b'[ 52%] Built target test_domain_bridge_services__rmw_fastrtps_cpp\n'}
+[100.102627] (domain_bridge) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object test/CMakeFiles/test_parse_domain_bridge_yaml_config.dir/domain_bridge/test_parse_domain_bridge_yaml_config.cpp.o\x1b[0m\n'}
+[100.119762] (-) TimerEvent: {}
+[100.220647] (-) TimerEvent: {}
+[100.321109] (-) TimerEvent: {}
+[100.421417] (-) TimerEvent: {}
+[100.521794] (-) TimerEvent: {}
+[100.622871] (-) TimerEvent: {}
+[100.724167] (-) TimerEvent: {}
+[100.824467] (-) TimerEvent: {}
+[100.926858] (-) TimerEvent: {}
+[101.027154] (-) TimerEvent: {}
+[101.127445] (-) TimerEvent: {}
+[101.236538] (-) TimerEvent: {}
+[101.337262] (-) TimerEvent: {}
+[101.441286] (-) TimerEvent: {}
+[101.541641] (-) TimerEvent: {}
+[101.642138] (-) TimerEvent: {}
+[101.742667] (-) TimerEvent: {}
+[101.842995] (-) TimerEvent: {}
+[101.943342] (-) TimerEvent: {}
+[102.044106] (-) TimerEvent: {}
+[102.144526] (-) TimerEvent: {}
+[102.244831] (-) TimerEvent: {}
+[102.346602] (-) TimerEvent: {}
+[102.446965] (-) TimerEvent: {}
+[102.547270] (-) TimerEvent: {}
+[102.647546] (-) TimerEvent: {}
+[102.747936] (-) TimerEvent: {}
+[102.849130] (-) TimerEvent: {}
+[102.949697] (-) TimerEvent: {}
+[103.050203] (-) TimerEvent: {}
+[103.150559] (-) TimerEvent: {}
+[103.252510] (-) TimerEvent: {}
+[103.353048] (-) TimerEvent: {}
+[103.453435] (-) TimerEvent: {}
+[103.554039] (-) TimerEvent: {}
+[103.654345] (-) TimerEvent: {}
+[103.754769] (-) TimerEvent: {}
+[103.856274] (-) TimerEvent: {}
+[103.861463] (domain_bridge) StdoutLine: {'line': b'[ 55%] \x1b[32m\x1b[1mLinking CXX executable test_parse_domain_bridge_yaml_config\x1b[0m\n'}
+[103.956453] (-) TimerEvent: {}
+[104.056953] (-) TimerEvent: {}
+[104.158485] (-) TimerEvent: {}
+[104.258898] (-) TimerEvent: {}
+[104.364035] (-) TimerEvent: {}
+[104.470596] (-) TimerEvent: {}
+[104.570909] (-) TimerEvent: {}
+[104.571986] (domain_bridge) StdoutLine: {'line': b'[ 55%] Built target test_parse_domain_bridge_yaml_config\n'}
+[104.602045] (domain_bridge) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object test/CMakeFiles/test_domain_bridge.dir/domain_bridge/test_domain_bridge.cpp.o\x1b[0m\n'}
+[104.671102] (-) TimerEvent: {}
+[104.772273] (-) TimerEvent: {}
+[104.872534] (-) TimerEvent: {}
+[104.972853] (-) TimerEvent: {}
+[105.073362] (-) TimerEvent: {}
+[105.173799] (-) TimerEvent: {}
+[105.280507] (-) TimerEvent: {}
+[105.384279] (-) TimerEvent: {}
+[105.484632] (-) TimerEvent: {}
+[105.585045] (-) TimerEvent: {}
+[105.685733] (-) TimerEvent: {}
+[105.788490] (-) TimerEvent: {}
+[105.888937] (-) TimerEvent: {}
+[105.990155] (-) TimerEvent: {}
+[106.090996] (-) TimerEvent: {}
+[106.191623] (-) TimerEvent: {}
+[106.292007] (-) TimerEvent: {}
+[106.394167] (-) TimerEvent: {}
+[106.494677] (-) TimerEvent: {}
+[106.595048] (-) TimerEvent: {}
+[106.695441] (-) TimerEvent: {}
+[106.798040] (-) TimerEvent: {}
+[106.898363] (-) TimerEvent: {}
+[107.000274] (-) TimerEvent: {}
+[107.101528] (-) TimerEvent: {}
+[107.201790] (-) TimerEvent: {}
+[107.302043] (-) TimerEvent: {}
+[107.402278] (-) TimerEvent: {}
+[107.503583] (-) TimerEvent: {}
+[107.604153] (-) TimerEvent: {}
+[107.705081] (-) TimerEvent: {}
+[107.807996] (-) TimerEvent: {}
+[107.908285] (-) TimerEvent: {}
+[108.008633] (-) TimerEvent: {}
+[108.109865] (-) TimerEvent: {}
+[108.215636] (-) TimerEvent: {}
+[108.315944] (-) TimerEvent: {}
+[108.416190] (-) TimerEvent: {}
+[108.516499] (-) TimerEvent: {}
+[108.617252] (-) TimerEvent: {}
+[108.717554] (-) TimerEvent: {}
+[108.817832] (-) TimerEvent: {}
+[108.919609] (-) TimerEvent: {}
+[109.020155] (-) TimerEvent: {}
+[109.120793] (-) TimerEvent: {}
+[109.221849] (-) TimerEvent: {}
+[109.322356] (-) TimerEvent: {}
+[109.425202] (-) TimerEvent: {}
+[109.525844] (-) TimerEvent: {}
+[109.628364] (-) TimerEvent: {}
+[109.711617] (domain_bridge) StdoutLine: {'line': b'[ 59%] \x1b[32m\x1b[1mLinking CXX executable test_domain_bridge\x1b[0m\n'}
+[109.728967] (-) TimerEvent: {}
+[109.829773] (-) TimerEvent: {}
+[109.934227] (-) TimerEvent: {}
+[110.034662] (-) TimerEvent: {}
+[110.137519] (-) TimerEvent: {}
+[110.237917] (-) TimerEvent: {}
+[110.338491] (-) TimerEvent: {}
+[110.443169] (-) TimerEvent: {}
+[110.544040] (-) TimerEvent: {}
+[110.558155] (domain_bridge) StdoutLine: {'line': b'[ 59%] Built target test_domain_bridge\n'}
+[110.594628] (domain_bridge) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_exec.dir/src/domain_bridge.cpp.o\x1b[0m\n'}
+[110.644166] (-) TimerEvent: {}
+[110.744425] (-) TimerEvent: {}
+[110.845099] (-) TimerEvent: {}
+[110.949322] (-) TimerEvent: {}
+[111.049725] (-) TimerEvent: {}
+[111.150041] (-) TimerEvent: {}
+[111.252441] (-) TimerEvent: {}
+[111.352824] (-) TimerEvent: {}
+[111.453119] (-) TimerEvent: {}
+[111.553508] (-) TimerEvent: {}
+[111.653809] (-) TimerEvent: {}
+[111.754115] (-) TimerEvent: {}
+[111.855968] (-) TimerEvent: {}
+[111.956625] (-) TimerEvent: {}
+[112.057058] (-) TimerEvent: {}
+[112.157492] (-) TimerEvent: {}
+[112.257900] (-) TimerEvent: {}
+[112.358947] (-) TimerEvent: {}
+[112.459279] (-) TimerEvent: {}
+[112.559558] (-) TimerEvent: {}
+[112.660327] (-) TimerEvent: {}
+[112.760950] (-) TimerEvent: {}
+[112.861792] (-) TimerEvent: {}
+[112.965289] (-) TimerEvent: {}
+[113.065599] (-) TimerEvent: {}
+[113.165940] (-) TimerEvent: {}
+[113.267278] (-) TimerEvent: {}
+[113.367631] (-) TimerEvent: {}
+[113.468165] (-) TimerEvent: {}
+[113.569319] (-) TimerEvent: {}
+[113.670622] (-) TimerEvent: {}
+[113.770912] (-) TimerEvent: {}
+[113.871257] (-) TimerEvent: {}
+[113.973308] (-) TimerEvent: {}
+[114.073866] (-) TimerEvent: {}
+[114.174330] (-) TimerEvent: {}
+[114.275009] (-) TimerEvent: {}
+[114.376269] (-) TimerEvent: {}
+[114.476549] (-) TimerEvent: {}
+[114.576822] (-) TimerEvent: {}
+[114.678274] (-) TimerEvent: {}
+[114.778572] (-) TimerEvent: {}
+[114.878898] (-) TimerEvent: {}
+[114.979157] (-) TimerEvent: {}
+[115.079533] (-) TimerEvent: {}
+[115.179807] (-) TimerEvent: {}
+[115.280066] (-) TimerEvent: {}
+[115.380454] (-) TimerEvent: {}
+[115.480796] (-) TimerEvent: {}
+[115.581855] (-) TimerEvent: {}
+[115.682178] (-) TimerEvent: {}
+[115.785295] (-) TimerEvent: {}
+[115.885714] (-) TimerEvent: {}
+[115.986074] (-) TimerEvent: {}
+[116.086348] (-) TimerEvent: {}
+[116.186631] (-) TimerEvent: {}
+[116.190161] (domain_bridge) StdoutLine: {'line': b'[ 62%] \x1b[32m\x1b[1mLinking CXX executable domain_bridge\x1b[0m\n'}
+[116.286788] (-) TimerEvent: {}
+[116.388470] (-) TimerEvent: {}
+[116.489541] (-) TimerEvent: {}
+[116.590709] (-) TimerEvent: {}
+[116.694415] (-) TimerEvent: {}
+[116.757686] (domain_bridge) StdoutLine: {'line': b'[ 62%] Built target domain_bridge_exec\n'}
+[116.784056] (domain_bridge) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge_test_component_lib.dir/test/domain_bridge/test_component.cpp.o\x1b[0m\n'}
+[116.794514] (-) TimerEvent: {}
+[116.894782] (-) TimerEvent: {}
+[116.995762] (-) TimerEvent: {}
+[117.097578] (-) TimerEvent: {}
+[117.197931] (-) TimerEvent: {}
+[117.298226] (-) TimerEvent: {}
+[117.398504] (-) TimerEvent: {}
+[117.501301] (-) TimerEvent: {}
+[117.601709] (-) TimerEvent: {}
+[117.701954] (-) TimerEvent: {}
+[117.803086] (-) TimerEvent: {}
+[117.903597] (-) TimerEvent: {}
+[118.003871] (-) TimerEvent: {}
+[118.104165] (-) TimerEvent: {}
+[118.205178] (-) TimerEvent: {}
+[118.307818] (-) TimerEvent: {}
+[118.408163] (-) TimerEvent: {}
+[118.511311] (-) TimerEvent: {}
+[118.611614] (-) TimerEvent: {}
+[118.711945] (-) TimerEvent: {}
+[118.812225] (-) TimerEvent: {}
+[118.915281] (-) TimerEvent: {}
+[119.015577] (-) TimerEvent: {}
+[119.115870] (-) TimerEvent: {}
+[119.216148] (-) TimerEvent: {}
+[119.316559] (-) TimerEvent: {}
+[119.416927] (-) TimerEvent: {}
+[119.518848] (-) TimerEvent: {}
+[119.619147] (-) TimerEvent: {}
+[119.719732] (-) TimerEvent: {}
+[119.822377] (-) TimerEvent: {}
+[119.922736] (-) TimerEvent: {}
+[120.023058] (-) TimerEvent: {}
+[120.124325] (-) TimerEvent: {}
+[120.224725] (-) TimerEvent: {}
+[120.325354] (-) TimerEvent: {}
+[120.425835] (-) TimerEvent: {}
+[120.533314] (-) TimerEvent: {}
+[120.634381] (-) TimerEvent: {}
+[120.734808] (-) TimerEvent: {}
+[120.838592] (-) TimerEvent: {}
+[120.941216] (-) TimerEvent: {}
+[121.041625] (-) TimerEvent: {}
+[121.142133] (-) TimerEvent: {}
+[121.242450] (-) TimerEvent: {}
+[121.343662] (-) TimerEvent: {}
+[121.449752] (-) TimerEvent: {}
+[121.550033] (-) TimerEvent: {}
+[121.650667] (-) TimerEvent: {}
+[121.751119] (-) TimerEvent: {}
+[121.851428] (-) TimerEvent: {}
+[121.951836] (-) TimerEvent: {}
+[122.052158] (-) TimerEvent: {}
+[122.152590] (-) TimerEvent: {}
+[122.254864] (-) TimerEvent: {}
+[122.355539] (-) TimerEvent: {}
+[122.457610] (-) TimerEvent: {}
+[122.558066] (-) TimerEvent: {}
+[122.658508] (-) TimerEvent: {}
+[122.759410] (-) TimerEvent: {}
+[122.860977] (-) TimerEvent: {}
+[122.963568] (-) TimerEvent: {}
+[123.063960] (-) TimerEvent: {}
+[123.164443] (-) TimerEvent: {}
+[123.264755] (-) TimerEvent: {}
+[123.365029] (-) TimerEvent: {}
+[123.466176] (-) TimerEvent: {}
+[123.566453] (-) TimerEvent: {}
+[123.667000] (-) TimerEvent: {}
+[123.768546] (-) TimerEvent: {}
+[123.868884] (-) TimerEvent: {}
+[123.969410] (-) TimerEvent: {}
+[124.070452] (-) TimerEvent: {}
+[124.101307] (domain_bridge) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge_test_component_lib.so\x1b[0m\n'}
+[124.171809] (-) TimerEvent: {}
+[124.272160] (-) TimerEvent: {}
+[124.374451] (-) TimerEvent: {}
+[124.479521] (domain_bridge) StdoutLine: {'line': b'[ 65%] Built target domain_bridge_test_component_lib\n'}
+[124.479798] (-) TimerEvent: {}
+[124.518458] (domain_bridge) StdoutLine: {'line': b'[ 65%] Built target ament_cmake_python_copy_domain_bridge\n'}
+[124.535865] (domain_bridge) StdoutLine: {'line': b'[ 67%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[124.579938] (-) TimerEvent: {}
+[124.680192] (-) TimerEvent: {}
+[124.784460] (-) TimerEvent: {}
+[124.884766] (-) TimerEvent: {}
+[124.985142] (-) TimerEvent: {}
+[124.988572] (domain_bridge) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding C object CMakeFiles/domain_bridge__rosidl_generator_c.dir/rosidl_generator_c/domain_bridge/msg/detail/compressed_msg__functions.c.o\x1b[0m\n'}
+[125.079539] (domain_bridge) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking C shared library libdomain_bridge__rosidl_generator_c.so\x1b[0m\n'}
+[125.085238] (-) TimerEvent: {}
+[125.146723] (domain_bridge) StdoutLine: {'line': b'[ 70%] Built target domain_bridge__rosidl_generator_c\n'}
+[125.185805] (-) TimerEvent: {}
+[125.286192] (-) TimerEvent: {}
+[125.386599] (-) TimerEvent: {}
+[125.487288] (-) TimerEvent: {}
+[125.532463] (domain_bridge) StdoutLine: {'line': b'running egg_info\n'}
+[125.533539] (domain_bridge) StdoutLine: {'line': b'creating domain_bridge.egg-info\n'}
+[125.533980] (domain_bridge) StdoutLine: {'line': b'writing domain_bridge.egg-info/PKG-INFO\n'}
+[125.535731] (domain_bridge) StdoutLine: {'line': b'writing dependency_links to domain_bridge.egg-info/dependency_links.txt\n'}
+[125.535961] (domain_bridge) StdoutLine: {'line': b'writing top-level names to domain_bridge.egg-info/top_level.txt\n'}
+[125.536048] (domain_bridge) StdoutLine: {'line': b"writing manifest file 'domain_bridge.egg-info/SOURCES.txt'\n"}
+[125.540487] (domain_bridge) StdoutLine: {'line': b"reading manifest file 'domain_bridge.egg-info/SOURCES.txt'\n"}
+[125.540773] (domain_bridge) StdoutLine: {'line': b"writing manifest file 'domain_bridge.egg-info/SOURCES.txt'\n"}
+[125.590058] (-) TimerEvent: {}
+[125.624713] (domain_bridge) StdoutLine: {'line': b'[ 70%] Built target ament_cmake_python_build_domain_bridge_egg\n'}
+[125.645393] (domain_bridge) StdoutLine: {'line': b'[ 72%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[125.693309] (-) TimerEvent: {}
+[125.793777] (-) TimerEvent: {}
+[125.894059] (-) TimerEvent: {}
+[125.994355] (-) TimerEvent: {}
+[126.013934] (domain_bridge) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_c.dir/rosidl_typesupport_c/domain_bridge/msg/compressed_msg__type_support.cpp.o\x1b[0m\n'}
+[126.069408] (domain_bridge) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_c.so\x1b[0m\n'}
+[126.094493] (-) TimerEvent: {}
+[126.129981] (domain_bridge) StdoutLine: {'line': b'[ 75%] Built target domain_bridge__rosidl_typesupport_c\n'}
+[126.149637] (domain_bridge) StdoutLine: {'line': b'[ 77%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[126.194689] (-) TimerEvent: {}
+[126.295602] (-) TimerEvent: {}
+[126.396420] (-) TimerEvent: {}
+[126.496848] (-) TimerEvent: {}
+[126.557856] (domain_bridge) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/domain_bridge/msg/detail/compressed_msg__type_support.c.o\x1b[0m\n'}
+[126.596997] (-) TimerEvent: {}
+[126.613806] (domain_bridge) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library libdomain_bridge__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[126.676250] (domain_bridge) StdoutLine: {'line': b'[ 80%] Built target domain_bridge__rosidl_typesupport_introspection_c\n'}
+[126.689590] (domain_bridge) StdoutLine: {'line': b'[ 81%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[126.697098] (-) TimerEvent: {}
+[126.798162] (-) TimerEvent: {}
+[126.898444] (-) TimerEvent: {}
+[126.998743] (-) TimerEvent: {}
+[127.092658] (domain_bridge) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/domain_bridge/msg/detail/compressed_msg__type_support_c.cpp.o\x1b[0m\n'}
+[127.100081] (-) TimerEvent: {}
+[127.200830] (-) TimerEvent: {}
+[127.304329] (-) TimerEvent: {}
+[127.404762] (-) TimerEvent: {}
+[127.505039] (-) TimerEvent: {}
+[127.605339] (-) TimerEvent: {}
+[127.613311] (domain_bridge) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[127.707485] (-) TimerEvent: {}
+[127.784529] (domain_bridge) StdoutLine: {'line': b'[ 85%] Built target domain_bridge__rosidl_typesupport_fastrtps_c\n'}
+[127.807616] (-) TimerEvent: {}
+[127.812781] (domain_bridge) StdoutLine: {'line': b'[ 85%] Built target domain_bridge\n'}
+[127.841554] (domain_bridge) StdoutLine: {'line': b'[ 86%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[127.907768] (-) TimerEvent: {}
+[128.009364] (-) TimerEvent: {}
+[128.109900] (-) TimerEvent: {}
+[128.210999] (-) TimerEvent: {}
+[128.313292] (-) TimerEvent: {}
+[128.375621] (domain_bridge) StdoutLine: {'line': b'[ 86%] Built target domain_bridge__py\n'}
+[128.400623] (domain_bridge) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/domain_bridge__rosidl_generator_py.dir/rosidl_generator_py/domain_bridge/msg/_compressed_msg_s.c.o\x1b[0m\n'}
+[128.418133] (-) TimerEvent: {}
+[128.518413] (-) TimerEvent: {}
+[128.613455] (domain_bridge) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/domain_bridge/libdomain_bridge__rosidl_generator_py.so\x1b[0m\n'}
+[128.618544] (-) TimerEvent: {}
+[128.682311] (domain_bridge) StdoutLine: {'line': b'[ 90%] Built target domain_bridge__rosidl_generator_py\n'}
+[128.720320] (-) TimerEvent: {}
+[128.730041] (domain_bridge) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[128.822404] (-) TimerEvent: {}
+[128.883329] (domain_bridge) StdoutLine: {'line': b'[ 93%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[128.923629] (-) TimerEvent: {}
+[128.950292] (domain_bridge) StdoutLine: {'line': b'[ 93%] Built target domain_bridge__rosidl_typesupport_fastrtps_c__pyext\n'}
+[128.996025] (domain_bridge) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[129.023755] (-) TimerEvent: {}
+[129.124166] (-) TimerEvent: {}
+[129.142264] (domain_bridge) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[129.192524] (domain_bridge) StdoutLine: {'line': b'[ 96%] Built target domain_bridge__rosidl_typesupport_c__pyext\n'}
+[129.216198] (domain_bridge) StdoutLine: {'line': b'[ 98%] \x1b[32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[129.224301] (-) TimerEvent: {}
+[129.324853] (-) TimerEvent: {}
+[129.353279] (domain_bridge) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[129.418679] (domain_bridge) StdoutLine: {'line': b'[100%] Built target domain_bridge__rosidl_typesupport_introspection_c__pyext\n'}
+[129.424977] (-) TimerEvent: {}
+[129.435315] (domain_bridge) CommandEnded: {'returncode': 0}
+[129.526175] (-) TimerEvent: {}
+[129.576204] (domain_bridge) JobProgress: {'identifier': 'domain_bridge', 'progress': 'install'}
+[129.590100] (domain_bridge) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/uphf/c-its/domain_bridge/build/domain_bridge'], 'cwd': '/home/uphf/c-its/domain_bridge/build/domain_bridge', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'fr_FR:en'), ('USER', 'uphf'), ('LC_TIME', 'fr_FR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/uphf'), ('OLDPWD', '/home/uphf/c-its'), ('DESKTOP_SESSION', 'ubuntu'), ('P2P_HOSTNAME', 'ec2-35-181-51-77.eu-west-3.compute.amazonaws.com'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'fr_FR.UTF-8'), ('SYSTEMD_EXEC_PID', '2406'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'uphf'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'uphf'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/uphf/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/uphf-ec-01:@/tmp/.ICE-unix/1663,unix/uphf-ec-01:/tmp/.ICE-unix/1663'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'fr_FR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/c72441f7_9be3_43e2_9268_db64d752b241'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'fr_FR.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'fr_FR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('P2P_STATION', 'uphf-ec-01'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.93'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'fr_FR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'fr_FR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'fr_FR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/uphf/c-its/domain_bridge/build/domain_bridge'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'fr_FR.UTF-8'), ('LC_PAPER', 'fr_FR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('P2P_PORT', '1234'), ('CMAKE_PREFIX_PATH', '/home/uphf/c-its/domain_bridge/install/domain_bridge:/opt/ros/humble')]), 'shell': False}
+[129.602172] (domain_bridge) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[129.602467] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/rosidl_interfaces/domain_bridge\n'}
+[129.602671] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge\n'}
+[129.602804] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg\n'}
+[129.602887] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_generator_c__visibility_control.h\n'}
+[129.603027] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail\n'}
+[129.603106] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__struct.h\n'}
+[129.603179] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__functions.h\n'}
+[129.603304] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__type_support.h\n'}
+[129.603408] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__functions.c\n'}
+[129.603477] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/compressed_msg.h\n'}
+[129.603594] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/library_path.sh\n'}
+[129.603749] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/library_path.dsv\n'}
+[129.603947] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_c.so\n'}
+[129.604295] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_c.so" to ""\n'}
+[129.604482] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge\n'}
+[129.604604] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg\n'}
+[129.604936] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail\n'}
+[129.605020] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_fastrtps_c.h\n'}
+[129.605105] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[129.605205] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_c.so\n'}
+[129.607458] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[129.607676] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge\n'}
+[129.607776] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg\n'}
+[129.607920] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail\n'}
+[129.607996] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__struct.hpp\n'}
+[129.608351] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__traits.hpp\n'}
+[129.608562] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__builder.hpp\n'}
+[129.608649] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/compressed_msg.hpp\n'}
+[129.608749] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge\n'}
+[129.608825] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg\n'}
+[129.608897] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail\n'}
+[129.608968] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/dds_fastrtps\n'}
+[129.609042] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[129.609113] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[129.609183] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so\n'}
+[129.609276] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[129.609352] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge\n'}
+[129.609424] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg\n'}
+[129.609493] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail\n'}
+[129.609562] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_introspection_c.h\n'}
+[129.609634] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__type_support.c\n'}
+[129.609709] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[129.609793] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_c.so\n'}
+[129.609866] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_c.so" to ""\n'}
+[129.609939] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_c.so\n'}
+[129.610010] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_c.so" to ""\n'}
+[129.610081] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge\n'}
+[129.610152] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg\n'}
+[129.610232] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail\n'}
+[129.610313] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__type_support.cpp\n'}
+[129.610385] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_introspection_cpp.hpp\n'}
+[129.610853] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_cpp.so\n'}
+[129.610971] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[129.611053] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_cpp.so\n'}
+[129.611133] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_cpp.so" to ""\n'}
+[129.611203] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/pythonpath.sh\n'}
+[129.611301] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/pythonpath.dsv\n'}
+[129.611383] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info\n'}
+[129.611455] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/PKG-INFO\n'}
+[129.611525] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/dependency_links.txt\n'}
+[129.611597] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/top_level.txt\n'}
+[129.611667] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/SOURCES.txt\n'}
+[129.611737] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge\n'}
+[129.611808] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[129.611940] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg\n'}
+[129.612152] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/_compressed_msg_s.c\n'}
+[129.612335] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/_compressed_msg.py\n'}
+[129.612661] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/__init__.py\n'}
+[129.612745] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[129.612875] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[129.612952] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_c.c\n'}
+[129.613025] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[129.613204] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/libdomain_bridge__rosidl_generator_py.so\n'}
+[129.613301] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[129.613378] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/__init__.py\n'}
+[129.626267] (-) TimerEvent: {}
+[129.681299] (domain_bridge) StdoutLine: {'line': b"Listing '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge'...\n"}
+[129.681688] (domain_bridge) StdoutLine: {'line': b"Compiling '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/__init__.py'...\n"}
+[129.681928] (domain_bridge) StdoutLine: {'line': b"Listing '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg'...\n"}
+[129.682011] (domain_bridge) StdoutLine: {'line': b"Compiling '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/__init__.py'...\n"}
+[129.682085] (domain_bridge) StdoutLine: {'line': b"Compiling '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/_compressed_msg.py'...\n"}
+[129.691912] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[129.692377] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[129.692514] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[129.692620] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[129.692700] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[129.693333] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[129.693482] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_py.so\n'}
+[129.693716] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_py.so" to ""\n'}
+[129.693803] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/msg/CompressedMsg.idl\n'}
+[129.693905] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/msg/CompressedMsg.msg\n'}
+[129.693979] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include\n'}
+[129.694053] (domain_bridge) StdoutLine: {'line': b'-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge\n'}
+[129.694274] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/parse_domain_bridge_yaml_config.hpp\n'}
+[129.694591] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/qos_options.hpp\n'}
+[129.697612] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge.hpp\n'}
+[129.697801] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/compress_messages.hpp\n'}
+[129.697888] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/visibility_control.hpp\n'}
+[129.697965] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/component_manager.hpp\n'}
+[129.698038] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/service_bridge_options.hpp\n'}
+[129.698110] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge_options.hpp\n'}
+[129.698181] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/topic_bridge.hpp\n'}
+[129.698265] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/service_bridge_impl.inc\n'}
+[129.698341] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/topic_bridge_options.hpp\n'}
+[129.698413] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge_config.hpp\n'}
+[129.698483] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/process_cmd_line_arguments.hpp\n'}
+[129.698566] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/domain_bridge\n'}
+[129.698637] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/domain_bridge" to ""\n'}
+[129.698709] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge.so\n'}
+[129.713045] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge.so" to ""\n'}
+[129.713241] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/examples\n'}
+[129.713336] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/examples/test_bridge_config.yaml\n'}
+[129.713413] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/examples/bridge_config.yaml\n'}
+[129.713564] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/launch\n'}
+[129.713644] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/launch/domain_bridge.launch.xml\n'}
+[129.713718] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/test_component\n'}
+[129.713842] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/test_component" to ""\n'}
+[129.713914] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge_test_component_lib.so\n'}
+[129.715215] (domain_bridge) StdoutLine: {'line': b'-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge_test_component_lib.so" to ""\n'}
+[129.715409] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/package_run_dependencies/domain_bridge\n'}
+[129.715546] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/parent_prefix_path/domain_bridge\n'}
+[129.715692] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/ament_prefix_path.sh\n'}
+[129.715867] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/ament_prefix_path.dsv\n'}
+[129.716038] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/path.sh\n'}
+[129.716156] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/path.dsv\n'}
+[129.716482] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.bash\n'}
+[129.716572] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.sh\n'}
+[129.716695] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.zsh\n'}
+[129.716814] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.dsv\n'}
+[129.716893] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/package.dsv\n'}
+[129.716999] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/packages/domain_bridge\n'}
+[129.717115] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_cExport.cmake\n'}
+[129.717303] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_cExport-noconfig.cmake\n'}
+[129.717553] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[129.717664] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[129.717768] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_cppExport.cmake\n'}
+[129.718044] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[129.718492] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[129.718616] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cExport.cmake\n'}
+[129.718698] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[129.718780] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cExport.cmake\n'}
+[129.718910] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[129.719513] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[129.719673] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[129.719767] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cppExport.cmake\n'}
+[129.719861] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[129.719939] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_pyExport.cmake\n'}
+[129.720165] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_pyExport-noconfig.cmake\n'}
+[129.720269] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridgeExport.cmake\n'}
+[129.720351] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridgeExport-noconfig.cmake\n'}
+[129.720484] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/rclcpp_components/domain_bridge\n'}
+[129.720566] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake-extras.cmake\n'}
+[129.720682] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[129.720759] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[129.720855] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[129.720966] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[129.722083] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[129.722226] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[129.722372] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridgeConfig.cmake\n'}
+[129.722450] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridgeConfig-version.cmake\n'}
+[129.722523] (domain_bridge) StdoutLine: {'line': b'-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/package.xml\n'}
+[129.726349] (-) TimerEvent: {}
+[129.728272] (domain_bridge) CommandEnded: {'returncode': 0}
+[129.827873] (-) TimerEvent: {}
+[129.930508] (-) TimerEvent: {}
+[130.031044] (-) TimerEvent: {}
+[130.131877] (-) TimerEvent: {}
+[130.218716] (domain_bridge) JobEnded: {'identifier': 'domain_bridge', 'rc': 0}
+[130.219389] (-) EventReactorShutdown: {}

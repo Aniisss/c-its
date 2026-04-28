@@ -1,0 +1,8 @@
+name: V2X_bridge
+from_domain: 0
+to_domain: 42
+topics:
+  /perception/lidar_object_detection/points_detected:
+    type: sensor_msgs/msg/PointCloud2
+    qos:
+      reliability: reliable

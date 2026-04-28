@@ -15,7 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get -y install --no-install-recommends git
 
-ARG USERNAME="cube"
+ARG USERNAME="root"
 ARG USER_HOME_DIR=/home/${USERNAME}
 
 # Change user

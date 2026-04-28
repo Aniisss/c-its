@@ -22,15 +22,7 @@ namespace domain_bridge
 rclcpp::NodeOptions
 ComponentManager::create_node_options(const std::shared_ptr<LoadNode::Request> request)
 {
-  rclcpp::NodeOptions options;
-
-  // TODO(@fujitatomoya): remove this try-catch block after ComponentManager::create_node_options
-  // is fixed to avoid throwing exceptions for unknown parameters in the base class.
-  //   https://github.com/ros2/rclcpp/pull/2723
-  try {
-    options = rclcpp_components::ComponentManager::create_node_options(request);
-  } catch(...) {
-  }
+  auto options = rclcpp_components::ComponentManager::create_node_options(request);
 
   for (const auto & a : request->extra_arguments) {
     const rclcpp::Parameter extra_argument = rclcpp::Parameter::from_parameter_msg(a);

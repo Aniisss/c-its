@@ -1,0 +1,8 @@
+name: my_domain_bridge
+from_domain: 99
+to_domain: 42
+topics:
+  chatter:
+    type: std_msgs/msg/String
+    qos:
+      reliability: reliable

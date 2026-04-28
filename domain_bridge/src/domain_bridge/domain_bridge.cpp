@@ -353,7 +353,7 @@ public:
 
     auto create_bridge =
       [this, topic, topic_remapped, topic_bridge, topic_options, from_domain_node, to_domain_node]
-      (const QosMatchInfo & qos_match)
+        (const QosMatchInfo & qos_match)
       {
         {
           std::lock_guard guard{data_mutex_};
@@ -402,23 +402,9 @@ public:
         } else {
           qos.lifespan(qos_match.qos.lifespan());
         }
-        if (qos_options.liveliness()) {
-          qos.liveliness(*qos_options.liveliness());
-        } else {
-          qos.liveliness(qos_match.qos.liveliness());
-        }
-        if (qos_options.liveliness_lease_duration()) {
-          const auto liveliness_lease_duration_ns = *qos_options.liveliness_lease_duration();
-          if (liveliness_lease_duration_ns < 0) {
-            qos.liveliness_lease_duration(
-              rclcpp::Duration::from_nanoseconds(std::numeric_limits<std::int64_t>::max()));
-          } else {
-            qos.liveliness_lease_duration(
-              rclcpp::Duration::from_nanoseconds(liveliness_lease_duration_ns));
-          }
-        } else {
-          qos.liveliness_lease_duration(qos_match.qos.liveliness_lease_duration());
-        }
+
+        qos.liveliness(qos_match.qos.liveliness());
+        qos.liveliness_lease_duration(qos_match.qos.liveliness_lease_duration());
 
         // Print any match warnings
         for (const auto & warning : qos_match.warnings) {

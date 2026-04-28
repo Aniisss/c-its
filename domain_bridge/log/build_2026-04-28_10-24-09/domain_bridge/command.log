@@ -1,0 +1,6 @@
+Invoking command in '/home/uphf/c-its/domain_bridge/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/uphf/c-its/domain_bridge -DCMAKE_INSTALL_PREFIX=/home/uphf/c-its/domain_bridge/install/domain_bridge
+Invoked command in '/home/uphf/c-its/domain_bridge/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/uphf/c-its/domain_bridge -DCMAKE_INSTALL_PREFIX=/home/uphf/c-its/domain_bridge/install/domain_bridge
+Invoking command in '/home/uphf/c-its/domain_bridge/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/uphf/c-its/domain_bridge/build/domain_bridge -- -j8 -l8
+Invoked command in '/home/uphf/c-its/domain_bridge/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/uphf/c-its/domain_bridge/build/domain_bridge -- -j8 -l8
+Invoking command in '/home/uphf/c-its/domain_bridge/build/domain_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/uphf/c-its/domain_bridge/build/domain_bridge
+Invoked command in '/home/uphf/c-its/domain_bridge/build/domain_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/uphf/c-its/domain_bridge/build/domain_bridge

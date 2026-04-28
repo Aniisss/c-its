@@ -1,0 +1,324 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found rclcpp_components: 16.0.7 (/opt/ros/humble/share/rclcpp_components/cmake)
+-- Found rosbag2_cpp: 0.15.8 (/opt/ros/humble/share/rosbag2_cpp/cmake)
+-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Found zstd_vendor: 0.15.8 (/opt/ros/humble/share/zstd_vendor/cmake)
+-- Found zstd: /opt/ros/humble/lib/libzstd.so  
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found PythonExtra: .so  
+-- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Found test_msgs: 1.2.2 (/opt/ros/humble/share/test_msgs/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found gmock sources under '/opt/ros/humble/src/gmock_vendor': C++ tests using 'Google Mock' will be built
+-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_c>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_fastrtps_c>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_cpp>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_fastrtps_cpp>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_typesupport_introspection_cpp>;/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_c;/home/uphf/c-its/domain_bridge/build/domain_bridge/rosidl_generator_py;$<BUILD_INTERFACE:/home/uphf/c-its/domain_bridge/include>
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/uphf/c-its/domain_bridge/build/domain_bridge
+[  1%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[  1%] Built target domain_bridge__cpp
+[  3%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/opt/ros/humble/src/gtest_vendor/src/gtest-all.cc.o[0m
+[  4%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[  6%] [32m[1mLinking CXX static library libgmock.a[0m
+[  6%] Built target gmock
+[  8%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[  9%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/domain_bridge/msg/detail/dds_fastrtps/compressed_msg__type_support.cpp.o[0m
+[ 11%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so[0m
+[ 11%] Built target domain_bridge__rosidl_typesupport_fastrtps_cpp
+[ 13%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[ 14%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/domain_bridge/msg/detail/compressed_msg__type_support.cpp.o[0m
+[ 16%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_introspection_cpp.so[0m
+[ 16%] Built target domain_bridge__rosidl_typesupport_introspection_cpp
+[ 18%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[ 19%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/domain_bridge/msg/compressed_msg__type_support.cpp.o[0m
+[ 21%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_cpp.so[0m
+[ 21%] Built target domain_bridge__rosidl_typesupport_cpp
+[ 22%] [32mBuilding CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o[0m
+[ 24%] [32m[1mLinking CXX static library libgmock_main.a[0m
+[ 24%] Built target gmock_main
+[ 26%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/component_manager.cpp.o[0m
+[ 27%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge_options.cpp.o[0m
+[ 29%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/parse_domain_bridge_yaml_config.cpp.o[0m
+[ 31%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/qos_options.cpp.o[0m
+[ 32%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/service_bridge_options.cpp.o[0m
+[ 34%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/topic_bridge_options.cpp.o[0m
+[ 36%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/domain_bridge.cpp.o[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/domain_bridge_lib.dir/src/domain_bridge/compress_messages.cpp.o[0m
+[ 39%] [32m[1mLinking CXX shared library libdomain_bridge.so[0m
+[ 39%] Built target domain_bridge_lib
+[ 40%] [32mBuilding CXX object CMakeFiles/test_component.dir/rclcpp_components/node_main_test_component.cpp.o[0m
+[ 42%] [32m[1mLinking CXX executable test_component[0m
+[ 42%] Built target test_component
+[ 44%] [32mBuilding CXX object test/CMakeFiles/test_qos_matching__rmw_fastrtps_cpp.dir/domain_bridge/test_qos_matching.cpp.o[0m
+[ 45%] [32m[1mLinking CXX executable test_qos_matching__rmw_fastrtps_cpp[0m
+[ 45%] Built target test_qos_matching__rmw_fastrtps_cpp
+[ 47%] [32mBuilding CXX object test/CMakeFiles/test_domain_bridge_end_to_end__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_end_to_end.cpp.o[0m
+[ 49%] [32m[1mLinking CXX executable test_domain_bridge_end_to_end__rmw_fastrtps_cpp[0m
+[ 49%] Built target test_domain_bridge_end_to_end__rmw_fastrtps_cpp
+[ 50%] [32mBuilding CXX object test/CMakeFiles/test_domain_bridge_services__rmw_fastrtps_cpp.dir/domain_bridge/test_domain_bridge_services.cpp.o[0m
+[ 52%] [32m[1mLinking CXX executable test_domain_bridge_services__rmw_fastrtps_cpp[0m
+[ 52%] Built target test_domain_bridge_services__rmw_fastrtps_cpp
+[ 54%] [32mBuilding CXX object test/CMakeFiles/test_parse_domain_bridge_yaml_config.dir/domain_bridge/test_parse_domain_bridge_yaml_config.cpp.o[0m
+[ 55%] [32m[1mLinking CXX executable test_parse_domain_bridge_yaml_config[0m
+[ 55%] Built target test_parse_domain_bridge_yaml_config
+[ 57%] [32mBuilding CXX object test/CMakeFiles/test_domain_bridge.dir/domain_bridge/test_domain_bridge.cpp.o[0m
+[ 59%] [32m[1mLinking CXX executable test_domain_bridge[0m
+[ 59%] Built target test_domain_bridge
+[ 60%] [32mBuilding CXX object CMakeFiles/domain_bridge_exec.dir/src/domain_bridge.cpp.o[0m
+[ 62%] [32m[1mLinking CXX executable domain_bridge[0m
+[ 62%] Built target domain_bridge_exec
+[ 63%] [32mBuilding CXX object CMakeFiles/domain_bridge_test_component_lib.dir/test/domain_bridge/test_component.cpp.o[0m
+[ 65%] [32m[1mLinking CXX shared library libdomain_bridge_test_component_lib.so[0m
+[ 65%] Built target domain_bridge_test_component_lib
+[ 65%] Built target ament_cmake_python_copy_domain_bridge
+[ 67%] [34m[1mGenerating C code for ROS interfaces[0m
+[ 68%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_generator_c.dir/rosidl_generator_c/domain_bridge/msg/detail/compressed_msg__functions.c.o[0m
+[ 70%] [32m[1mLinking C shared library libdomain_bridge__rosidl_generator_c.so[0m
+[ 70%] Built target domain_bridge__rosidl_generator_c
+running egg_info
+creating domain_bridge.egg-info
+writing domain_bridge.egg-info/PKG-INFO
+writing dependency_links to domain_bridge.egg-info/dependency_links.txt
+writing top-level names to domain_bridge.egg-info/top_level.txt
+writing manifest file 'domain_bridge.egg-info/SOURCES.txt'
+reading manifest file 'domain_bridge.egg-info/SOURCES.txt'
+writing manifest file 'domain_bridge.egg-info/SOURCES.txt'
+[ 70%] Built target ament_cmake_python_build_domain_bridge_egg
+[ 72%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[ 73%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_c.dir/rosidl_typesupport_c/domain_bridge/msg/compressed_msg__type_support.cpp.o[0m
+[ 75%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_c.so[0m
+[ 75%] Built target domain_bridge__rosidl_typesupport_c
+[ 77%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[ 78%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/domain_bridge/msg/detail/compressed_msg__type_support.c.o[0m
+[ 80%] [32m[1mLinking C shared library libdomain_bridge__rosidl_typesupport_introspection_c.so[0m
+[ 80%] Built target domain_bridge__rosidl_typesupport_introspection_c
+[ 81%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[ 83%] [32mBuilding CXX object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/domain_bridge/msg/detail/compressed_msg__type_support_c.cpp.o[0m
+[ 85%] [32m[1mLinking CXX shared library libdomain_bridge__rosidl_typesupport_fastrtps_c.so[0m
+[ 85%] Built target domain_bridge__rosidl_typesupport_fastrtps_c
+[ 85%] Built target domain_bridge
+[ 86%] [34m[1mGenerating Python code for ROS interfaces[0m
+[ 86%] Built target domain_bridge__py
+[ 88%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_generator_py.dir/rosidl_generator_py/domain_bridge/msg/_compressed_msg_s.c.o[0m
+[ 90%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/libdomain_bridge__rosidl_generator_py.so[0m
+[ 90%] Built target domain_bridge__rosidl_generator_py
+[ 91%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[ 93%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[ 93%] Built target domain_bridge__rosidl_typesupport_fastrtps_c__pyext
+[ 95%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_c.c.o[0m
+[ 96%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[ 96%] Built target domain_bridge__rosidl_typesupport_c__pyext
+[ 98%] [32mBuilding C object CMakeFiles/domain_bridge__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[100%] [32m[1mLinking C shared library rosidl_generator_py/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[100%] Built target domain_bridge__rosidl_typesupport_introspection_c__pyext
+-- Install configuration: ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/rosidl_interfaces/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_generator_c__visibility_control.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__struct.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__functions.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__type_support.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__functions.c
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/compressed_msg.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/library_path.sh
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/library_path.dsv
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_c.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_c.so" to ""
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_c.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_c.so" to ""
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__struct.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__traits.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__builder.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/compressed_msg.hpp
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/dds_fastrtps
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_introspection_c.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__type_support.c
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_c.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_c.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_c.so" to ""
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__type_support.cpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge/msg/detail/compressed_msg__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_cpp.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_cpp.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_typesupport_cpp.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/pythonpath.sh
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/pythonpath.dsv
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/PKG-INFO
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge-0.5.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/_compressed_msg_s.c
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/_compressed_msg.py
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/__init__.py
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_introspection_c.c
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/_domain_bridge_s.ep.rosidl_typesupport_c.c
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/libdomain_bridge__rosidl_generator_py.so
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/__init__.py
+Listing '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge'...
+Compiling '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/__init__.py'...
+Listing '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg'...
+Compiling '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/__init__.py'...
+Compiling '/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/msg/_compressed_msg.py'...
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/local/lib/python3.10/dist-packages/domain_bridge/domain_bridge_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_py.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge__rosidl_generator_py.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/msg/CompressedMsg.idl
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/msg/CompressedMsg.msg
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include
+-- Up-to-date: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/parse_domain_bridge_yaml_config.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/qos_options.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/compress_messages.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/visibility_control.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/component_manager.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/service_bridge_options.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge_options.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/topic_bridge.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/service_bridge_impl.inc
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/topic_bridge_options.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/domain_bridge_config.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/include/domain_bridge/process_cmd_line_arguments.hpp
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/domain_bridge
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/domain_bridge" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/examples
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/examples/test_bridge_config.yaml
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/examples/bridge_config.yaml
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/launch
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/launch/domain_bridge.launch.xml
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/test_component
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/domain_bridge/test_component" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge_test_component_lib.so
+-- Set runtime path of "/home/uphf/c-its/domain_bridge/install/domain_bridge/lib/libdomain_bridge_test_component_lib.so" to ""
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/package_run_dependencies/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/parent_prefix_path/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/ament_prefix_path.sh
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/ament_prefix_path.dsv
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/path.sh
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/environment/path.dsv
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.bash
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.sh
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.zsh
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/local_setup.dsv
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/package.dsv
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/packages/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_cExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_cExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_cppExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridge__rosidl_typesupport_cppExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_pyExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridge__rosidl_generator_pyExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridgeExport.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/export_domain_bridgeExport-noconfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/ament_index/resource_index/rclcpp_components/domain_bridge
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridgeConfig.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/cmake/domain_bridgeConfig-version.cmake
+-- Installing: /home/uphf/c-its/domain_bridge/install/domain_bridge/share/domain_bridge/package.xml
