@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>v2x_apps</name>
+  <version>1.1.0</version>
+  <description>
+    Collection of V2X applications for the cube-its platform (ROS 2 Jazzy).
+    Includes a POIM (Point of Interest Message) provider and listener that
+    implement the ETSI TS 103 916 V2.1.1 parking-availability facility layer
+    on top of the cube-its BTP service.
+  </description>
+  <author email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</author>
+  <maintainer email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</maintainer>
+  <license>MIT</license>
+
+  <!-- Core ROS 2 runtime -->
+  <depend>rclpy</depend>
+
+  <!-- ETSI ITS message types (provided by cube-its workspace) -->
+  <exec_depend>etsi_its_cam_msgs</exec_depend>
+  <exec_depend>etsi_its_denm_msgs</exec_depend>
+  <exec_depend>etsi_its_cpm_ts_msgs</exec_depend>
+  <exec_depend>etsi_its_vam_ts_msgs</exec_depend>
+
+  <!-- cube-its service interfaces -->
+  <exec_depend>cube_den_msgs</exec_depend>
+  <exec_depend>cube_facility_msgs</exec_depend>
+
+  <!-- Vanetza ROS 2 interfaces (BTP, position) -->
+  <exec_depend>vanetza_msgs</exec_depend>
+
+  <!-- Standard ROS 2 message types (used by POIM parking topics) -->
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <!-- ASN.1 encoding library for POIM
+       Install via:  pip install asn1tools
+       NOTE: asn1tools is a Python package and is not available as a
+       rosdep key; it must be installed separately (see Dockerfile). -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
