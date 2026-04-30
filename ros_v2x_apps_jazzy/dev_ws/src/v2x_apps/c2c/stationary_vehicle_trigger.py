@@ -61,7 +61,7 @@ class StationaryVehicleTrigger(Node):
             '/c2c/stationary_vehicle_request')
 
         while not self.client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().warn(
+            self.get_logger().warning(
                 f'Service {
                     self.client.service_name} not available, waiting again...')
         self.get_logger().info(f'Service {self.client.service_name} available')

@@ -112,7 +112,7 @@ class PoimListener(Node):
         try:
             poim = self._db.decode('POIM', bytes(msg.data))
         except Exception as exc:
-            self.get_logger().warn(f'POIM decoding failed: {exc}')
+            self.get_logger().warning(f'POIM decoding failed: {exc}')
             return
 
         self._process_poim(poim)

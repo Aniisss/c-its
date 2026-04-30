@@ -79,7 +79,7 @@ _DEFAULT_SCHEMA_PATH = os.path.join(
 _LAT_UNAVAILABLE  = 900000001
 _LON_UNAVAILABLE  = 1800000001
 _ALT_UNAVAILABLE  = 800001
-_SEMI_UNAVAILABLE = 4094   # out-of-range; 4095 would be mathematically OOR
+_SEMI_UNAVAILABLE = 4094   # Unavailable per ETSI TS 102 894-2; 4095 = OutOfRange
 
 
 class PoimProvider(Node):
@@ -156,7 +156,7 @@ class PoimProvider(Node):
         # ------------------------------------------------------------------ #
         self._btp_client = self.create_client(BtpData, '/vanetza/btp_request')
         if not self._btp_client.wait_for_service(timeout_sec=5.0):
-            self.get_logger().warn(
+            self.get_logger().warning(
                 'BTP request service not yet available – will retry on each publish cycle'
             )
 
@@ -324,7 +324,7 @@ class PoimProvider(Node):
         parameters so they can be overridden without modifying the source.
         """
         if not self._btp_client.service_is_ready():
-            self.get_logger().warn(
+            self.get_logger().warning(
                 'BTP request service not ready – skipping this publish cycle',
                 throttle_duration_sec=10.0,
             )
@@ -353,7 +353,7 @@ class PoimProvider(Node):
         if response.confirm == BtpData.Response.CONFIRM_ACCEPTED:
             self.get_logger().debug('POIM BTP request accepted')
         else:
-            self.get_logger().warn(
+            self.get_logger().warning(
                 f'POIM BTP request rejected (confirm={response.confirm})'
             )
 
@@ -363,7 +363,7 @@ class PoimProvider(Node):
 
     def _on_timer(self) -> None:
         if self._position_vector is None:
-            self.get_logger().warn(
+            self.get_logger().warning(
                 'Waiting for /its/position_vector …',
                 throttle_duration_sec=10.0,
             )
