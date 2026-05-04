@@ -15,7 +15,9 @@ RUN wget -O /usr/share/keyrings/ros-archive-keyring.gpg \
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get -y install --no-install-recommends sudo git && \
-    rm -rf /var/lib/apt/lists/*
+    #apt-get install -y python3-pip && \
+    #pip3 install --break-system-packages asn1tools && \
+    rm -rf /var/lib/apt/lists/* 
 
 # Arguments
 ARG USERNAME="cube"

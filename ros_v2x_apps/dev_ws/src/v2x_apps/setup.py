@@ -1,5 +1,8 @@
 from setuptools import find_packages, setup
 
+import os
+from glob import glob
+
 package_name = 'v2x_apps'
 
 setup(
@@ -10,6 +13,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'asn1'), glob('v2x_apps/asn1/*.asn')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -26,7 +30,9 @@ setup(
                 'cpm_provider = v2x_apps.cpm_provider:main',
                 'vam_provider = v2x_apps.vam_provider:main',
                 'stationary_vehicle = c2c.stationary_vehicle_trigger:main',
-                'cpm_bridge = v2x_apps.cpm_bridge:main'
+                'cpm_bridge = v2x_apps.cpm_bridge:main',
+                'poim_provider = v2x_apps.poim_provider:main',
+                'poim_listener = v2x_apps.poim_listener:main',
         ],
 },
 )

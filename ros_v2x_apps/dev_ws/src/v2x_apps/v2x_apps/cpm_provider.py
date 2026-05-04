@@ -126,8 +126,9 @@ class CpmProvider(Node):
         perceived_object.position.y_coordinate.value.value = int(obj_y * 100)
         perceived_object.position.y_coordinate.confidence.value = 1
         
-        perceived_object.angles.z_angle.value.value = 900
-        perceived_object.angles.z_angle.confidence.value = 1
+        perceived_object.position.z_coordinate_is_present = True
+        perceived_object.position.z_coordinate.value.value = round(obj_z * 100)
+        perceived_object.position.z_coordinate.confidence.value = 1
 
         # Dimensions
         perceived_object.object_dimension_z_is_present = True
