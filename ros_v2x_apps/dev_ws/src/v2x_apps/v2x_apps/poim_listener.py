@@ -47,6 +47,7 @@ class PoimListener(Node):
 
         self.declare_parameter('btp_port', _POIM_BTP_PORT_DEFAULT)
         self.declare_parameter('output_topic', '/parking/poim_decoded')
+        self.declare_parameter('incoming_object_topic', '/parking/poim_incoming')
 
         try:
             self._db = asn1tools.compile_files(_DEFAULT_SCHEMA_FILES, codec='uper')
@@ -58,6 +59,11 @@ class PoimListener(Node):
         self._decoded_publisher = self.create_publisher(
             String,
             self.get_parameter('output_topic').value,
+            10,
+        )
+        self._incoming_object_publisher = self.create_publisher(
+            String,
+            self.get_parameter('incoming_object_topic').value,
             10,
         )
 
@@ -104,6 +110,18 @@ class PoimListener(Node):
             out_msg = String()
             out_msg.data = json.dumps(summary, separators=(',', ':'), sort_keys=True)
             self._decoded_publisher.publish(out_msg)
+
+            incoming_object = {
+                'direction': 'incoming',
+                'poi_id': management['blockIdentificationNumber'],
+                'latitude': position['latitude'],
+                'longitude': position['longitude'],
+                'occupancy_percent': occupancy,
+                'facility_name': place_info['name'],
+            }
+            incoming_msg = String()
+            incoming_msg.data = json.dumps(incoming_object, separators=(',', ':'), sort_keys=True)
+            self._incoming_object_publisher.publish(incoming_msg)
 
             self.get_logger().info(
                 f"Decoded POIM on port {msg.destination_port} and published to {self.get_parameter('output_topic').value}"

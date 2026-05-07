@@ -14,6 +14,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'asn1'), glob('v2x_apps/asn1/*.asn')),
+        (os.path.join('share', package_name, 'www'), glob('www/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -33,6 +34,7 @@ setup(
                 'cpm_bridge = v2x_apps.cpm_bridge:main',
                 'poim_provider = v2x_apps.poim_provider:main',
                 'poim_listener = v2x_apps.poim_listener:main',
+                'ldm_server = v2x_apps.ldm_server:main',
         ],
 },
 )

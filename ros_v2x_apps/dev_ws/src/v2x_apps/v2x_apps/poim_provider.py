@@ -18,11 +18,12 @@ Implementation Details:
 
 import os
 import time
+import json
 from typing import Optional
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int32
+from std_msgs.msg import Int32, String
 from vanetza_msgs.msg import PositionVector
 from vanetza_msgs.srv import BtpData
 from ament_index_python.packages import get_package_share_directory
@@ -73,6 +74,7 @@ class PoimProvider(Node):
         self.declare_parameter('parking_total',     100)    # Capacity
         self.declare_parameter('publish_rate_hz',   1.0)    # 1 message per second
         self.declare_parameter('transport_type',    'SHB')  # Single Hop Broadcast
+        self.declare_parameter('outgoing_object_topic', '/parking/poim_outgoing')
 
         # --- Load ASN.1 Ruleset (Multiple Files) ---
         try:
@@ -94,6 +96,11 @@ class PoimProvider(Node):
 
         # --- BTP Service (Output) ---
         self._btp_client = self.create_client(BtpData, '/vanetza/btp_request')
+        self._poim_object_publisher = self.create_publisher(
+            String,
+            self.get_parameter('outgoing_object_topic').value,
+            10,
+        )
         
         # --- Timer Loop ---
         rate = self.get_parameter('publish_rate_hz').value
@@ -115,6 +122,11 @@ class PoimProvider(Node):
             timestamp = (now_ms - 1072915200000) % 4294967296  # ITS Epoch 2004 (32-bit)
 
             pv = self._position_vector
+            parking_total = int(self.get_parameter('parking_total').value)
+            occupancy_percent = 0
+            if parking_total > 0:
+                occupancy_percent = int(round((self._spaces_occupied / parking_total) * 100.0))
+            occupancy_percent = max(0, min(100, occupancy_percent))
 
             parking_block = {
                 'managementContainer': {
@@ -135,8 +147,21 @@ class PoimProvider(Node):
                 },
                 'aggregatedStatus': {
                     'currentFacilityStatus': 1,
+                    'currentOccupancy': occupancy_percent,
                 },
             }
+
+            outgoing_summary = {
+                'direction': 'outgoing',
+                'poi_id': self.get_parameter('poi_id').value,
+                'latitude': int(round(pv.latitude * 1e7)),
+                'longitude': int(round(pv.longitude * 1e7)),
+                'occupancy_percent': occupancy_percent,
+                'facility_name': parking_block['placeInfo']['name'],
+            }
+            summary_msg = String()
+            summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'), sort_keys=True)
+            self._poim_object_publisher.publish(summary_msg)
 
             parking_block_bytes = self._db.encode('ParkingAvailabilityBlock', parking_block)
 
