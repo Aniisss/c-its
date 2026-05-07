@@ -109,7 +109,7 @@ class PoimListener(Node):
             }
 
             out_msg = String()
-            out_msg.data = json.dumps(summary, separators=(',', ':'), sort_keys=True)
+            out_msg.data = json.dumps(summary, separators=(',', ':'))
             self._decoded_publisher.publish(out_msg)
 
             incoming_object = {
@@ -121,7 +121,7 @@ class PoimListener(Node):
                 'facility_name': place_info['name'],
             }
             incoming_msg = String()
-            incoming_msg.data = json.dumps(incoming_object, separators=(',', ':'), sort_keys=True)
+            incoming_msg.data = json.dumps(incoming_object, separators=(',', ':'))
             self._incoming_object_publisher.publish(incoming_msg)
 
             self.get_logger().info(

@@ -166,7 +166,7 @@ class PoimProvider(Node):
                 'facility_name': parking_block['placeInfo']['name'],
             }
             summary_msg = String()
-            summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'), sort_keys=True)
+            summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'))
             self._poim_object_publisher.publish(summary_msg)
 
             parking_block_bytes = self._db.encode('ParkingAvailabilityBlock', parking_block)
