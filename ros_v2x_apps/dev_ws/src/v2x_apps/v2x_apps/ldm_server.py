@@ -44,6 +44,7 @@ class LdmServer(Node):
 
         self.declare_parameter('web_host', '0.0.0.0')
         self.declare_parameter('web_port', 8000)
+        self.declare_parameter('vehicle_id', 'DS7')
         self.declare_parameter('poim_outgoing_topic', '/parking/poim_outgoing')
         self.declare_parameter('poim_incoming_topic', '/parking/poim_incoming')
         self.declare_parameter('poim_decoded_topic', '/parking/poim_decoded')
@@ -58,7 +59,9 @@ class LdmServer(Node):
         self._server: Optional[uvicorn.Server] = None
         self._server_thread: Optional[threading.Thread] = None
         self._start_web_server()
-        self.get_logger().info('LDM Server ready at http://0.0.0.0:8000/')
+        self.get_logger().info(
+            f"LDM Server ready at http://{self.get_parameter('web_host').value}:{int(self.get_parameter('web_port').value)}/"
+        )
 
     def _configure_routes(self) -> None:
         www_dir = self._resolve_www_directory()
@@ -104,7 +107,7 @@ class LdmServer(Node):
         speed = _to_float_or_none(getattr(msg, 'speed', None))
         with self._lock:
             self._vehicle = {
-                'id': 'DS7',
+                'id': self.get_parameter('vehicle_id').value,
                 'latitude': _scaled_coord_to_decimal(getattr(msg, 'latitude', None)),
                 'longitude': _scaled_coord_to_decimal(getattr(msg, 'longitude', None)),
                 'heading': heading,
@@ -153,7 +156,7 @@ class LdmServer(Node):
         if vehicle.get('latitude') is not None and vehicle.get('longitude') is not None:
             properties = {
                 'type': 'vehicle',
-                'id': vehicle.get('id', 'DS7'),
+                'id': vehicle.get('id', self.get_parameter('vehicle_id').value),
                 'heading': vehicle.get('heading'),
                 'speed': vehicle.get('speed'),
             }

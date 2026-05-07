@@ -21,6 +21,7 @@ except ImportError:
     _ASN1TOOLS_AVAILABLE = False
 
 _POIM_BTP_PORT_DEFAULT = 2025
+_QUEUE_DEPTH = 10
 
 _ASN1_DIR = os.path.join(
     get_package_share_directory('v2x_apps'),
@@ -59,19 +60,19 @@ class PoimListener(Node):
         self._decoded_publisher = self.create_publisher(
             String,
             self.get_parameter('output_topic').value,
-            10,
+            _QUEUE_DEPTH,
         )
         self._incoming_object_publisher = self.create_publisher(
             String,
             self.get_parameter('incoming_object_topic').value,
-            10,
+            _QUEUE_DEPTH,
         )
 
         self.create_subscription(
             BtpDataIndication,
             '/vanetza/btp_indication',
             self._on_btp,
-            10,
+            _QUEUE_DEPTH,
         )
 
     def _on_btp(self, msg: BtpDataIndication) -> None:
