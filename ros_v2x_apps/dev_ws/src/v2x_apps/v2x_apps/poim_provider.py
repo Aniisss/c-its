@@ -111,6 +111,13 @@ class PoimProvider(Node):
     def _on_avail(self, msg): self._spaces_available = msg.data
     def _on_occ(self, msg): self._spaces_occupied = msg.data
 
+    def _calculate_occupancy_percent(self) -> int:
+        parking_total = int(self.get_parameter('parking_total').value)
+        if parking_total <= 0:
+            return 0
+        occupancy_percent = int(round((self._spaces_occupied / parking_total) * 100.0))
+        return max(0, min(100, occupancy_percent))
+
     def _on_timer(self):
         """Main Facility Layer Logic: Build -> Encode -> Send"""
         if self._position_vector is None:
@@ -122,11 +129,7 @@ class PoimProvider(Node):
             timestamp = (now_ms - 1072915200000) % 4294967296  # ITS Epoch 2004 (32-bit)
 
             pv = self._position_vector
-            parking_total = int(self.get_parameter('parking_total').value)
-            occupancy_percent = 0
-            if parking_total > 0:
-                occupancy_percent = int(round((self._spaces_occupied / parking_total) * 100.0))
-            occupancy_percent = max(0, min(100, occupancy_percent))
+            occupancy_percent = self._calculate_occupancy_percent()
 
             parking_block = {
                 'managementContainer': {

@@ -118,7 +118,7 @@ class LdmServer(Node):
         try:
             payload = json.loads(msg.data)
         except json.JSONDecodeError:
-            self.get_logger().warn('Skipping POIM object with invalid JSON payload')
+            self.get_logger().warning('Skipping POIM object with invalid JSON payload')
             return
 
         poi_id = payload.get('poi_id') or payload.get('id') or payload.get('poiId')
