@@ -11,6 +11,8 @@
   <depend>ament_index_python</depend>
   <depend>std_msgs</depend>
   <depend>vanetza_msgs</depend>
+  <depend>python3-fastapi</depend>
+  <depend>python3-uvicorn</depend>
   <export>
     <build_type>ament_python</build_type>
   </export>
