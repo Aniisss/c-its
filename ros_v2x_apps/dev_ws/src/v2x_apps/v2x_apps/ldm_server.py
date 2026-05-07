@@ -16,6 +16,7 @@ from std_msgs.msg import String
 from vanetza_msgs.msg import PositionVector
 import uvicorn
 
+_SERVER_SHUTDOWN_TIMEOUT_SECONDS = 3.0
 
 def _scaled_coord_to_decimal(value: Optional[float]) -> Optional[float]:
     if value is None:
@@ -44,6 +45,7 @@ class LdmServer(Node):
 
         self.declare_parameter('web_host', '0.0.0.0')
         self.declare_parameter('web_port', 8000)
+        self.declare_parameter('web_log_level', 'warning')
         self.declare_parameter('vehicle_id', 'DS7')
         self.declare_parameter('poim_outgoing_topic', '/parking/poim_outgoing')
         self.declare_parameter('poim_incoming_topic', '/parking/poim_incoming')
@@ -97,7 +99,8 @@ class LdmServer(Node):
     def _start_web_server(self) -> None:
         host = self.get_parameter('web_host').value
         port = int(self.get_parameter('web_port').value)
-        config = uvicorn.Config(self._app, host=host, port=port, log_level='warning')
+        log_level = self.get_parameter('web_log_level').value
+        config = uvicorn.Config(self._app, host=host, port=port, log_level=log_level)
         self._server = uvicorn.Server(config)
         self._server_thread = threading.Thread(target=self._server.run, daemon=True)
         self._server_thread.start()
@@ -192,7 +195,7 @@ class LdmServer(Node):
         if self._server is not None:
             self._server.should_exit = True
         if self._server_thread is not None and self._server_thread.is_alive():
-            self._server_thread.join(timeout=3.0)
+            self._server_thread.join(timeout=_SERVER_SHUTDOWN_TIMEOUT_SECONDS)
         return super().destroy_node()
 
 

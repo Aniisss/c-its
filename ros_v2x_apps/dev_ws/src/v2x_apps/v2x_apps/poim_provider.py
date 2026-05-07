@@ -115,7 +115,10 @@ class PoimProvider(Node):
         parking_total = int(self.get_parameter('parking_total').value)
         if parking_total <= 0:
             return 0
-        occupancy_percent = int(round((self._spaces_occupied / parking_total) * 100.0))
+        occupied = self._spaces_occupied
+        if occupied is None:
+            occupied = 0
+        occupancy_percent = int(round((float(occupied) / parking_total) * 100.0))
         return max(0, min(100, occupancy_percent))
 
     def _on_timer(self):
