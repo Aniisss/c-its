@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get -y install --no-install-recommends sudo git && \
     #apt-get install -y python3-pip && \
-    #pip3 install --break-system-packages asn1tools && \
+    #pip3 install --break-system-packages asn1tools fastapi uvicorn && \
     rm -rf /var/lib/apt/lists/* 
 
 # Arguments

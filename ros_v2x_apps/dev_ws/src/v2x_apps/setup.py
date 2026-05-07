@@ -27,6 +27,7 @@ setup(
                 'btp_listener = v2x_apps.btp_listener:main',
                 'btp_sender = v2x_apps.btp_sender:main',
                 'cam_listener = v2x_apps.cam_listener:main',
+                'cpm_listener = v2x_apps.cpm_listener:main',
                 'denm_node = v2x_apps.denm_node:main',
                 'cpm_provider = v2x_apps.cpm_provider:main',
                 'vam_provider = v2x_apps.vam_provider:main',
