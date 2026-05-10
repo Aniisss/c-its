@@ -22,6 +22,8 @@ from etsi_its_cam_msgs.msg import CAM
 _SERVER_SHUTDOWN_TIMEOUT_SECONDS = 3.0
 _STALE_DATA_SECONDS = 5.0
 _CLEANUP_PERIOD_SECONDS = 1.0
+_HEADING_SCALE_THRESHOLD_DEGREES = 360.0
+_METERS_PER_DEGREE_LAT = 111111.0
 
 
 def _scaled_coord_to_decimal(value: Optional[float]) -> Optional[float]:
@@ -69,7 +71,7 @@ def _extract_first(root: Any, paths: Iterable[Tuple[str, ...]]) -> Any:
 def _heading_to_degrees(value: Optional[float]) -> Optional[float]:
     if value is None:
         return None
-    if abs(value) > 360.0:
+    if abs(value) > _HEADING_SCALE_THRESHOLD_DEGREES:
         return value / 10.0
     return value
 
@@ -188,8 +190,10 @@ class LdmStore:
                     lat = ref_lat
                     lon = ref_lon
                     if ref_lat is not None and ref_lon is not None and x_m is not None and y_m is not None:
-                        lat = ref_lat + (y_m / 111111.0)
-                        lon_scale = 111111.0 * max(1e-6, math.cos(math.radians(ref_lat)))
+                        # Approximate local ENU->lat/lon conversion; accurate for short-range
+                        # CPM object offsets and less reliable near the poles.
+                        lat = ref_lat + (y_m / _METERS_PER_DEGREE_LAT)
+                        lon_scale = _METERS_PER_DEGREE_LAT * max(1e-6, math.cos(math.radians(ref_lat)))
                         lon = ref_lon + (x_m / lon_scale)
 
                     key = f'{station_id}:{object_id}'
