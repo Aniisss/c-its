@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 const LDMContext = createContext(null)
-const WS_URL = 'ws://localhost:8000/ws/ldm'
+const WS_URL = import.meta.env.VITE_LDM_WS_URL ?? 'ws://localhost:8000/ws/ldm'
 
 export function LDMProvider({ children }) {
   const [stations, setStations] = useState([])

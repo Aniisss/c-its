@@ -5,6 +5,7 @@ import { Car, CircleParking, RadioTower, UserRound, Wifi, WifiOff } from 'lucide
 import { renderToStaticMarkup } from 'react-dom/server'
 import { useLDM } from '../context/LDMContext'
 
+// Brussels fallback center used before first CAM station position is received.
 const FALLBACK_CENTER = [50.85, 4.35]
 
 function toNumber(value) {

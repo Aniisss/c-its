@@ -39,6 +39,12 @@ npm run dev
 
 Open the app via Vite (default `http://localhost:5173/www/`).
 
+Optional WebSocket override:
+
+```bash
+VITE_LDM_WS_URL=ws://localhost:8000/ws/ldm npm run dev
+```
+
 ## Production build
 
 Build static assets:
