@@ -24,6 +24,7 @@ _STALE_DATA_SECONDS = 5.0
 _CLEANUP_PERIOD_SECONDS = 1.0
 _HEADING_SCALE_THRESHOLD_DEGREES = 360.0
 _METERS_PER_DEGREE_LAT = 111111.0
+_MIN_COS_LATITUDE_SCALE = 1e-6
 
 
 def _scaled_coord_to_decimal(value: Optional[float]) -> Optional[float]:
@@ -91,6 +92,7 @@ class LdmStore:
     def _copy_for_wire(record: Dict[str, Any], now: float) -> Dict[str, Any]:
         item = dict(record)
         last_update = _to_float_or_none(item.pop('last_update', None))
+        # Defensive clamp for rare timing edge-cases when snapshots race with updates.
         item['age_seconds'] = max(0.0, now - last_update) if last_update is not None else None
         return item
 
@@ -193,7 +195,10 @@ class LdmStore:
                         # Approximate local ENU->lat/lon conversion; accurate for short-range
                         # CPM object offsets and less reliable near the poles.
                         lat = ref_lat + (y_m / _METERS_PER_DEGREE_LAT)
-                        lon_scale = _METERS_PER_DEGREE_LAT * max(1e-6, math.cos(math.radians(ref_lat)))
+                        lon_scale = _METERS_PER_DEGREE_LAT * max(
+                            _MIN_COS_LATITUDE_SCALE,
+                            math.cos(math.radians(ref_lat)),
+                        )
                         lon = ref_lon + (x_m / lon_scale)
 
                     key = f'{station_id}:{object_id}'
@@ -426,6 +431,7 @@ class LdmServer(Node):
             await websocket.send_json(self._store.snapshot())
             try:
                 while True:
+                    # Broadcast-only endpoint: receive to detect disconnect and keep socket open.
                     await websocket.receive_text()
             except WebSocketDisconnect:
                 pass
