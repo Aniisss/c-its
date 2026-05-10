@@ -92,7 +92,7 @@ class LdmStore:
     def _copy_for_wire(record: Dict[str, Any], now: float) -> Dict[str, Any]:
         item = dict(record)
         last_update = _to_float_or_none(item.pop('last_update', None))
-        # Defensive clamp for rare timing edge-cases when snapshots race with updates.
+        # Defensive clamp for rare timing edge cases when snapshots race with updates.
         item['age_seconds'] = max(0.0, now - last_update) if last_update is not None else 0.0
         return item
 
@@ -192,7 +192,7 @@ class LdmStore:
                     lat = ref_lat
                     lon = ref_lon
                     if ref_lat is not None and ref_lon is not None and x_m is not None and y_m is not None:
-                        # Approximate local ENU->lat/lon conversion; accurate for short-range
+                        # Approximate local ENU (East-North-Up)->lat/lon conversion; accurate for short-range
                         # CPM object offsets and less reliable near the poles.
                         lat = ref_lat + (y_m / _METERS_PER_DEGREE_LAT)
                         lon_scale = _METERS_PER_DEGREE_LAT * max(
