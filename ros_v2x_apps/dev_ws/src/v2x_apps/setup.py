@@ -1,9 +1,26 @@
-from setuptools import find_packages, setup
-
 import os
 from glob import glob
+from pathlib import Path
+
+from setuptools import find_packages, setup
 
 package_name = 'v2x_apps'
+root_dir = Path(__file__).resolve().parent
+
+
+def _recursive_data_files(source_dir: str):
+    files = []
+    source_path = root_dir / source_dir
+    if not source_path.exists():
+        return files
+
+    for entry in source_path.rglob('*'):
+        if not entry.is_file():
+            continue
+        rel_parent = entry.parent.relative_to(root_dir)
+        target = os.path.join('share', package_name, str(rel_parent))
+        files.append((target, [str(entry.relative_to(root_dir))]))
+    return files
 
 setup(
     name=package_name,
@@ -14,8 +31,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'asn1'), glob('v2x_apps/asn1/*.asn')),
-        (os.path.join('share', package_name, 'www'), glob('www/*')),
-    ],
+    ] + _recursive_data_files('www'),
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='Apostolos Georgiadis',
