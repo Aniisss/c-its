@@ -93,7 +93,7 @@ class LdmStore:
         item = dict(record)
         last_update = _to_float_or_none(item.pop('last_update', None))
         # Defensive clamp for rare timing edge-cases when snapshots race with updates.
-        item['age_seconds'] = max(0.0, now - last_update) if last_update is not None else None
+        item['age_seconds'] = max(0.0, now - last_update) if last_update is not None else 0.0
         return item
 
     def update_station_from_cam(self, msg: CAM) -> bool:
@@ -431,8 +431,8 @@ class LdmServer(Node):
             await websocket.send_json(self._store.snapshot())
             try:
                 while True:
-                    # Broadcast-only endpoint: receive to detect disconnect and keep socket open.
-                    await websocket.receive_text()
+                    # Broadcast-only endpoint: read and ignore client payloads to detect disconnect.
+                    _ = await websocket.receive_text()
             except WebSocketDisconnect:
                 pass
             finally:
