@@ -439,17 +439,23 @@ class LdmServer(Node):
                 await self._ws_hub.disconnect(websocket)
 
     def _resolve_www_directory(self) -> Optional[str]:
+        def _prefer_dist(path: str) -> str:
+            dist_candidate = os.path.join(path, 'dist')
+            if os.path.isdir(dist_candidate):
+                return dist_candidate
+            return path
+
         try:
             share_dir = get_package_share_directory('v2x_apps')
             candidate = os.path.join(share_dir, 'www')
             if os.path.isdir(candidate):
-                return candidate
+                return _prefer_dist(candidate)
         except PackageNotFoundError:
             pass
 
         source_candidate = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'www'))
         if os.path.isdir(source_candidate):
-            return source_candidate
+            return _prefer_dist(source_candidate)
         return None
 
     def _start_web_server(self) -> None:
