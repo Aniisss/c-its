@@ -2,8 +2,9 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 const LDMContext = createContext(null)
-const WS_URL = import.meta.env.VITE_WS_URL ?? 'ws://localhost:8765'
+const WS_URL = import.meta.env.VITE_WS_URL ?? 'ws://localhost:8000/ws/ldm'
 const POIM_HISTORY_LIMIT = 30
+const FEED_LIMIT = 50
 
 function toNumber(value) {
   const parsed = Number(value)
@@ -93,6 +94,7 @@ export function LDMProvider({ children }) {
   const [stations, setStations] = useState([])
   const [perceivedObjects, setPerceivedObjects] = useState([])
   const [pois, setPois] = useState([])
+  const [ego, setEgo] = useState(null)
   const [status, setStatus] = useState('connecting')
   const [poimMetrics, setPoimMetrics] = useState({
     spacesAvailable: null,
@@ -100,6 +102,7 @@ export function LDMProvider({ children }) {
   })
   const [poimHistory, setPoimHistory] = useState([])
   const [poimReferencePosition, setPoimReferencePosition] = useState(null)
+  const [messageFeed, setMessageFeed] = useState([])
   const wsRef = useRef(null)
   const reconnectRef = useRef(null)
   const poimMetricsRef = useRef(poimMetrics)
@@ -167,12 +170,34 @@ export function LDMProvider({ children }) {
                 occupancy_percent: Math.max(0, Math.min(100, occupancyPercent)),
               }])
             }
+
+            addFeedEntry('POIM')
             return
           }
 
-          setStations(Array.isArray(payload.stations) ? payload.stations : [])
-          setPerceivedObjects(Array.isArray(payload.perceived_objects) ? payload.perceived_objects : [])
-          setPois(Array.isArray(payload.pois) ? payload.pois : [])
+          // Snapshot message from /ws/ldm endpoint
+          if (Array.isArray(payload.stations)) {
+            setStations(payload.stations)
+            setPerceivedObjects(Array.isArray(payload.perceived_objects) ? payload.perceived_objects : [])
+            setPois(Array.isArray(payload.pois) ? payload.pois : [])
+
+            if (payload.ego && typeof payload.ego === 'object') {
+              setEgo(payload.ego)
+            }
+
+            const stationCount = payload.stations.length
+            const objCount = Array.isArray(payload.perceived_objects) ? payload.perceived_objects.length : 0
+            const poiCount = Array.isArray(payload.pois) ? payload.pois.length : 0
+            if (stationCount > 0) {
+              addFeedEntry('CAM')
+            }
+            if (objCount > 0) {
+              addFeedEntry('CPM')
+            }
+            if (poiCount > 0) {
+              addFeedEntry('POIM')
+            }
+          }
         } catch {
           // Ignore malformed payloads.
         }
@@ -188,6 +213,13 @@ export function LDMProvider({ children }) {
           reconnectRef.current = setTimeout(connect, 1500)
         }
       }
+    }
+
+    function addFeedEntry(type) {
+      setMessageFeed((feed) => {
+        const next = [{ type, timestamp: Date.now() }, ...feed]
+        return next.slice(0, FEED_LIMIT)
+      })
     }
 
     connect()
@@ -207,11 +239,13 @@ export function LDMProvider({ children }) {
     stations,
     perceivedObjects,
     pois,
+    ego,
     status,
     poimMetrics,
     poimHistory,
     poimReferencePosition,
-  }), [stations, perceivedObjects, pois, status, poimMetrics, poimHistory, poimReferencePosition])
+    messageFeed,
+  }), [stations, perceivedObjects, pois, ego, status, poimMetrics, poimHistory, poimReferencePosition, messageFeed])
 
   return <LDMContext.Provider value={value}>{children}</LDMContext.Provider>
 }
