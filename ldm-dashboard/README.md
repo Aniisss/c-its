@@ -5,7 +5,7 @@ Standalone React dashboard for POIM/CAM/CPM visualization on the host machine.
 ## Run on host
 
 ```bash
-cd /home/runner/work/c-its/c-its/ldm-dashboard
+cd ldm-dashboard
 npm install
 npm run dev
 ```
@@ -21,7 +21,7 @@ http://localhost:5173
 Set `VITE_WS_URL` before starting dev server:
 
 ```bash
-cd /home/runner/work/c-its/c-its/ldm-dashboard
+cd ldm-dashboard
 VITE_WS_URL=ws://<backend-ip>:8765 npm run dev
 ```
 
@@ -34,7 +34,7 @@ ws://localhost:8765
 ## One-command run script
 
 ```bash
-cd /home/runner/work/c-its/c-its/ldm-dashboard
+cd ldm-dashboard
 ./run-dashboard.sh
 ```
 
