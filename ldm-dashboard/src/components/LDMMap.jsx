@@ -8,10 +8,17 @@ import ParkingOccupancyGauge from './ParkingOccupancyGauge'
 
 const FALLBACK_CENTER = [50.85, 4.35]
 const FEED_DISPLAY_LIMIT = 12
+const FEED_OPACITY_DECREMENT = 0.07
+/** Minimum movement in degrees (~1 m) before the map re-pans to the ego vehicle. */
+const EGO_MOVE_THRESHOLD_DEG = 0.00001
 
 function toNumber(value) {
   const parsed = Number(value)
   return Number.isFinite(parsed) ? parsed : null
+}
+
+function isValidNumber(value) {
+  return value !== null && value !== undefined && Number.isFinite(Number(value))
 }
 
 function stationTypeIcon(stationType) {
@@ -86,7 +93,10 @@ function EgoFollower({ ego }) {
       return
     }
     const prev = prevEgoRef.current
-    if (!prev || prev.latitude !== lat || prev.longitude !== lon) {
+    const moved = !prev
+      || Math.abs(lat - prev.latitude) > EGO_MOVE_THRESHOLD_DEG
+      || Math.abs(lon - prev.longitude) > EGO_MOVE_THRESHOLD_DEG
+    if (moved) {
       map.setView([lat, lon], map.getZoom(), { animate: true, duration: 0.5 })
       prevEgoRef.current = { latitude: lat, longitude: lon }
     }
@@ -133,7 +143,7 @@ function MessageFeedPanel({ messageFeed }) {
         <div
           key={index}
           className="flex items-center justify-between rounded px-2 py-1 text-xs"
-          style={{ opacity: 1 - index * 0.07 }}
+          style={{ opacity: 1 - index * FEED_OPACITY_DECREMENT }}
         >
           <span
             className="rounded px-1.5 py-0.5 font-mono font-semibold"
@@ -210,8 +220,8 @@ export default function LDMMap() {
                 <div><b>DS7 (Ego Vehicle)</b></div>
                 <div>Lat: {ego.latitude?.toFixed(6)}</div>
                 <div>Lon: {ego.longitude?.toFixed(6)}</div>
-                {ego.heading !== null && ego.heading !== undefined && <div>Heading: {Number(ego.heading).toFixed(1)}°</div>}
-                {ego.speed !== null && ego.speed !== undefined && <div>Speed: {Number(ego.speed).toFixed(1)} m/s</div>}
+                {isValidNumber(ego.heading) && <div>Heading: {Number(ego.heading).toFixed(1)}°</div>}
+                {isValidNumber(ego.speed) && <div>Speed: {Number(ego.speed).toFixed(1)} m/s</div>}
               </div>
             </Popup>
           </Marker>
