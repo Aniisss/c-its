@@ -171,7 +171,7 @@ export function LDMProvider({ children }) {
               }])
             }
 
-            addFeedEntry('POIM')
+            addFeedEntry('POIM', 'ref', parsedPoim)
             return
           }
 
@@ -185,17 +185,24 @@ export function LDMProvider({ children }) {
               setEgo(payload.ego)
             }
 
-            const stationCount = payload.stations.length
             const objCount = Array.isArray(payload.perceived_objects) ? payload.perceived_objects.length : 0
             const poiCount = Array.isArray(payload.pois) ? payload.pois.length : 0
-            if (stationCount > 0) {
-              addFeedEntry('CAM')
-            }
+            payload.stations.forEach((station) => {
+              addFeedEntry('CAM', station.station_id, station)
+            })
             if (objCount > 0) {
-              addFeedEntry('CPM')
+              const cpmGroups = {}
+              payload.perceived_objects.forEach((obj) => {
+                const sid = String(obj.source_station_id ?? 'unknown')
+                if (!cpmGroups[sid]) cpmGroups[sid] = []
+                cpmGroups[sid].push(obj)
+              })
+              Object.entries(cpmGroups).forEach(([sid, objects]) => {
+                addFeedEntry('CPM', sid, { source_station_id: sid, objects })
+              })
             }
             if (poiCount > 0) {
-              addFeedEntry('POIM')
+              addFeedEntry('POIM', 'ref', payload.pois)
             }
           }
         } catch {
@@ -215,9 +222,17 @@ export function LDMProvider({ children }) {
       }
     }
 
-    function addFeedEntry(type) {
+    function addFeedEntry(type, stationId, payload) {
+      const key = `${type}-${stationId}`
       setMessageFeed((feed) => {
-        const next = [{ type, timestamp: Date.now() }, ...feed]
+        const now = Date.now()
+        const idx = feed.findIndex((e) => e.key === key)
+        if (idx !== -1) {
+          const updated = [...feed]
+          updated[idx] = { ...updated[idx], timestamp: now, payload }
+          return updated
+        }
+        const next = [{ key, type, stationId, timestamp: now, payload }, ...feed]
         return next.slice(0, FEED_LIMIT)
       })
     }
