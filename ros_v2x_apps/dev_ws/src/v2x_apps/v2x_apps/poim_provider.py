@@ -10,12 +10,10 @@ import math
 import os
 import time
 import json
-from typing import Optional
 
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int32, String
-from vanetza_msgs.msg import PositionVector
 from vanetza_msgs.srv import BtpData
 from ament_index_python.packages import get_package_share_directory
 
@@ -112,13 +110,11 @@ class PoimProvider(Node):
             raise
 
         # --- Internal Data State ---
-        self._position_vector: Optional[PositionVector] = None
         self._spaces_available: int = 0
         self._spaces_occupied:  int = 0
         self._subscription_data_received: bool = False
 
         # --- Subscriptions ---
-        self.create_subscription(PositionVector, '/its/position_vector', self._on_pos, 1)
         self.create_subscription(Int32, '/parking/spaces_available', self._on_avail, 10)
         self.create_subscription(Int32, '/parking/spaces_occupied',  self._on_occ,   10)
 
@@ -135,9 +131,6 @@ class PoimProvider(Node):
         self.timer = self.create_timer(1.0 / rate, self._on_timer)
 
     # --- Subscription Callbacks ---
-    def _on_pos(self, msg):
-        self._position_vector = msg
-
     def _on_avail(self, msg):
         self._spaces_available = msg.data
         self._subscription_data_received = True
@@ -156,19 +149,9 @@ class PoimProvider(Node):
     # --- Main Publish Loop ---
     def _on_timer(self):
         # ── 1. Resolve position ───────────────────────────────────────────────
-        # GPS position from /its/position_vector takes priority.
-        # If no fix is available yet, fall back to the static coordinates
-        # defined in Section 1 (FACILITY_LAT_DEG / FACILITY_LON_DEG).
-        if self._position_vector is not None:
-            lat_deg = self._position_vector.latitude
-            lon_deg = self._position_vector.longitude
-        else:
-            self.get_logger().warn(
-                'No GPS fix – broadcasting POIM with static position from Section 1.',
-                throttle_duration_sec=10,
-            )
-            lat_deg = FACILITY_LAT_DEG   # ← Section 1
-            lon_deg = FACILITY_LON_DEG   # ← Section 1
+        # POIM uses static facility coordinates (Section 1), not vehicle GPS.
+        lat_deg = FACILITY_LAT_DEG
+        lon_deg = FACILITY_LON_DEG
 
         try:
             # ── 2. Resolve occupancy ──────────────────────────────────────────
@@ -224,17 +207,18 @@ class PoimProvider(Node):
 
             # ── 6. Build and publish rich JSON summary ────────────────────────
             outgoing_summary = {
-                'direction':         'outgoing',
-                'poi_id':            self.get_parameter('poi_id').value,
-                'facility_name':     FACILITY_NAME,          # ← Section 1
-                'latitude':          lat_e7,
-                'longitude':         lon_e7,
-                'total_spots':       total_spots,            # ← Section 1
-                'available_spots':   available,
-                'occupancy_percent': occupancy_pct,
-                'parking_type':      FACILITY_PARKING_TYPE,  # ← Section 1
-                'status':            facility_status,
-                'amenities':         FACILITY_AMENITIES,     # ← Section 1
+                'direction': 'outgoing',
+                'poiId': self.get_parameter('poi_id').value,
+                'name': FACILITY_NAME,  # ← Section 1
+                'latitude': lat_e7,
+                'longitude': lon_e7,
+                'totalNumberOfParkingSpaces': total_spots,  # ← Section 1
+                'availableParkingSpaces': available,
+                'occupiedParkingSpaces': occupied,
+                'occupancyRate': occupancy_pct,
+                'parkingFacilityType': FACILITY_PARKING_TYPE,  # ← Section 1
+                'currentFacilityStatus': facility_status,
+                'amenities': FACILITY_AMENITIES,  # ← Section 1
             }
             summary_msg = String()
             summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'))
