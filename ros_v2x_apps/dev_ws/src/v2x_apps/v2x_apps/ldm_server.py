@@ -289,6 +289,8 @@ class LdmStore:
         if occupancy is None:
             occupancy = _to_float_or_none(payload.get('current_occupancy'))
         if occupancy is None:
+            occupancy = _to_float_or_none(payload.get('occupancyRate'))
+        if occupancy is None:
             occupancy = 0.0
         occupancy = max(0.0, min(100.0, occupancy))
 
@@ -296,19 +298,29 @@ class LdmStore:
             payload.get('total_spots')
             or payload.get('totalSpots')
             or payload.get('spaces_total')
+            or payload.get('totalNumberOfParkingSpaces')
         )
         available_spots_raw = (
             payload.get('available_spots')
             or payload.get('availableSpots')
             or payload.get('spaces_available')
+            or payload.get('availableParkingSpaces')
         )
         total_spots_float     = _to_float_or_none(total_spots_raw)
         available_spots_float = _to_float_or_none(available_spots_raw)
         total_spots     = int(total_spots_float)     if total_spots_float     is not None else None
         available_spots = int(available_spots_float) if available_spots_float is not None else None
 
-        parking_type     = _to_str_or_none(payload.get('parking_type') or payload.get('parkingType'))
-        facility_status  = _to_str_or_none(payload.get('status') or payload.get('facility_status'))
+        parking_type     = _to_str_or_none(
+            payload.get('parking_type')
+            or payload.get('parkingType')
+            or payload.get('parkingFacilityType')
+        )
+        facility_status  = _to_str_or_none(
+            payload.get('status')
+            or payload.get('facility_status')
+            or payload.get('currentFacilityStatus')
+        )
         amenities = payload.get('amenities')
         if not isinstance(amenities, list):
             amenities = []
@@ -317,7 +329,7 @@ class LdmStore:
         with self._lock:
             self._pois[key] = {
                 'id':               key,
-                'name':             payload.get('facility_name') or 'Parking',
+                'name':             payload.get('facility_name') or payload.get('facilityName') or payload.get('name') or 'Parking',
                 'latitude':         lat,
                 'longitude':        lon,
                 'occupancy_percent': occupancy,
