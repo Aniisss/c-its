@@ -148,14 +148,19 @@ class LdmStore:
             return False
 
         lat_raw = _to_float_or_none(_extract_first(msg, (
+            ('cam', 'cam_parameters', 'basic_container', 'reference_position', 'latitude', 'value'),
             ('payload', 'cam', 'cam_parameters', 'basic_container', 'reference_position', 'latitude', 'value'),
             ('payload', 'basic_container', 'reference_position', 'latitude', 'value'),
         )))
         lon_raw = _to_float_or_none(_extract_first(msg, (
+            ('cam', 'cam_parameters', 'basic_container', 'reference_position', 'longitude', 'value'),
             ('payload', 'cam', 'cam_parameters', 'basic_container', 'reference_position', 'longitude', 'value'),
             ('payload', 'basic_container', 'reference_position', 'longitude', 'value'),
         )))
         heading_raw = _to_float_or_none(_extract_first(msg, (
+            ('cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'heading_value', 'value'),
+            ('cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value', 'value'),
+            ('cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value'),
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'heading_value', 'value'),
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value', 'value'),
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value'),
@@ -164,6 +169,9 @@ class LdmStore:
             ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value'),
         )))
         speed_raw = _to_float_or_none(_extract_first(msg, (
+            ('cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'speed_value', 'value'),
+            ('cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value', 'value'),
+            ('cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value'),
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'speed_value', 'value'),
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value', 'value'),
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value'),
@@ -172,6 +180,7 @@ class LdmStore:
             ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value'),
         )))
         station_type = _to_float_or_none(_extract_first(msg, (
+            ('cam', 'cam_parameters', 'basic_container', 'station_type', 'value'),
             ('payload', 'cam', 'cam_parameters', 'basic_container', 'station_type', 'value'),
             ('payload', 'basic_container', 'station_type', 'value'),
         )))
