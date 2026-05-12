@@ -11,6 +11,7 @@ const FEED_DISPLAY_LIMIT = 12
 const FEED_OPACITY_DECREMENT = 0.07
 /** Minimum movement in degrees (~1 m) before the map re-pans to the ego vehicle. */
 const EGO_MOVE_THRESHOLD_DEG = 0.00001
+const EGO_ARROW_SVG = '<svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 1.6L4.4 23.6L13 18.2L21.6 23.6L13 1.6Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.6" stroke-linejoin="round"/></svg>'
 
 function toNumber(value) {
   const parsed = Number(value)
@@ -48,7 +49,7 @@ function createEgoIcon(heading) {
   const rotation = toNumber(heading) ?? 0
   return L.divIcon({
     className: '',
-    html: `<div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;transform:rotate(${rotation}deg);filter:drop-shadow(0 0 8px rgba(56,189,248,0.45));"><svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 1.6L4.4 23.6L13 18.2L21.6 23.6L13 1.6Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.6" stroke-linejoin="round"/></svg></div>`,
+    html: `<div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;transform:rotate(${rotation}deg);filter:drop-shadow(0 0 8px rgba(56,189,248,0.45));">${EGO_ARROW_SVG}</div>`,
     iconSize: [34, 34],
     iconAnchor: [17, 17],
     popupAnchor: [0, -16],
@@ -203,7 +204,7 @@ export default function LDMMap() {
 
   return (
     <div className="relative h-screen w-screen bg-slate-950 text-slate-100">
-      <MapContainer center={FALLBACK_CENTER} zoom={13} maxZoom={22} zoomSnap={0.25} zoomDelta={0.5} className="h-full w-full">
+      <MapContainer center={FALLBACK_CENTER} zoom={13} maxZoom={22} zoomSnap={0.5} zoomDelta={0.5} className="h-full w-full">
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
