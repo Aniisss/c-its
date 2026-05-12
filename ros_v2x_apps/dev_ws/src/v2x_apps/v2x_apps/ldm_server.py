@@ -99,12 +99,24 @@ class LdmStore:
         return item
 
     def update_ego_from_position_vector(self, msg: PositionVector) -> bool:
-        lat = _scaled_coord_to_decimal(_to_float_or_none(getattr(msg, 'latitude', None)))
-        lon = _scaled_coord_to_decimal(_to_float_or_none(getattr(msg, 'longitude', None)))
+        lat = _scaled_coord_to_decimal(_to_float_or_none(_extract_first(msg, (
+            ('latitude', 'value'),
+            ('latitude',),
+        ))))
+        lon = _scaled_coord_to_decimal(_to_float_or_none(_extract_first(msg, (
+            ('longitude', 'value'),
+            ('longitude',),
+        ))))
         if lat is None or lon is None:
             return False
-        heading = _heading_to_degrees(_to_float_or_none(getattr(msg, 'heading', None)))
-        speed = _to_float_or_none(getattr(msg, 'speed', None))
+        heading = _heading_to_degrees(_to_float_or_none(_extract_first(msg, (
+            ('heading', 'value'),
+            ('heading',),
+        ))))
+        speed = _to_float_or_none(_extract_first(msg, (
+            ('speed', 'value'),
+            ('speed',),
+        )))
         with self._lock:
             self._ego = {
                 'latitude': lat,
@@ -295,6 +307,22 @@ class LdmStore:
     def geojson(self) -> Dict[str, Any]:
         snapshot = self.snapshot()
         features: List[Dict[str, Any]] = []
+
+        ego = snapshot.get('ego')
+        if ego is not None and ego.get('latitude') is not None and ego.get('longitude') is not None:
+            features.append({
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [ego['longitude'], ego['latitude']],
+                },
+                'properties': {
+                    'type': 'ego',
+                    'id': 'ego_ds7',
+                    'heading': ego.get('heading'),
+                    'speed': ego.get('speed'),
+                },
+            })
 
         for station in snapshot['stations']:
             if station.get('latitude') is None or station.get('longitude') is None:
