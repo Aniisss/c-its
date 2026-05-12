@@ -8,9 +8,6 @@ import ParkingOccupancyGauge from './ParkingOccupancyGauge'
 
 const FALLBACK_CENTER = [50.85, 4.35]
 const FEED_DISPLAY_LIMIT = 12
-const FEED_OPACITY_DECREMENT = 0.07
-/** Minimum movement in degrees (~1 m) before the map re-pans to the ego vehicle. */
-const EGO_MOVE_THRESHOLD_DEG = 0.00001
 const EGO_ARROW_SVG = '<svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 1.6L4.4 23.6L13 18.2L21.6 23.6L13 1.6Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.6" stroke-linejoin="round"/></svg>'
 
 function toNumber(value) {
@@ -79,33 +76,6 @@ function createParkingIcon(occupancyPercent) {
   })
 }
 
-/** Smoothly pans the map to follow the ego vehicle on every position update. */
-function EgoFollower({ ego }) {
-  const map = useMap()
-  const prevEgoRef = useRef(null)
-
-  useEffect(() => {
-    if (!ego) {
-      return
-    }
-    const lat = toNumber(ego.latitude)
-    const lon = toNumber(ego.longitude)
-    if (lat === null || lon === null) {
-      return
-    }
-    const prev = prevEgoRef.current
-    const moved = !prev
-      || Math.abs(lat - prev.latitude) > EGO_MOVE_THRESHOLD_DEG
-      || Math.abs(lon - prev.longitude) > EGO_MOVE_THRESHOLD_DEG
-    if (moved) {
-      map.setView([lat, lon], map.getZoom(), { animate: true, duration: 0.5 })
-      prevEgoRef.current = { latitude: lat, longitude: lon }
-    }
-  }, [ego, map])
-
-  return null
-}
-
 /** Centers the map once on the POIM reference position when no ego is available. */
 function AutoCenter({ referencePosition, hasEgo }) {
   const map = useMap()
@@ -129,6 +99,31 @@ function AutoCenter({ referencePosition, hasEgo }) {
   return null
 }
 
+function stationTypeName(stationType) {
+  const t = Number(stationType)
+  if (t === 0) return 'Unknown'
+  if (t === 1) return 'Pedestrian'
+  if (t === 2) return 'Cyclist'
+  if (t === 3) return 'Moped'
+  if (t === 4) return 'Motorcycle'
+  if (t === 5) return 'Vehicle'
+  if (t === 6) return 'Bus'
+  if (t === 7) return 'Light Truck'
+  if (t === 8) return 'Heavy Truck'
+  if (t === 9) return 'Trailer'
+  if (t === 10) return 'Special Vehicle'
+  if (t === 11) return 'Tram'
+  if (t === 15) return 'RSU'
+  return `Type ${stationType ?? 'n/a'}`
+}
+
+/** Exposes the Leaflet map instance via a ref so it can be used outside MapContainer. */
+function MapRefSetter({ mapRef }) {
+  const map = useMap()
+  useEffect(() => { mapRef.current = map }, [map, mapRef])
+  return null
+}
+
 function feedTypeColor(type) {
   if (type === 'CAM') return '#22d3ee'
   if (type === 'CPM') return '#a78bfa'
@@ -137,24 +132,45 @@ function feedTypeColor(type) {
 }
 
 function MessageFeedPanel({ messageFeed }) {
+  const [expanded, setExpanded] = useState({})
+
+  const toggleExpand = useCallback((key) => {
+    setExpanded((prev) => ({ ...prev, [key]: !prev[key] }))
+  }, [])
+
   return (
-    <div className="max-h-64 overflow-y-auto">
+    <div className="max-h-64 overflow-y-auto space-y-0.5">
       {messageFeed.length === 0 && <div className="text-xs text-slate-400">Awaiting messages…</div>}
-      {messageFeed.slice(0, FEED_DISPLAY_LIMIT).map((entry, index) => (
-        <div
-          key={index}
-          className="flex items-center justify-between rounded px-2 py-1 text-xs"
-          style={{ opacity: 1 - index * FEED_OPACITY_DECREMENT }}
-        >
-          <span
-            className="rounded px-1.5 py-0.5 font-mono font-semibold"
-            style={{ color: feedTypeColor(entry.type), background: 'rgba(15,23,42,0.7)' }}
-          >
-            {entry.type}
-          </span>
-          <span className="ml-2 text-slate-400">
-            {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-          </span>
+      {messageFeed.slice(0, FEED_DISPLAY_LIMIT).map((entry) => (
+        <div key={entry.key} className="rounded text-xs">
+          <div className="flex items-center gap-1 px-2 py-1">
+            <span
+              className="rounded px-1.5 py-0.5 font-mono font-semibold shrink-0"
+              style={{ color: feedTypeColor(entry.type), background: 'rgba(15,23,42,0.7)' }}
+            >
+              {entry.type}
+            </span>
+            {entry.stationId && entry.stationId !== 'ref' && (
+              <span className="text-slate-500 truncate">#{entry.stationId}</span>
+            )}
+            <span className="ml-auto text-slate-400 shrink-0">
+              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </span>
+            <button
+              className="ml-1 text-slate-400 hover:text-slate-200 shrink-0"
+              onClick={() => toggleExpand(entry.key)}
+              aria-label={expanded[entry.key] ? 'Collapse' : 'Expand'}
+            >
+              {expanded[entry.key] ? '▲' : '▼'}
+            </button>
+          </div>
+          {expanded[entry.key] && entry.payload && (
+            <div className="px-2 pb-1">
+              <pre className="text-xs text-slate-400 bg-slate-950 rounded p-1.5 overflow-x-auto max-h-32 whitespace-pre-wrap break-all">
+                {JSON.stringify(entry.payload, null, 2)}
+              </pre>
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -177,7 +193,8 @@ export default function LDMMap() {
   const [showCam, setShowCam] = useState(true)
   const [showCpm, setShowCpm] = useState(true)
   const [showPoim, setShowPoim] = useState(true)
-  const [followEgo, setFollowEgo] = useState(true)
+
+  const mapRef = useRef(null)
 
   const stationsById = useMemo(() => new Map(stations.map((station) => [String(station.station_id), station])), [stations])
 
@@ -200,7 +217,15 @@ export default function LDMMap() {
     return createEgoIcon(ego.heading)
   }, [hasEgo, ego])
 
-  const handleFollowToggle = useCallback(() => setFollowEgo((v) => !v), [])
+  const handleCenterToDS7 = useCallback(() => {
+    const map = mapRef.current
+    if (!map || !ego) return
+    const lat = toNumber(ego.latitude)
+    const lon = toNumber(ego.longitude)
+    if (lat !== null && lon !== null) {
+      map.setView([lat, lon], map.getZoom(), { animate: true, duration: 0.5 })
+    }
+  }, [ego])
 
   return (
     <div className="relative h-screen w-screen bg-slate-950 text-slate-100">
@@ -211,7 +236,7 @@ export default function LDMMap() {
           maxNativeZoom={19}
           maxZoom={22}
         />
-        {followEgo && hasEgo && <EgoFollower ego={ego} />}
+        <MapRefSetter mapRef={mapRef} />
         <AutoCenter referencePosition={poimReferencePosition} hasEgo={hasEgo} />
 
         {/* Ego vehicle (DS7) */}
@@ -350,10 +375,11 @@ export default function LDMMap() {
         </label>
         <div className="border-t border-slate-700 pt-2">
           <button
-            className={`w-full rounded px-2 py-1 text-xs font-semibold transition-colors ${followEgo ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40' : 'bg-slate-800 text-slate-400 border border-slate-700'}`}
-            onClick={handleFollowToggle}
+            className="w-full rounded px-2 py-1 text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            onClick={handleCenterToDS7}
+            disabled={!hasEgo}
           >
-            {followEgo ? '📍 Following DS7' : '🗺 Free Map'}
+            📍 Center to DS7
           </button>
         </div>
       </div>
@@ -394,7 +420,7 @@ export default function LDMMap() {
           {activeStations.map((station) => (
             <li key={station.id} className="rounded-md border border-slate-700 bg-slate-950/60 p-2">
               <div className="font-medium text-slate-100">Station {station.station_id}</div>
-              <div>RSSI: {station.rssi ?? 'n/a'}</div>
+              <div>Type: {stationTypeName(station.station_type)}</div>
               <div>Age: {toNumber(station.age_seconds)?.toFixed(1) ?? 'n/a'} s</div>
             </li>
           ))}
