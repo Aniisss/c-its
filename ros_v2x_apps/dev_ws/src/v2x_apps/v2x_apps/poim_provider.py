@@ -25,29 +25,50 @@ try:
 except ImportError:
     _ASN1TOOLS_AVAILABLE = False
 
-_POIM_BTP_PORT_DEFAULT       = 2025
-_POIM_MESSAGE_ID_DEFAULT     = 26
-_POIM_PROTOCOL_VERSION_DEF   = 2
+# =============================================================================
+# SECTION 1 – STATIC FACILITY DATA
+# -----------------------------------------------------------------------------
+# Everything here is hardcoded for testing.  When real data is available,
+# replace each constant with a read from the appropriate source (database,
+# config file, ROS parameter, REST API, …) and nothing else needs to change.
+# =============================================================================
 
-# ── Static facility descriptor (ASN.1 / ETSI TS 103 916 inspired) ─────────────
-_FACILITY = {
-    'facility_name': 'Central Station Underground Parking',
-    'parking_type':  'Underground',
-    'total_spots':   320,
-    'amenities':     ['Electric Charging', 'Handicap Access', 'CCTV', '24h Security'],
-    'floors':        3,
-    'max_height_cm': 210,
-}
+FACILITY_NAME        = 'Central Station Underground Parking'
+FACILITY_LAT_DEG     =  50.8366          # WGS-84 latitude  (decimal degrees)
+FACILITY_LON_DEG     =   4.3360          # WGS-84 longitude (decimal degrees)
+FACILITY_PARKING_TYPE = 'Underground'    # e.g. 'Underground', 'Surface', 'Multi-storey'
+FACILITY_TOTAL_SPOTS =  320              # Total number of parking spaces
+FACILITY_AMENITIES   = [                 # List of available amenities
+    'Electric Charging',
+    'Handicap Access',
+    'CCTV',
+    '24h Security',
+]
 
-# Simulation parameters for time-varying occupancy when no subscription data is received.
-_SIMULATION_CYCLE_SECONDS       = 300.0   # Full sinusoidal period (5 minutes)
-_SIMULATION_BASE_OCCUPANCY_PCT  =  55.0   # Mid-point occupancy percentage
-_SIMULATION_AMPLITUDE_PCT       =  25.0   # Peak deviation from the base occupancy
+# =============================================================================
+# SECTION 2 – SIMULATION PARAMETERS
+# -----------------------------------------------------------------------------
+# Controls the synthetic occupancy curve used when no real-time subscription
+# data arrives on /parking/spaces_available or /parking/spaces_occupied.
+# Occupancy follows a sinusoid:  base_pct ± amplitude_pct  over one cycle.
+# Replace _simulate_occupied_spots() with a real sensor read when ready.
+# =============================================================================
 
-# Fallback coordinates used when no GPS position vector has been received yet.
-# Defaults to Brussels Central Station area.
-_FALLBACK_LAT_DEG =  50.8366
-_FALLBACK_LON_DEG =   4.3360
+SIM_CYCLE_SECONDS      = 300.0   # Duration of one full occupancy cycle (seconds)
+SIM_BASE_OCCUPANCY_PCT =  55.0   # Mid-point of the simulated occupancy (%)
+SIM_AMPLITUDE_PCT      =  25.0   # Peak deviation from the mid-point (%)
+
+# =============================================================================
+# (end of data / configuration sections)
+# =============================================================================
+
+
+# ---------------------------------------------------------------------------
+# Internal protocol constants – do not change unless the ETSI spec changes.
+# ---------------------------------------------------------------------------
+_POIM_BTP_PORT_DEFAULT     = 2025
+_POIM_MESSAGE_ID_DEFAULT   = 26
+_POIM_PROTOCOL_VERSION_DEF = 2
 
 _ASN1_DIR = os.path.join(
     get_package_share_directory('v2x_apps'),
@@ -74,14 +95,13 @@ class PoimProvider(Node):
             raise RuntimeError('Missing dependency: asn1tools')
 
         # --- ROS 2 Parameters ---
-        self.declare_parameter('btp_port',              _POIM_BTP_PORT_DEFAULT)
-        self.declare_parameter('message_id',             _POIM_MESSAGE_ID_DEFAULT)
-        self.declare_parameter('protocol_version',       _POIM_PROTOCOL_VERSION_DEF)
-        self.declare_parameter('poi_id',                 1)
-        self.declare_parameter('parking_total',          _FACILITY['total_spots'])
-        self.declare_parameter('publish_rate_hz',        1.0)
-        self.declare_parameter('transport_type',         'SHB')
-        self.declare_parameter('outgoing_object_topic',  '/parking/poim_outgoing')  # ← added param
+        self.declare_parameter('btp_port',             _POIM_BTP_PORT_DEFAULT)
+        self.declare_parameter('message_id',           _POIM_MESSAGE_ID_DEFAULT)
+        self.declare_parameter('protocol_version',     _POIM_PROTOCOL_VERSION_DEF)
+        self.declare_parameter('poi_id',               1)
+        self.declare_parameter('publish_rate_hz',      1.0)
+        self.declare_parameter('transport_type',       'SHB')
+        self.declare_parameter('outgoing_object_topic', '/parking/poim_outgoing')
 
         # --- Load ASN.1 Ruleset ---
         try:
@@ -114,7 +134,7 @@ class PoimProvider(Node):
         rate = self.get_parameter('publish_rate_hz').value
         self.timer = self.create_timer(1.0 / rate, self._on_timer)
 
-    # --- Callbacks ---
+    # --- Subscription Callbacks ---
     def _on_pos(self, msg):
         self._position_vector = msg
 
@@ -126,47 +146,46 @@ class PoimProvider(Node):
         self._spaces_occupied = msg.data
         self._subscription_data_received = True
 
+    # --- Simulation Helper (Section 2) ---
     def _simulate_occupied_spots(self, total: int) -> int:
-        """Simulate a realistic time-varying occupancy with a sinusoidal cycle."""
-        phase = (time.time() % _SIMULATION_CYCLE_SECONDS) / _SIMULATION_CYCLE_SECONDS
-        occupancy_pct = _SIMULATION_BASE_OCCUPANCY_PCT + _SIMULATION_AMPLITUDE_PCT * math.sin(2.0 * math.pi * phase)
+        """Return a synthetic occupied-spot count using the Section 2 parameters."""
+        phase = (time.time() % SIM_CYCLE_SECONDS) / SIM_CYCLE_SECONDS
+        occupancy_pct = SIM_BASE_OCCUPANCY_PCT + SIM_AMPLITUDE_PCT * math.sin(2.0 * math.pi * phase)
         return max(0, min(total, int(round(occupancy_pct * total / 100.0))))
 
-    def _calculate_occupancy_percent(self) -> int:
-        parking_total = int(self.get_parameter('parking_total').value)
-        if parking_total <= 0:
-            return 0
-        occupied = self._spaces_occupied or 0
-        occupancy_percent = int(round((float(occupied) / parking_total) * 100.0))
-        return max(0, min(100, occupancy_percent))
-
+    # --- Main Publish Loop ---
     def _on_timer(self):
-        # Use GPS position if available; fall back to static coordinates so the
-        # facility is always visible even before a GPS fix is acquired.
+        # ── 1. Resolve position ───────────────────────────────────────────────
+        # GPS position from /its/position_vector takes priority.
+        # If no fix is available yet, fall back to the static coordinates
+        # defined in Section 1 (FACILITY_LAT_DEG / FACILITY_LON_DEG).
         if self._position_vector is not None:
             lat_deg = self._position_vector.latitude
             lon_deg = self._position_vector.longitude
         else:
             self.get_logger().warn(
-                'No GPS fix – broadcasting POIM with static fallback position.',
+                'No GPS fix – broadcasting POIM with static position from Section 1.',
                 throttle_duration_sec=10,
             )
-            lat_deg = _FALLBACK_LAT_DEG
-            lon_deg = _FALLBACK_LON_DEG
+            lat_deg = FACILITY_LAT_DEG   # ← Section 1
+            lon_deg = FACILITY_LON_DEG   # ← Section 1
 
         try:
-            parking_total = int(self.get_parameter('parking_total').value)
+            # ── 2. Resolve occupancy ──────────────────────────────────────────
+            # Real data from ROS subscriptions takes priority.
+            # If nothing has arrived yet, use the sinusoidal simulator defined
+            # in Section 2.
+            total_spots = FACILITY_TOTAL_SPOTS   # ← Section 1
 
-            # Determine current occupancy from subscriptions or simulation.
             if self._subscription_data_received:
-                occupied = max(0, min(parking_total, self._spaces_occupied or 0))
+                occupied = max(0, min(total_spots, self._spaces_occupied or 0))
             else:
-                occupied = self._simulate_occupied_spots(parking_total)
+                occupied = self._simulate_occupied_spots(total_spots)   # ← Section 2
 
-            available     = max(0, parking_total - occupied)
-            occupancy_pct = int(round((occupied / max(1, parking_total)) * 100.0))
+            available     = max(0, total_spots - occupied)
+            occupancy_pct = int(round((occupied / max(1, total_spots)) * 100.0))
 
-            # Derive human-readable facility status.
+            # ── 3. Derive status label ────────────────────────────────────────
             if occupancy_pct >= 100:
                 facility_status = 'Full'
             elif occupancy_pct >= 90:
@@ -174,12 +193,13 @@ class PoimProvider(Node):
             else:
                 facility_status = 'Open'
 
+            # ── 4. Encode timestamps and coordinates ──────────────────────────
             now_ms    = int(time.time() * 1000)
             timestamp = (now_ms - 1072915200000) % 4294967296
             lat_e7    = int(round(lat_deg * 1e7))
             lon_e7    = int(round(lon_deg * 1e7))
 
-            # ── ASN.1 parking block (structure unchanged) ─────────────────────
+            # ── 5. Build ASN.1 parking block ──────────────────────────────────
             parking_block = {
                 'managementContainer': {
                     'serviceProviderId': {
@@ -195,32 +215,32 @@ class PoimProvider(Node):
                         'longitude': lon_e7,
                         'altitude':  800001,
                     },
-                    'name': _FACILITY['facility_name'],
+                    'name': FACILITY_NAME,         # ← Section 1
                 },
                 'aggregatedStatus': {
                     'currentFacilityStatus': 1,
                 },
             }
 
-            # ── Rich JSON summary published to the ROS outgoing topic ─────────
+            # ── 6. Build and publish rich JSON summary ────────────────────────
             outgoing_summary = {
                 'direction':         'outgoing',
                 'poi_id':            self.get_parameter('poi_id').value,
-                'facility_name':     _FACILITY['facility_name'],
+                'facility_name':     FACILITY_NAME,          # ← Section 1
                 'latitude':          lat_e7,
                 'longitude':         lon_e7,
-                'total_spots':       parking_total,
+                'total_spots':       total_spots,            # ← Section 1
                 'available_spots':   available,
                 'occupancy_percent': occupancy_pct,
-                'parking_type':      _FACILITY['parking_type'],
+                'parking_type':      FACILITY_PARKING_TYPE,  # ← Section 1
                 'status':            facility_status,
-                'amenities':         _FACILITY['amenities'],
+                'amenities':         FACILITY_AMENITIES,     # ← Section 1
             }
             summary_msg = String()
             summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'))
             self._poim_object_publisher.publish(summary_msg)
 
-            # ── ASN.1 encode & BTP broadcast ──────────────────────────────────
+            # ── 7. ASN.1 encode and BTP broadcast ────────────────────────────
             parking_block_bytes = self._db.encode('ParkingAvailabilityBlock', parking_block)
             poim_data = {
                 'header': {
