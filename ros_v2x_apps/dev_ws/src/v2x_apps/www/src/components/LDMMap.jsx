@@ -7,10 +7,25 @@ import { useLDM } from '../context/LDMContext'
 
 // Brussels fallback center used before first CAM station position is received.
 const FALLBACK_CENTER = [50.85, 4.35]
+const EGO_VEHICLE_NAME = 'DS7'
 
 function toNumber(value) {
   const parsed = Number(value)
   return Number.isFinite(parsed) ? parsed : null
+}
+
+function clampRotation(value) {
+  const numeric = toNumber(value)
+  if (numeric === null) {
+    return 0
+  }
+  const normalized = numeric % 360
+  return normalized < 0 ? normalized + 360 : normalized
+}
+
+function formatCoordinate(value) {
+  const numeric = toNumber(value)
+  return numeric === null ? 'n/a' : numeric.toFixed(6)
 }
 
 function stationTypeIcon(stationType) {
@@ -38,7 +53,7 @@ function occupancyColor(occupancyPercent) {
 
 function createStationIcon(stationType, heading) {
   const { Icon, color } = stationTypeIcon(stationType)
-  const rotation = toNumber(heading) ?? 0
+  const rotation = clampRotation(heading)
   return L.divIcon({
     className: '',
     html: `<div style="width:30px;height:30px;border-radius:9999px;background:rgba(15,23,42,0.9);border:1px solid #334155;display:flex;align-items:center;justify-content:center;transform:rotate(${rotation}deg)">${renderToStaticMarkup(<Icon size={20} color={color} strokeWidth={2.2} />)}</div>`,
@@ -60,10 +75,22 @@ function createParkingIcon(occupancyPercent) {
 }
 
 function createEgoIcon(heading) {
-  const rotation = toNumber(heading) ?? 0
+  const rotation = clampRotation(heading)
+  const wrapperStyle = [
+    'width:36px',
+    'height:36px',
+    'border-radius:9999px',
+    'background:rgba(2,6,23,0.95)',
+    'border:2px solid #f43f5e',
+    'display:flex',
+    'align-items:center',
+    'justify-content:center',
+    `transform:rotate(${rotation}deg)`,
+    'box-shadow:0 0 0 1px rgba(244,63,94,0.35)',
+  ].join(';')
   return L.divIcon({
     className: '',
-    html: `<div style="width:36px;height:36px;border-radius:9999px;background:rgba(2,6,23,0.95);border:2px solid #f43f5e;display:flex;align-items:center;justify-content:center;transform:rotate(${rotation}deg);box-shadow:0 0 0 1px rgba(244,63,94,0.35)">${renderToStaticMarkup(<Car size={22} color="#fda4af" strokeWidth={2.3} />)}</div>`,
+    html: `<div style="${wrapperStyle}">${renderToStaticMarkup(<Car size={22} color="#fda4af" strokeWidth={2.3} />)}</div>`,
     iconSize: [36, 36],
     iconAnchor: [18, 18],
     popupAnchor: [0, -16],
@@ -163,6 +190,14 @@ export default function LDMMap() {
       return (toNumber(left.age_seconds) ?? Infinity) - (toNumber(right.age_seconds) ?? Infinity)
     })
   }, [stations])
+  const egoCoordinates = useMemo(() => {
+    const longitude = toNumber(egoFeature?.geometry?.coordinates?.[0])
+    const latitude = toNumber(egoFeature?.geometry?.coordinates?.[1])
+    if (latitude === null || longitude === null) {
+      return null
+    }
+    return [latitude, longitude]
+  }, [egoFeature])
 
   return (
     <div className="relative h-screen w-screen bg-slate-950 text-slate-100">
@@ -174,22 +209,19 @@ export default function LDMMap() {
         <AutoCenter stations={stations} egoFeature={egoFeature} />
         <FollowEgoVehicle egoFeature={egoFeature} lockCamera={lockCamera} />
 
-        {showCam && egoFeature && (
+        {egoCoordinates && (
           <Marker
-            position={[
-              Number(egoFeature.geometry.coordinates[1]),
-              Number(egoFeature.geometry.coordinates[0]),
-            ]}
+            position={egoCoordinates}
             icon={createEgoIcon(egoFeature.properties?.heading)}
           >
             <Popup>
-              <div className="text-sm text-slate-900">
-                <div><b>Vehicle:</b> DS7 (ego)</div>
-                <div><b>Speed:</b> {egoFeature.properties?.speed ?? 'n/a'}</div>
-                <div><b>Heading:</b> {egoFeature.properties?.heading ?? 'n/a'}</div>
-              </div>
-            </Popup>
-          </Marker>
+                <div className="text-sm text-slate-900">
+                  <div><b>Vehicle:</b> {EGO_VEHICLE_NAME} (ego)</div>
+                  <div><b>Speed:</b> {egoFeature.properties?.speed ?? 'n/a'} m/s</div>
+                  <div><b>Heading:</b> {egoFeature.properties?.heading ?? 'n/a'}°</div>
+                </div>
+              </Popup>
+            </Marker>
         )}
 
         {showCam && stations.map((station) => {
@@ -301,7 +333,7 @@ export default function LDMMap() {
           <input type="checkbox" checked={showPoim} onChange={(event) => setShowPoim(event.target.checked)} /> POIM
         </label>
         <label className="flex items-center gap-2 text-sm text-slate-200">
-          <input type="checkbox" checked={lockCamera} onChange={(event) => setLockCamera(event.target.checked)} /> Lock Camera to Vehicle
+          <input type="checkbox" checked={lockCamera} onChange={(event) => setLockCamera(event.target.checked)} /> Lock Camera to Ego Vehicle
         </label>
       </div>
 
@@ -319,10 +351,10 @@ export default function LDMMap() {
         </div>
         <ul className="space-y-2 text-sm text-slate-200">
           <li className="rounded-md border border-rose-600/40 bg-slate-950/60 p-2">
-            <div className="font-medium text-rose-200">EGO (DS7)</div>
-            <div>Lat/Lon: {toNumber(latestPayloads.ego?.latitude)?.toFixed(6) ?? 'n/a'}, {toNumber(latestPayloads.ego?.longitude)?.toFixed(6) ?? 'n/a'}</div>
-            <div>Speed: {latestPayloads.ego?.speed ?? 'n/a'}</div>
-            <div>Heading: {latestPayloads.ego?.heading ?? 'n/a'}</div>
+            <div className="font-medium text-rose-200">EGO ({EGO_VEHICLE_NAME})</div>
+            <div>Lat/Lon: {formatCoordinate(latestPayloads.ego?.latitude)}, {formatCoordinate(latestPayloads.ego?.longitude)}</div>
+            <div>Speed: {latestPayloads.ego?.speed ?? 'n/a'} m/s</div>
+            <div>Heading: {latestPayloads.ego?.heading ?? 'n/a'}°</div>
           </li>
           <li className="rounded-md border border-cyan-500/40 bg-slate-950/60 p-2">
             <div className="font-medium text-cyan-200">CAM (Station)</div>

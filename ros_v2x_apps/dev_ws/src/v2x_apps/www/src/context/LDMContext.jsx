@@ -16,7 +16,7 @@ function newestByAge(items) {
   return [...items].sort(
     (left, right) => (toNumber(left.age_seconds) ?? Number.POSITIVE_INFINITY)
       - (toNumber(right.age_seconds) ?? Number.POSITIVE_INFINITY),
-  )[0] ?? null
+  )[0]
 }
 
 function buildEgoFeature(snapshot) {
