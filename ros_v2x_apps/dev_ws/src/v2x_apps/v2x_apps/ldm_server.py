@@ -302,8 +302,10 @@ class LdmStore:
             or payload.get('availableSpots')
             or payload.get('spaces_available')
         )
-        total_spots     = int(_to_float_or_none(total_spots_raw))     if total_spots_raw     is not None else None
-        available_spots = int(_to_float_or_none(available_spots_raw)) if available_spots_raw is not None else None
+        total_spots_float     = _to_float_or_none(total_spots_raw)
+        available_spots_float = _to_float_or_none(available_spots_raw)
+        total_spots     = int(total_spots_float)     if total_spots_float     is not None else None
+        available_spots = int(available_spots_float) if available_spots_float is not None else None
 
         parking_type     = _to_str_or_none(payload.get('parking_type') or payload.get('parkingType'))
         facility_status  = _to_str_or_none(payload.get('status') or payload.get('facility_status'))

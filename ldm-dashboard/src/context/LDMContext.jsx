@@ -187,11 +187,14 @@ export function LDMProvider({ children }) {
             if (poisArray.length > 0 && poimReferencePositionRef.current === null) {
               const firstPoi = poisArray[0]
               if (firstPoi.latitude != null && firstPoi.longitude != null) {
-                setPoimReferencePosition({ latitude: firstPoi.latitude, longitude: firstPoi.longitude })
+                const refPos = { latitude: firstPoi.latitude, longitude: firstPoi.longitude }
+                poimReferencePositionRef.current = refPos
+                setPoimReferencePosition(refPos)
               }
             }
             // Clear reference position when all POIs have gone stale.
             if (poisArray.length === 0 && poimReferencePositionRef.current !== null) {
+              poimReferencePositionRef.current = null
               setPoimReferencePosition(null)
             }
 

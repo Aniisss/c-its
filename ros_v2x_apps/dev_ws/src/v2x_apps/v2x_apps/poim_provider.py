@@ -39,6 +39,11 @@ _FACILITY = {
     'max_height_cm': 210,
 }
 
+# Simulation parameters for time-varying occupancy when no subscription data is received.
+_SIMULATION_CYCLE_SECONDS       = 300.0   # Full sinusoidal period (5 minutes)
+_SIMULATION_BASE_OCCUPANCY_PCT  =  55.0   # Mid-point occupancy percentage
+_SIMULATION_AMPLITUDE_PCT       =  25.0   # Peak deviation from the base occupancy
+
 # Fallback coordinates used when no GPS position vector has been received yet.
 # Defaults to Brussels Central Station area.
 _FALLBACK_LAT_DEG =  50.8366
@@ -122,9 +127,9 @@ class PoimProvider(Node):
         self._subscription_data_received = True
 
     def _simulate_occupied_spots(self, total: int) -> int:
-        """Simulate a realistic time-varying occupancy with a 5-minute sinusoidal cycle."""
-        phase = (time.time() % 300.0) / 300.0
-        occupancy_pct = 55.0 + 25.0 * math.sin(2.0 * math.pi * phase)
+        """Simulate a realistic time-varying occupancy with a sinusoidal cycle."""
+        phase = (time.time() % _SIMULATION_CYCLE_SECONDS) / _SIMULATION_CYCLE_SECONDS
+        occupancy_pct = _SIMULATION_BASE_OCCUPANCY_PCT + _SIMULATION_AMPLITUDE_PCT * math.sin(2.0 * math.pi * phase)
         return max(0, min(total, int(round(occupancy_pct * total / 100.0))))
 
     def _calculate_occupancy_percent(self) -> int:
