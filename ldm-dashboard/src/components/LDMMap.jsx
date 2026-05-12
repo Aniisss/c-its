@@ -48,10 +48,10 @@ function createEgoIcon(heading) {
   const rotation = toNumber(heading) ?? 0
   return L.divIcon({
     className: '',
-    html: `<div style="width:38px;height:38px;border-radius:9999px;background:rgba(15,23,42,0.95);border:2px solid #38bdf8;display:flex;align-items:center;justify-content:center;transform:rotate(${rotation}deg);box-shadow:0 0 0 3px rgba(56,189,248,0.25)">${renderToStaticMarkup(<Car size={22} color="#38bdf8" strokeWidth={2.5} />)}</div>`,
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
-    popupAnchor: [0, -18],
+    html: `<div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;transform:rotate(${rotation}deg);filter:drop-shadow(0 0 8px rgba(56,189,248,0.45));"><svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 1.6L4.4 23.6L13 18.2L21.6 23.6L13 1.6Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.6" stroke-linejoin="round"/></svg></div>`,
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -16],
   })
 }
 
@@ -203,8 +203,13 @@ export default function LDMMap() {
 
   return (
     <div className="relative h-screen w-screen bg-slate-950 text-slate-100">
-      <MapContainer center={FALLBACK_CENTER} zoom={13} className="h-full w-full">
-        <TileLayer attribution="&copy; OpenStreetMap contributors" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <MapContainer center={FALLBACK_CENTER} zoom={13} maxZoom={22} zoomSnap={0.25} zoomDelta={0.5} className="h-full w-full">
+        <TileLayer
+          attribution="&copy; OpenStreetMap contributors"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          maxNativeZoom={19}
+          maxZoom={22}
+        />
         {followEgo && hasEgo && <EgoFollower ego={ego} />}
         <AutoCenter referencePosition={poimReferencePosition} hasEgo={hasEgo} />
 
@@ -331,7 +336,7 @@ export default function LDMMap() {
       </MapContainer>
 
       {/* Layers panel */}
-      <div className="absolute left-4 top-4 z-[1000] w-56 rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
+      <div className="absolute left-4 top-4 z-[1200] w-56 rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
         <div className="mb-2 text-sm font-semibold text-slate-100">Layers</div>
         <label className="mb-1 flex items-center gap-2 text-sm text-slate-200">
           <input type="checkbox" checked={showCam} onChange={(event) => setShowCam(event.target.checked)} /> CAM
@@ -353,7 +358,7 @@ export default function LDMMap() {
       </div>
 
       {/* Connection status */}
-      <div className="absolute right-4 top-4 z-[1000] rounded-xl border border-slate-700 bg-slate-900/90 px-3 py-2 shadow-lg backdrop-blur-sm">
+      <div className="absolute right-4 top-4 z-[1200] rounded-xl border border-slate-700 bg-slate-900/90 px-3 py-2 shadow-lg backdrop-blur-sm">
         <div className="flex items-center gap-2 text-sm text-slate-100">
           <span className={`inline-flex h-3 w-3 rounded-full ${isConnected ? 'bg-emerald-400' : 'bg-red-400'} animate-pulse`} />
           <span>{isConnected ? 'Connected to ROS Backend' : 'Disconnected from ROS Backend'}</span>
@@ -366,13 +371,13 @@ export default function LDMMap() {
       </div>
 
       {/* Live message feed HUD */}
-      <div className="absolute right-4 top-16 z-[1000] w-64 rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
+      <div className="absolute right-4 top-20 z-[1200] w-64 rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
         <div className="mb-2 text-sm font-semibold text-slate-100">Live V2X Feed</div>
         <MessageFeedPanel messageFeed={messageFeed} />
       </div>
 
       {/* Parking gauge */}
-      <aside className="absolute bottom-4 left-4 z-[1000]">
+      <aside className="absolute bottom-4 left-4 z-[1200]">
         <ParkingOccupancyGauge
           spacesAvailable={poimMetrics.spacesAvailable}
           spacesTotal={poimMetrics.spacesTotal}
@@ -381,7 +386,7 @@ export default function LDMMap() {
       </aside>
 
       {/* Active stations panel */}
-      <aside className="absolute bottom-4 right-4 z-[1000] max-h-80 w-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
+      <aside className="absolute bottom-4 right-4 z-[1200] max-h-80 w-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
         <div className="mb-2 text-sm font-semibold text-slate-100">Active Stations</div>
         <ul className="space-y-2 text-sm text-slate-200">
           {activeStations.length === 0 && <li className="text-slate-400">No active stations</li>}
@@ -397,4 +402,3 @@ export default function LDMMap() {
     </div>
   )
 }
-
