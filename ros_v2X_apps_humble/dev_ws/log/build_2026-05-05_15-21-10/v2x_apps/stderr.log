@@ -1,0 +1,5 @@
+  File "/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py", line 96
+    p_max = np.max(p²oints, axis=0)
+                    ^
+SyntaxError: invalid character '²' (U+00B2)
+

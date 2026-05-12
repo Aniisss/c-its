@@ -1,0 +1,39 @@
+[0.510s] Invoking command in '/home/cube/cube-its/dev_ws/src/v2x_apps': PYTHONPATH=/home/cube/cube-its/dev_ws/build/v2x_apps/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/v2x_apps build --build-base /home/cube/cube-its/dev_ws/build/v2x_apps/build install --record /home/cube/cube-its/dev_ws/build/v2x_apps/install.log --single-version-externally-managed install_data
+[0.690s] running egg_info
+[0.691s] writing ../../build/v2x_apps/v2x_apps.egg-info/PKG-INFO
+[0.691s] writing dependency_links to ../../build/v2x_apps/v2x_apps.egg-info/dependency_links.txt
+[0.691s] writing entry points to ../../build/v2x_apps/v2x_apps.egg-info/entry_points.txt
+[0.691s] writing requirements to ../../build/v2x_apps/v2x_apps.egg-info/requires.txt
+[0.692s] writing top-level names to ../../build/v2x_apps/v2x_apps.egg-info/top_level.txt
+[0.693s] reading manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+[0.694s] writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+[0.694s] running build
+[0.695s] running build_py
+[0.695s] running install
+[0.695s] running install_lib
+[0.697s] byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py to cpm_bridge.cpython-310.pyc
+[0.697s]   File "/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py", line 96
+[0.697s]     p_max = np.max(p²oints, axis=0)
+[0.697s]                     ^
+[0.697s] SyntaxError: invalid character '²' (U+00B2)
+[0.698s] 
+[0.698s] running install_data
+[0.698s] creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+[0.698s] copying v2x_apps/asn1/POIM-PDU-Description.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+[0.698s] copying v2x_apps/asn1/EfcDataDictionary.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+[0.699s] copying v2x_apps/asn1/ETSI-ITS-CDD.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+[0.699s] copying v2x_apps/asn1/POIM-ParkingAvailability.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+[0.699s] copying v2x_apps/asn1/POIM-CommonContainers.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+[0.699s] running install_egg_info
+[0.701s] removing '/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info' (and everything under it)
+[0.701s] Copying ../../build/v2x_apps/v2x_apps.egg-info to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info
+[0.702s] running install_scripts
+[0.723s] Installing btp_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.723s] Installing btp_sender script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.723s] Installing cam_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.723s] Installing cpm_bridge script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.723s] Installing cpm_provider script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.723s] Installing denm_node script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.724s] Installing poim_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.724s] writing list of installed files to '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log'
+[0.750s] Invoked command in '/home/cube/cube-its/dev_ws/src/v2x_apps' returned '0': PYTHONPATH=/home/cube/cube-its/dev_ws/build/v2x_apps/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/v2x_apps build --build-base /home/cube/cube-its/dev_ws/build/v2x_apps/build install --record /home/cube/cube-its/dev_ws/build/v2x_apps/install.log --single-version-externally-managed install_data

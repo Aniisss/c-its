@@ -1,0 +1,66 @@
+[0.000000] (-) TimerEvent: {}
+[0.013115] (v2x_apps) JobQueued: {'identifier': 'v2x_apps', 'dependencies': OrderedDict()}
+[0.015341] (v2x_apps) JobStarted: {'identifier': 'v2x_apps'}
+[0.099983] (-) TimerEvent: {}
+[0.200225] (-) TimerEvent: {}
+[0.300462] (-) TimerEvent: {}
+[0.400762] (-) TimerEvent: {}
+[0.501004] (-) TimerEvent: {}
+[0.594852] (v2x_apps) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/v2x_apps', 'build', '--build-base', '/home/cube/cube-its/dev_ws/build/v2x_apps/build', 'install', '--record', '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/cube/cube-its/dev_ws/src/v2x_apps', 'env': {'PYTHON_BASIC_REPL': '1', 'HOSTNAME': 'uphf-ec-01', 'GIT_ASKPASS': '/vscode/vscode-server/bin/linux-x64/41dd792b5e652393e7787322889ed5fdc58bd75b/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/vscode/vscode-server/bin/linux-x64/41dd792b5e652393e7787322889ed5fdc58bd75b/bin/helpers/browser.sh', 'HOME': '/root', 'OLDPWD': '/home/cube/cube-its', 'TERM_PROGRAM_VERSION': '1.115.0', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-db606469-847a-43f7-8276-d2dab0b30c69.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/vscode/vscode-server/bin/linux-x64/41dd792b5e652393e7787322889ed5fdc58bd75b/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/vscode/vscode-server/bin/linux-x64/41dd792b5e652393e7787322889ed5fdc58bd75b/node', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'BUNDLED_DEBUGPY_PATH': '/root/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/libs/debugpy', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'COLCON_PREFIX_PATH': '/home/cube/cube-its/dev_ws/install', 'ROS_DISTRO': 'humble', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-32709370-02ba-4ec6-b889-c43eb833f07c.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/vscode/vscode-server/bin/linux-x64/41dd792b5e652393e7787322889ed5fdc58bd75b/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/cube/fastrtps.xml', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/vscode-ssh-auth-32709370-02ba-4ec6-b889-c43eb833f07c.sock","/tmp/.X11-unix/X3"]', 'DISPLAY': ':3', 'VSCODE_DEBUGPY_ADAPTER_ENDPOINTS': '/root/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-3ec99dac5fbff127.txt', 'LANG': 'en_US.UTF-8', 'PYTHONSTARTUP': '/root/.vscode-server/data/User/workspaceStorage/54f7c0bfa452cc974a17e13d4897ec55/ms-python.python/pythonrc.py', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-3c7c89876c.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/tmp/vscode-ssh-auth-32709370-02ba-4ec6-b889-c43eb833f07c.sock', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/cube/cube-its/dev_ws/install/v2x_apps:/opt/ros/humble', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X3', 'SHELL': '/bin/bash', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/cube/cube-its/dev_ws/build/v2x_apps', 'PYTHONPATH': '/home/cube/cube-its/dev_ws/build/v2x_apps/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[0.601106] (-) TimerEvent: {}
+[0.701338] (-) TimerEvent: {}
+[0.801577] (-) TimerEvent: {}
+[0.809191] (v2x_apps) StdoutLine: {'line': b'running egg_info\n'}
+[0.809694] (v2x_apps) StdoutLine: {'line': b'creating ../../build/v2x_apps/v2x_apps.egg-info\n'}
+[0.810094] (v2x_apps) StdoutLine: {'line': b'writing ../../build/v2x_apps/v2x_apps.egg-info/PKG-INFO\n'}
+[0.810262] (v2x_apps) StdoutLine: {'line': b'writing dependency_links to ../../build/v2x_apps/v2x_apps.egg-info/dependency_links.txt\n'}
+[0.810490] (v2x_apps) StdoutLine: {'line': b'writing entry points to ../../build/v2x_apps/v2x_apps.egg-info/entry_points.txt\n'}
+[0.810580] (v2x_apps) StdoutLine: {'line': b'writing requirements to ../../build/v2x_apps/v2x_apps.egg-info/requires.txt\n'}
+[0.810704] (v2x_apps) StdoutLine: {'line': b'writing top-level names to ../../build/v2x_apps/v2x_apps.egg-info/top_level.txt\n'}
+[0.810798] (v2x_apps) StdoutLine: {'line': b"writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'\n"}
+[0.812584] (v2x_apps) StdoutLine: {'line': b"reading manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'\n"}
+[0.813242] (v2x_apps) StdoutLine: {'line': b"writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'\n"}
+[0.813389] (v2x_apps) StdoutLine: {'line': b'running build\n'}
+[0.813463] (v2x_apps) StdoutLine: {'line': b'running build_py\n'}
+[0.813636] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/build/v2x_apps/build\n'}
+[0.813725] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib\n'}
+[0.813888] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.813973] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/btp_sender.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.814044] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/cam_listener.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.814113] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/denm_node.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.814208] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/btp_listener.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.814290] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/__init__.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.814348] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/cpm_provider.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps\n'}
+[0.814705] (v2x_apps) StdoutLine: {'line': b'running install\n'}
+[0.814802] (v2x_apps) StdoutLine: {'line': b'running install_lib\n'}
+[0.815408] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.815598] (v2x_apps) StdoutLine: {'line': b'copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/btp_sender.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.815696] (v2x_apps) StdoutLine: {'line': b'copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/cam_listener.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.815792] (v2x_apps) StdoutLine: {'line': b'copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/denm_node.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.815892] (v2x_apps) StdoutLine: {'line': b'copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/btp_listener.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.815997] (v2x_apps) StdoutLine: {'line': b'copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/__init__.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.816059] (v2x_apps) StdoutLine: {'line': b'copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/cpm_provider.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps\n'}
+[0.816448] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/btp_sender.py to btp_sender.cpython-310.pyc\n'}
+[0.819722] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cam_listener.py to cam_listener.cpython-310.pyc\n'}
+[0.819808] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/denm_node.py to denm_node.cpython-310.pyc\n'}
+[0.819871] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/btp_listener.py to btp_listener.cpython-310.pyc\n'}
+[0.819948] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/__init__.py to __init__.cpython-310.pyc\n'}
+[0.820010] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_provider.py to cpm_provider.cpython-310.pyc\n'}
+[0.820150] (v2x_apps) StdoutLine: {'line': b'running install_data\n'}
+[0.820250] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index\n'}
+[0.820353] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index/resource_index\n'}
+[0.820413] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index/resource_index/packages\n'}
+[0.820470] (v2x_apps) StdoutLine: {'line': b'copying resource/v2x_apps -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index/resource_index/packages\n'}
+[0.820528] (v2x_apps) StdoutLine: {'line': b'copying package.xml -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps\n'}
+[0.820611] (v2x_apps) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.822098] (v2x_apps) StdoutLine: {'line': b'Copying ../../build/v2x_apps/v2x_apps.egg-info to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info\n'}
+[0.822907] (v2x_apps) StdoutLine: {'line': b'running install_scripts\n'}
+[0.844260] (v2x_apps) StdoutLine: {'line': b'Installing btp_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.844582] (v2x_apps) StdoutLine: {'line': b'Installing btp_sender script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.844761] (v2x_apps) StdoutLine: {'line': b'Installing cam_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.844978] (v2x_apps) StdoutLine: {'line': b'Installing cpm_provider script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.845054] (v2x_apps) StdoutLine: {'line': b'Installing denm_node script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.845323] (v2x_apps) StdoutLine: {'line': b"writing list of installed files to '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log'\n"}
+[0.871465] (v2x_apps) CommandEnded: {'returncode': 0}
+[0.881480] (v2x_apps) JobEnded: {'identifier': 'v2x_apps', 'rc': 0}
+[0.881906] (-) EventReactorShutdown: {}

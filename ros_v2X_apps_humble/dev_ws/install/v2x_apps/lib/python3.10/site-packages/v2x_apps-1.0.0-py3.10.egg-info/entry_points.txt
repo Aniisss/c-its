@@ -1,0 +1,9 @@
+[console_scripts]
+btp_listener = v2x_apps.btp_listener:main
+btp_sender = v2x_apps.btp_sender:main
+cam_listener = v2x_apps.cam_listener:main
+cpm_bridge = v2x_apps.cpm_bridge:main
+cpm_provider = v2x_apps.cpm_provider:main
+denm_node = v2x_apps.denm_node:main
+poim_listener = v2x_apps.poim_listener:main
+

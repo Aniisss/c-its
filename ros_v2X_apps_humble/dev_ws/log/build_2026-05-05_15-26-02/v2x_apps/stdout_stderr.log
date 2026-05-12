@@ -1,0 +1,37 @@
+running egg_info
+writing ../../build/v2x_apps/v2x_apps.egg-info/PKG-INFO
+writing dependency_links to ../../build/v2x_apps/v2x_apps.egg-info/dependency_links.txt
+writing entry points to ../../build/v2x_apps/v2x_apps.egg-info/entry_points.txt
+writing requirements to ../../build/v2x_apps/v2x_apps.egg-info/requires.txt
+writing top-level names to ../../build/v2x_apps/v2x_apps.egg-info/top_level.txt
+reading manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py to cpm_bridge.cpython-310.pyc
+  File "/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py", line 96
+    p_max = np.max(p²oints, axis=0)
+                    ^
+SyntaxError: invalid character '²' (U+00B2)
+
+running install_data
+creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+copying v2x_apps/asn1/POIM-PDU-Description.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+copying v2x_apps/asn1/EfcDataDictionary.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+copying v2x_apps/asn1/ETSI-ITS-CDD.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+copying v2x_apps/asn1/POIM-ParkingAvailability.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+copying v2x_apps/asn1/POIM-CommonContainers.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1
+running install_egg_info
+removing '/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/v2x_apps/v2x_apps.egg-info to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info
+running install_scripts
+Installing btp_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing btp_sender script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing cam_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing cpm_bridge script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing cpm_provider script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing denm_node script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing poim_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+writing list of installed files to '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log'

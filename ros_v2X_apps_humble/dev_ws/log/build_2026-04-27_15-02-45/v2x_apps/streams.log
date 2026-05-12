@@ -1,0 +1,29 @@
+[0.546s] Invoking command in '/home/cube/cube-its/dev_ws/src/v2x_apps': PYTHONPATH=/home/cube/cube-its/dev_ws/build/v2x_apps/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/v2x_apps build --build-base /home/cube/cube-its/dev_ws/build/v2x_apps/build install --record /home/cube/cube-its/dev_ws/build/v2x_apps/install.log --single-version-externally-managed install_data
+[0.737s] running egg_info
+[0.738s] writing ../../build/v2x_apps/v2x_apps.egg-info/PKG-INFO
+[0.738s] writing dependency_links to ../../build/v2x_apps/v2x_apps.egg-info/dependency_links.txt
+[0.738s] writing entry points to ../../build/v2x_apps/v2x_apps.egg-info/entry_points.txt
+[0.738s] writing requirements to ../../build/v2x_apps/v2x_apps.egg-info/requires.txt
+[0.738s] writing top-level names to ../../build/v2x_apps/v2x_apps.egg-info/top_level.txt
+[0.740s] reading manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+[0.741s] writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+[0.741s] running build
+[0.741s] running build_py
+[0.741s] copying v2x_apps/cpm_bridge.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+[0.741s] running install
+[0.742s] running install_lib
+[0.742s] copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/cpm_bridge.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+[0.743s] byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py to cpm_bridge.cpython-310.pyc
+[0.744s] running install_data
+[0.744s] running install_egg_info
+[0.746s] removing '/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info' (and everything under it)
+[0.746s] Copying ../../build/v2x_apps/v2x_apps.egg-info to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info
+[0.747s] running install_scripts
+[0.766s] Installing btp_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.766s] Installing btp_sender script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.766s] Installing cam_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.766s] Installing cpm_bridge script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.767s] Installing cpm_provider script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.767s] Installing denm_node script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+[0.767s] writing list of installed files to '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log'
+[0.788s] Invoked command in '/home/cube/cube-its/dev_ws/src/v2x_apps' returned '0': PYTHONPATH=/home/cube/cube-its/dev_ws/build/v2x_apps/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/v2x_apps build --build-base /home/cube/cube-its/dev_ws/build/v2x_apps/build install --record /home/cube/cube-its/dev_ws/build/v2x_apps/install.log --single-version-externally-managed install_data

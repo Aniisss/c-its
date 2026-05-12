@@ -1,0 +1,51 @@
+running egg_info
+creating ../../build/v2x_apps/v2x_apps.egg-info
+writing ../../build/v2x_apps/v2x_apps.egg-info/PKG-INFO
+writing dependency_links to ../../build/v2x_apps/v2x_apps.egg-info/dependency_links.txt
+writing entry points to ../../build/v2x_apps/v2x_apps.egg-info/entry_points.txt
+writing requirements to ../../build/v2x_apps/v2x_apps.egg-info/requires.txt
+writing top-level names to ../../build/v2x_apps/v2x_apps.egg-info/top_level.txt
+writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+reading manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/cube/cube-its/dev_ws/build/v2x_apps/build
+creating /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib
+creating /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+copying v2x_apps/btp_sender.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+copying v2x_apps/cam_listener.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+copying v2x_apps/denm_node.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+copying v2x_apps/btp_listener.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+copying v2x_apps/__init__.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+copying v2x_apps/cpm_provider.py -> /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps
+running install
+running install_lib
+creating /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/btp_sender.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/cam_listener.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/denm_node.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/btp_listener.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/__init__.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+copying /home/cube/cube-its/dev_ws/build/v2x_apps/build/lib/v2x_apps/cpm_provider.py -> /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/btp_sender.py to btp_sender.cpython-310.pyc
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cam_listener.py to cam_listener.cpython-310.pyc
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/denm_node.py to denm_node.cpython-310.pyc
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/btp_listener.py to btp_listener.cpython-310.pyc
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_provider.py to cpm_provider.cpython-310.pyc
+running install_data
+creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index
+creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index/resource_index
+creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index/resource_index/packages
+copying resource/v2x_apps -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/ament_index/resource_index/packages
+copying package.xml -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps
+running install_egg_info
+Copying ../../build/v2x_apps/v2x_apps.egg-info to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info
+running install_scripts
+Installing btp_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing btp_sender script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing cam_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing cpm_provider script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+Installing denm_node script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps
+writing list of installed files to '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log'

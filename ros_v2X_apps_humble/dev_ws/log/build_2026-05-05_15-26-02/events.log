@@ -1,0 +1,51 @@
+[0.000000] (-) TimerEvent: {}
+[0.000112] (v2x_apps) JobQueued: {'identifier': 'v2x_apps', 'dependencies': OrderedDict()}
+[0.000518] (v2x_apps) JobStarted: {'identifier': 'v2x_apps'}
+[0.099834] (-) TimerEvent: {}
+[0.205189] (-) TimerEvent: {}
+[0.305392] (-) TimerEvent: {}
+[0.405744] (-) TimerEvent: {}
+[0.506192] (-) TimerEvent: {}
+[0.507710] (v2x_apps) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/v2x_apps', 'build', '--build-base', '/home/cube/cube-its/dev_ws/build/v2x_apps/build', 'install', '--record', '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/cube/cube-its/dev_ws/src/v2x_apps', 'env': {'SUDO_GID': '1000', 'MAIL': '/var/mail/root', 'USER': 'root', 'HOSTNAME': 'uphf-ec-01', 'HOME': '/root', 'COLORTERM': 'truecolor', 'SUDO_UID': '1000', 'LOGNAME': 'root', 'TERM': 'xterm-256color', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/cube/fastrtps.xml', 'DISPLAY': ':2', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/usr/bin/colcon build', 'ROS_DOMAIN_ID': '42', 'SHELL': '/bin/bash', 'SUDO_USER': 'cube', 'LC_ALL': 'en_US.UTF-8', 'PWD': '/home/cube/cube-its/dev_ws/build/v2x_apps', 'COLCON': '1', 'PYTHONPATH': '/home/cube/cube-its/dev_ws/build/v2x_apps/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages:'}, 'shell': False}
+[0.606297] (-) TimerEvent: {}
+[0.690570] (v2x_apps) StdoutLine: {'line': b'running egg_info\n'}
+[0.691095] (v2x_apps) StdoutLine: {'line': b'writing ../../build/v2x_apps/v2x_apps.egg-info/PKG-INFO\n'}
+[0.691342] (v2x_apps) StdoutLine: {'line': b'writing dependency_links to ../../build/v2x_apps/v2x_apps.egg-info/dependency_links.txt\n'}
+[0.691701] (v2x_apps) StdoutLine: {'line': b'writing entry points to ../../build/v2x_apps/v2x_apps.egg-info/entry_points.txt\n'}
+[0.692030] (v2x_apps) StdoutLine: {'line': b'writing requirements to ../../build/v2x_apps/v2x_apps.egg-info/requires.txt\n'}
+[0.692155] (v2x_apps) StdoutLine: {'line': b'writing top-level names to ../../build/v2x_apps/v2x_apps.egg-info/top_level.txt\n'}
+[0.693446] (v2x_apps) StdoutLine: {'line': b"reading manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'\n"}
+[0.694627] (v2x_apps) StdoutLine: {'line': b"writing manifest file '../../build/v2x_apps/v2x_apps.egg-info/SOURCES.txt'\n"}
+[0.694888] (v2x_apps) StdoutLine: {'line': b'running build\n'}
+[0.695076] (v2x_apps) StdoutLine: {'line': b'running build_py\n'}
+[0.695625] (v2x_apps) StdoutLine: {'line': b'running install\n'}
+[0.696021] (v2x_apps) StdoutLine: {'line': b'running install_lib\n'}
+[0.697133] (v2x_apps) StdoutLine: {'line': b'byte-compiling /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py to cpm_bridge.cpython-310.pyc\n'}
+[0.697665] (v2x_apps) StderrLine: {'line': b'  File "/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps/cpm_bridge.py", line 96\n'}
+[0.697870] (v2x_apps) StderrLine: {'line': b'    p_max = np.max(p\xc2\xb2oints, axis=0)\n'}
+[0.697950] (v2x_apps) StderrLine: {'line': b'                    ^\n'}
+[0.698020] (v2x_apps) StderrLine: {'line': b"SyntaxError: invalid character '\xc2\xb2' (U+00B2)\n"}
+[0.698183] (v2x_apps) StderrLine: {'line': b'\n'}
+[0.698491] (v2x_apps) StdoutLine: {'line': b'running install_data\n'}
+[0.698632] (v2x_apps) StdoutLine: {'line': b'creating /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1\n'}
+[0.698725] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/asn1/POIM-PDU-Description.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1\n'}
+[0.698871] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/asn1/EfcDataDictionary.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1\n'}
+[0.699029] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/asn1/ETSI-ITS-CDD.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1\n'}
+[0.699265] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/asn1/POIM-ParkingAvailability.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1\n'}
+[0.699412] (v2x_apps) StdoutLine: {'line': b'copying v2x_apps/asn1/POIM-CommonContainers.asn -> /home/cube/cube-its/dev_ws/install/v2x_apps/share/v2x_apps/asn1\n'}
+[0.699486] (v2x_apps) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.701143] (v2x_apps) StdoutLine: {'line': b"removing '/home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info' (and everything under it)\n"}
+[0.701473] (v2x_apps) StdoutLine: {'line': b'Copying ../../build/v2x_apps/v2x_apps.egg-info to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/python3.10/site-packages/v2x_apps-1.0.0-py3.10.egg-info\n'}
+[0.702501] (v2x_apps) StdoutLine: {'line': b'running install_scripts\n'}
+[0.706410] (-) TimerEvent: {}
+[0.723029] (v2x_apps) StdoutLine: {'line': b'Installing btp_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.723411] (v2x_apps) StdoutLine: {'line': b'Installing btp_sender script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.723567] (v2x_apps) StdoutLine: {'line': b'Installing cam_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.723718] (v2x_apps) StdoutLine: {'line': b'Installing cpm_bridge script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.723837] (v2x_apps) StdoutLine: {'line': b'Installing cpm_provider script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.724005] (v2x_apps) StdoutLine: {'line': b'Installing denm_node script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.724201] (v2x_apps) StdoutLine: {'line': b'Installing poim_listener script to /home/cube/cube-its/dev_ws/install/v2x_apps/lib/v2x_apps\n'}
+[0.724516] (v2x_apps) StdoutLine: {'line': b"writing list of installed files to '/home/cube/cube-its/dev_ws/build/v2x_apps/install.log'\n"}
+[0.750074] (v2x_apps) CommandEnded: {'returncode': 0}
+[0.758678] (v2x_apps) JobEnded: {'identifier': 'v2x_apps', 'rc': 0}
+[0.759712] (-) EventReactorShutdown: {}
