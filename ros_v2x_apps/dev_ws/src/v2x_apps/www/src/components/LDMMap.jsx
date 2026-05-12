@@ -4,6 +4,7 @@ import L from 'leaflet'
 import { Car, CircleParking, RadioTower, UserRound, Wifi, WifiOff } from 'lucide-react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { useLDM } from '../context/LDMContext'
+import ParkingInfoPanel from './ParkingInfoPanel'
 
 // Brussels fallback center used before first CAM station position is received.
 const FALLBACK_CENTER = [50.85, 4.35]
@@ -303,7 +304,9 @@ export default function LDMMap() {
             return null
           }
 
-          const occupancy = toNumber(poi.occupancy_percent) ?? 0
+          const occupancy    = toNumber(poi.occupancy_percent) ?? 0
+          const availSpots   = poi.available_spots != null ? poi.available_spots : null
+          const totalSpots   = poi.total_spots != null ? poi.total_spots : null
           return (
             <Marker
               key={poi.id}
@@ -311,9 +314,22 @@ export default function LDMMap() {
               icon={createParkingIcon(occupancy)}
             >
               <Popup>
-                <div className="text-sm text-slate-900">
-                  <div><b>{poi.name ?? 'Parking'}</b></div>
-                  <div>Occupancy: {Math.round(occupancy)}%</div>
+                <div className="text-sm text-slate-900" style={{ minWidth: 160 }}>
+                  <div className="font-bold">{poi.name ?? 'Parking'}</div>
+                  {poi.parking_type && <div className="text-xs text-slate-500">{poi.parking_type}</div>}
+                  <div className="mt-1">
+                    Occupancy:{' '}
+                    <span style={{ color: occupancyColor(occupancy), fontWeight: 600 }}>
+                      {Math.round(occupancy)}%
+                    </span>
+                  </div>
+                  {availSpots != null && totalSpots != null && (
+                    <div>{availSpots} / {totalSpots} spaces free</div>
+                  )}
+                  {poi.status && <div>Status: <b>{poi.status}</b></div>}
+                  {Array.isArray(poi.amenities) && poi.amenities.length > 0 && (
+                    <div className="mt-0.5 text-xs text-slate-500">{poi.amenities.join(' · ')}</div>
+                  )}
                 </div>
               </Popup>
             </Marker>
@@ -343,6 +359,11 @@ export default function LDMMap() {
           <span className="text-slate-100">{statusLabel(status)}</span>
         </div>
       </div>
+
+      {/* Parking info panel */}
+      <aside className="absolute bottom-4 left-4 z-[1000]">
+        <ParkingInfoPanel poi={pois[0] ?? null} />
+      </aside>
 
       <aside className="absolute bottom-4 right-4 z-[1000] max-h-80 w-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900/90 p-3 shadow-lg backdrop-blur-sm">
         <div className="mb-2 text-sm font-semibold text-slate-100">Log View</div>

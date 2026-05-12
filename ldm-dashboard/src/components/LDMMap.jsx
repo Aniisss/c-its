@@ -5,7 +5,6 @@ import { Car, CircleParking, RadioTower, UserRound } from 'lucide-react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { useLDM } from '../context/LDMContext'
 import ParkingOccupancyGauge from './ParkingOccupancyGauge'
-
 const FALLBACK_CENTER = [50.85, 4.35]
 const FEED_DISPLAY_LIMIT = 12
 const EGO_ARROW_SVG = '<svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 1.6L4.4 23.6L13 18.2L21.6 23.6L13 1.6Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.6" stroke-linejoin="round"/></svg>'
@@ -184,8 +183,6 @@ export default function LDMMap() {
     pois,
     ego,
     status,
-    poimMetrics,
-    poimHistory,
     poimReferencePosition,
     messageFeed,
   } = useLDM()
@@ -341,6 +338,8 @@ export default function LDMMap() {
           }
 
           const occupancy = toNumber(poi.occupancy_percent) ?? 0
+          const availSpots = poi.available_spots != null ? poi.available_spots : null
+          const totalSpots = poi.total_spots != null ? poi.total_spots : null
           return (
             <Marker
               key={poi.id}
@@ -348,12 +347,24 @@ export default function LDMMap() {
               icon={createParkingIcon(occupancy)}
             >
               <Popup>
-                <div className="text-sm text-slate-900">
-                  <div><b>{poi.name ?? 'Parking'}</b></div>
-                  <div>Occupancy: {Math.round(occupancy)}%</div>
-                  <div style={{ color: occupancyColor(occupancy), fontWeight: 600 }}>
-                    {occupancy > 80 ? 'Full' : occupancy >= 50 ? 'Busy' : 'Available'}
+                <div className="text-sm text-slate-900" style={{ minWidth: 160 }}>
+                  <div className="font-bold">{poi.name ?? 'Parking'}</div>
+                  {poi.parking_type && <div className="text-xs text-slate-500">{poi.parking_type}</div>}
+                  <div className="mt-1">
+                    Occupancy:{' '}
+                    <span style={{ color: occupancyColor(occupancy), fontWeight: 600 }}>
+                      {Math.round(occupancy)}%
+                    </span>
                   </div>
+                  {availSpots != null && totalSpots != null && (
+                    <div>{availSpots} / {totalSpots} spaces free</div>
+                  )}
+                  {poi.status && (
+                    <div>Status: <b>{poi.status}</b></div>
+                  )}
+                  {Array.isArray(poi.amenities) && poi.amenities.length > 0 && (
+                    <div className="mt-0.5 text-xs text-slate-500">{poi.amenities.join(' · ')}</div>
+                  )}
                 </div>
               </Popup>
             </Marker>
@@ -403,13 +414,9 @@ export default function LDMMap() {
         <MessageFeedPanel messageFeed={messageFeed} />
       </div>
 
-      {/* Parking gauge */}
+      {/* Parking info panel */}
       <aside className="absolute bottom-4 left-4 z-[1200]">
-        <ParkingOccupancyGauge
-          spacesAvailable={poimMetrics.spacesAvailable}
-          spacesTotal={poimMetrics.spacesTotal}
-          history={poimHistory}
-        />
+        <ParkingOccupancyGauge poi={pois[0] ?? null} />
       </aside>
 
       {/* Active stations panel */}

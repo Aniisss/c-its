@@ -6,6 +6,7 @@ ETSI TS 103 916 V2.1.1 (C-ITS Hybridization Project)
 ...
 """
 
+import math
 import os
 import time
 import json
@@ -27,6 +28,21 @@ except ImportError:
 _POIM_BTP_PORT_DEFAULT       = 2025
 _POIM_MESSAGE_ID_DEFAULT     = 26
 _POIM_PROTOCOL_VERSION_DEF   = 2
+
+# ── Static facility descriptor (ASN.1 / ETSI TS 103 916 inspired) ─────────────
+_FACILITY = {
+    'facility_name': 'Central Station Underground Parking',
+    'parking_type':  'Underground',
+    'total_spots':   320,
+    'amenities':     ['Electric Charging', 'Handicap Access', 'CCTV', '24h Security'],
+    'floors':        3,
+    'max_height_cm': 210,
+}
+
+# Fallback coordinates used when no GPS position vector has been received yet.
+# Defaults to Brussels Central Station area.
+_FALLBACK_LAT_DEG =  50.8366
+_FALLBACK_LON_DEG =   4.3360
 
 _ASN1_DIR = os.path.join(
     get_package_share_directory('v2x_apps'),
@@ -57,7 +73,7 @@ class PoimProvider(Node):
         self.declare_parameter('message_id',             _POIM_MESSAGE_ID_DEFAULT)
         self.declare_parameter('protocol_version',       _POIM_PROTOCOL_VERSION_DEF)
         self.declare_parameter('poi_id',                 1)
-        self.declare_parameter('parking_total',          100)
+        self.declare_parameter('parking_total',          _FACILITY['total_spots'])
         self.declare_parameter('publish_rate_hz',        1.0)
         self.declare_parameter('transport_type',         'SHB')
         self.declare_parameter('outgoing_object_topic',  '/parking/poim_outgoing')  # ← added param
@@ -74,6 +90,7 @@ class PoimProvider(Node):
         self._position_vector: Optional[PositionVector] = None
         self._spaces_available: int = 0
         self._spaces_occupied:  int = 0
+        self._subscription_data_received: bool = False
 
         # --- Subscriptions ---
         self.create_subscription(PositionVector, '/its/position_vector', self._on_pos, 1)
@@ -93,9 +110,22 @@ class PoimProvider(Node):
         self.timer = self.create_timer(1.0 / rate, self._on_timer)
 
     # --- Callbacks ---
-    def _on_pos(self, msg):   self._position_vector = msg
-    def _on_avail(self, msg): self._spaces_available = msg.data
-    def _on_occ(self, msg):   self._spaces_occupied  = msg.data
+    def _on_pos(self, msg):
+        self._position_vector = msg
+
+    def _on_avail(self, msg):
+        self._spaces_available = msg.data
+        self._subscription_data_received = True
+
+    def _on_occ(self, msg):
+        self._spaces_occupied = msg.data
+        self._subscription_data_received = True
+
+    def _simulate_occupied_spots(self, total: int) -> int:
+        """Simulate a realistic time-varying occupancy with a 5-minute sinusoidal cycle."""
+        phase = (time.time() % 300.0) / 300.0
+        occupancy_pct = 55.0 + 25.0 * math.sin(2.0 * math.pi * phase)
+        return max(0, min(total, int(round(occupancy_pct * total / 100.0))))
 
     def _calculate_occupancy_percent(self) -> int:
         parking_total = int(self.get_parameter('parking_total').value)
@@ -106,17 +136,45 @@ class PoimProvider(Node):
         return max(0, min(100, occupancy_percent))
 
     def _on_timer(self):
-        if self._position_vector is None:
-            self.get_logger().warn("Waiting for GPS/Position fix...", throttle_duration_sec=5)
-            return
+        # Use GPS position if available; fall back to static coordinates so the
+        # facility is always visible even before a GPS fix is acquired.
+        if self._position_vector is not None:
+            lat_deg = self._position_vector.latitude
+            lon_deg = self._position_vector.longitude
+        else:
+            self.get_logger().warn(
+                'No GPS fix – broadcasting POIM with static fallback position.',
+                throttle_duration_sec=10,
+            )
+            lat_deg = _FALLBACK_LAT_DEG
+            lon_deg = _FALLBACK_LON_DEG
 
         try:
-            now_ms = int(time.time() * 1000)
+            parking_total = int(self.get_parameter('parking_total').value)
+
+            # Determine current occupancy from subscriptions or simulation.
+            if self._subscription_data_received:
+                occupied = max(0, min(parking_total, self._spaces_occupied or 0))
+            else:
+                occupied = self._simulate_occupied_spots(parking_total)
+
+            available     = max(0, parking_total - occupied)
+            occupancy_pct = int(round((occupied / max(1, parking_total)) * 100.0))
+
+            # Derive human-readable facility status.
+            if occupancy_pct >= 100:
+                facility_status = 'Full'
+            elif occupancy_pct >= 90:
+                facility_status = 'Almost Full'
+            else:
+                facility_status = 'Open'
+
+            now_ms    = int(time.time() * 1000)
             timestamp = (now_ms - 1072915200000) % 4294967296
+            lat_e7    = int(round(lat_deg * 1e7))
+            lon_e7    = int(round(lon_deg * 1e7))
 
-            pv = self._position_vector
-            occupancy_percent = self._calculate_occupancy_percent()
-
+            # ── ASN.1 parking block (structure unchanged) ─────────────────────
             parking_block = {
                 'managementContainer': {
                     'serviceProviderId': {
@@ -128,33 +186,37 @@ class PoimProvider(Node):
                 },
                 'placeInfo': {
                     'position': {
-                        'latitude':  int(round(pv.latitude  * 1e7)),
-                        'longitude': int(round(pv.longitude * 1e7)),
+                        'latitude':  lat_e7,
+                        'longitude': lon_e7,
                         'altitude':  800001,
                     },
-                    'name': 'Parking',
+                    'name': _FACILITY['facility_name'],
                 },
-                # ✅ Exact structure from File 1 — no currentOccupancy in ASN.1
                 'aggregatedStatus': {
                     'currentFacilityStatus': 1,
                 },
             }
 
-            # ✅ Publish JSON summary with occupancy (ROS topic, not ASN.1)
+            # ── Rich JSON summary published to the ROS outgoing topic ─────────
             outgoing_summary = {
-                'direction':        'outgoing',
-                'poi_id':           self.get_parameter('poi_id').value,
-                'latitude':         int(round(pv.latitude  * 1e7)),
-                'longitude':        int(round(pv.longitude * 1e7)),
-                'occupancy_percent': occupancy_percent,
-                'facility_name':    parking_block['placeInfo']['name'],
+                'direction':         'outgoing',
+                'poi_id':            self.get_parameter('poi_id').value,
+                'facility_name':     _FACILITY['facility_name'],
+                'latitude':          lat_e7,
+                'longitude':         lon_e7,
+                'total_spots':       parking_total,
+                'available_spots':   available,
+                'occupancy_percent': occupancy_pct,
+                'parking_type':      _FACILITY['parking_type'],
+                'status':            facility_status,
+                'amenities':         _FACILITY['amenities'],
             }
             summary_msg = String()
             summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'))
             self._poim_object_publisher.publish(summary_msg)
 
+            # ── ASN.1 encode & BTP broadcast ──────────────────────────────────
             parking_block_bytes = self._db.encode('ParkingAvailabilityBlock', parking_block)
-
             poim_data = {
                 'header': {
                     'protocolVersion': 2,
@@ -168,12 +230,11 @@ class PoimProvider(Node):
                     }
                 ],
             }
-
             payload = self._db.encode('POIM', poim_data)
             self._send_btp(payload)
 
         except Exception as e:
-            self.get_logger().error(f"Encoding Failure: {e}")
+            self.get_logger().error(f'Encoding Failure: {e}')
 
     def _send_btp(self, payload: bytes):
         if not self._btp_client.service_is_ready():
