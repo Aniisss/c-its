@@ -18,6 +18,7 @@ from std_msgs.msg import String
 import uvicorn
 import etsi_its_cpm_ts_msgs.msg as cpm_msg
 from etsi_its_cam_msgs.msg import CAM
+from vanetza_msgs.msg import PositionVector
 
 _SERVER_SHUTDOWN_TIMEOUT_SECONDS = 3.0
 _STALE_DATA_SECONDS = 5.0
@@ -82,6 +83,7 @@ class LdmStore:
         self._stations: Dict[str, Dict[str, Any]] = {}
         self._perceived_objects: Dict[str, Dict[str, Any]] = {}
         self._pois: Dict[str, Dict[str, Any]] = {}
+        self._ego: Optional[Dict[str, Any]] = None
         self._lock = threading.Lock()
 
     @staticmethod
@@ -95,6 +97,23 @@ class LdmStore:
         # Defensive clamp for rare timing edge cases when snapshots race with updates.
         item['age_seconds'] = max(0.0, now - last_update) if last_update is not None else 0.0
         return item
+
+    def update_ego_from_position_vector(self, msg: PositionVector) -> bool:
+        lat = _scaled_coord_to_decimal(_to_float_or_none(getattr(msg, 'latitude', None)))
+        lon = _scaled_coord_to_decimal(_to_float_or_none(getattr(msg, 'longitude', None)))
+        if lat is None or lon is None:
+            return False
+        heading = _heading_to_degrees(_to_float_or_none(getattr(msg, 'heading', None)))
+        speed = _to_float_or_none(getattr(msg, 'speed', None))
+        with self._lock:
+            self._ego = {
+                'latitude': lat,
+                'longitude': lon,
+                'heading': heading,
+                'speed': speed,
+                'last_update': self._now(),
+            }
+        return True
 
     def update_station_from_cam(self, msg: CAM) -> bool:
         station_id = _to_str_or_none(_extract_first(msg, (
@@ -264,11 +283,13 @@ class LdmStore:
             stations = [self._copy_for_wire(item, now) for item in self._stations.values()]
             perceived_objects = [self._copy_for_wire(item, now) for item in self._perceived_objects.values()]
             pois = [self._copy_for_wire(item, now) for item in self._pois.values()]
+            ego = dict(self._ego) if self._ego is not None else None
         return {
             'timestamp': time.time(),
             'stations': stations,
             'perceived_objects': perceived_objects,
             'pois': pois,
+            'ego': ego,
         }
 
     def geojson(self) -> Dict[str, Any]:
@@ -383,12 +404,14 @@ class LdmServer(Node):
         self.declare_parameter('poim_outgoing_topic', '/parking/poim_outgoing')
         self.declare_parameter('poim_incoming_topic', '/parking/poim_incoming')
         self.declare_parameter('poim_decoded_topic', '/parking/poim_decoded')
+        self.declare_parameter('position_vector_topic', '/its/position_vector')
 
         self.create_subscription(CAM, self.get_parameter('cam_topic').value, self._on_cam, 10)
         self.create_subscription(cpm_msg.CollectivePerceptionMessage, self.get_parameter('cpm_topic').value, self._on_cpm, 10)
         self.create_subscription(String, self.get_parameter('poim_outgoing_topic').value, self._on_poim_object, 10)
         self.create_subscription(String, self.get_parameter('poim_incoming_topic').value, self._on_poim_object, 10)
         self.create_subscription(String, self.get_parameter('poim_decoded_topic').value, self._on_poim_object, 10)
+        self.create_subscription(PositionVector, self.get_parameter('position_vector_topic').value, self._on_position_vector, 1)
         self.create_timer(_CLEANUP_PERIOD_SECONDS, self._on_cleanup_timer)
 
         self._app = FastAPI(title='LDM Server', version='1.0')
@@ -476,6 +499,10 @@ class LdmServer(Node):
 
     def _on_cpm(self, msg: cpm_msg.CollectivePerceptionMessage) -> None:
         if self._store.update_from_cpm(msg):
+            self._broadcast_snapshot()
+
+    def _on_position_vector(self, msg: PositionVector) -> None:
+        if self._store.update_ego_from_position_vector(msg):
             self._broadcast_snapshot()
 
     def _on_poim_object(self, msg: String) -> None:
