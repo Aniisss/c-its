@@ -78,6 +78,18 @@ def _heading_to_degrees(value: Optional[float]) -> Optional[float]:
     return value
 
 
+def _etsi_heading_to_degrees(value: Optional[float]) -> Optional[float]:
+    if value is None:
+        return None
+    return value * 0.1
+
+
+def _etsi_speed_to_mps(value: Optional[float]) -> Optional[float]:
+    if value is None:
+        return None
+    return value * 0.01
+
+
 class LdmStore:
     def __init__(self) -> None:
         self._stations: Dict[str, Dict[str, Any]] = {}
@@ -145,11 +157,19 @@ class LdmStore:
         )))
         heading_raw = _to_float_or_none(_extract_first(msg, (
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'heading_value', 'value'),
+            ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value', 'value'),
+            ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value'),
             ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'heading_value', 'value'),
+            ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value', 'value'),
+            ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'heading', 'value'),
         )))
         speed_raw = _to_float_or_none(_extract_first(msg, (
             ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'speed_value', 'value'),
+            ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value', 'value'),
+            ('payload', 'cam', 'cam_parameters', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value'),
             ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'speed_value', 'value'),
+            ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value', 'value'),
+            ('payload', 'high_frequency_container', 'basic_vehicle_container_high_frequency', 'speed', 'value'),
         )))
         station_type = _to_float_or_none(_extract_first(msg, (
             ('payload', 'cam', 'cam_parameters', 'basic_container', 'station_type', 'value'),
@@ -166,8 +186,8 @@ class LdmStore:
             'station_type': int(station_type) if station_type is not None else None,
             'latitude': _scaled_coord_to_decimal(lat_raw),
             'longitude': _scaled_coord_to_decimal(lon_raw),
-            'heading': _heading_to_degrees(heading_raw),
-            'speed': speed_raw,
+            'heading': _etsi_heading_to_degrees(heading_raw),
+            'speed': _etsi_speed_to_mps(speed_raw),
             'rssi': rssi,
             'last_update': self._now(),
         }
@@ -427,7 +447,7 @@ class LdmServer(Node):
         self.declare_parameter('web_host', '0.0.0.0')
         self.declare_parameter('web_port', 8000)
         self.declare_parameter('web_log_level', 'warning')
-        self.declare_parameter('cam_topic', '/its/cam')
+        self.declare_parameter('cam_topic', '/its/cam_received')
         self.declare_parameter('cpm_topic', '/its/cpm')
         self.declare_parameter('poim_outgoing_topic', '/parking/poim_outgoing')
         self.declare_parameter('poim_incoming_topic', '/parking/poim_incoming')
