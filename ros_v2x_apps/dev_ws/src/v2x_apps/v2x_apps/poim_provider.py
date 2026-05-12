@@ -6,6 +6,7 @@ ETSI TS 103 916 V2.1.1 (C-ITS Hybridization Project)
 ...
 """
 
+import math
 import os
 import time
 import json
@@ -24,9 +25,50 @@ try:
 except ImportError:
     _ASN1TOOLS_AVAILABLE = False
 
-_POIM_BTP_PORT_DEFAULT       = 2025
-_POIM_MESSAGE_ID_DEFAULT     = 26
-_POIM_PROTOCOL_VERSION_DEF   = 2
+# =============================================================================
+# SECTION 1 – STATIC FACILITY DATA
+# -----------------------------------------------------------------------------
+# Everything here is hardcoded for testing.  When real data is available,
+# replace each constant with a read from the appropriate source (database,
+# config file, ROS parameter, REST API, …) and nothing else needs to change.
+# =============================================================================
+
+FACILITY_NAME        = 'Central Station Underground Parking'
+FACILITY_LAT_DEG     =  50.8366          # WGS-84 latitude  (decimal degrees)
+FACILITY_LON_DEG     =   4.3360          # WGS-84 longitude (decimal degrees)
+FACILITY_PARKING_TYPE = 'Underground'    # e.g. 'Underground', 'Surface', 'Multi-storey'
+FACILITY_TOTAL_SPOTS =  320              # Total number of parking spaces
+FACILITY_AMENITIES   = [                 # List of available amenities
+    'Electric Charging',
+    'Handicap Access',
+    'CCTV',
+    '24h Security',
+]
+
+# =============================================================================
+# SECTION 2 – SIMULATION PARAMETERS
+# -----------------------------------------------------------------------------
+# Controls the synthetic occupancy curve used when no real-time subscription
+# data arrives on /parking/spaces_available or /parking/spaces_occupied.
+# Occupancy follows a sinusoid:  base_pct ± amplitude_pct  over one cycle.
+# Replace _simulate_occupied_spots() with a real sensor read when ready.
+# =============================================================================
+
+SIM_CYCLE_SECONDS      = 300.0   # Duration of one full occupancy cycle (seconds)
+SIM_BASE_OCCUPANCY_PCT =  55.0   # Mid-point of the simulated occupancy (%)
+SIM_AMPLITUDE_PCT      =  25.0   # Peak deviation from the mid-point (%)
+
+# =============================================================================
+# (end of data / configuration sections)
+# =============================================================================
+
+
+# ---------------------------------------------------------------------------
+# Internal protocol constants – do not change unless the ETSI spec changes.
+# ---------------------------------------------------------------------------
+_POIM_BTP_PORT_DEFAULT     = 2025
+_POIM_MESSAGE_ID_DEFAULT   = 26
+_POIM_PROTOCOL_VERSION_DEF = 2
 
 _ASN1_DIR = os.path.join(
     get_package_share_directory('v2x_apps'),
@@ -53,14 +95,13 @@ class PoimProvider(Node):
             raise RuntimeError('Missing dependency: asn1tools')
 
         # --- ROS 2 Parameters ---
-        self.declare_parameter('btp_port',              _POIM_BTP_PORT_DEFAULT)
-        self.declare_parameter('message_id',             _POIM_MESSAGE_ID_DEFAULT)
-        self.declare_parameter('protocol_version',       _POIM_PROTOCOL_VERSION_DEF)
-        self.declare_parameter('poi_id',                 1)
-        self.declare_parameter('parking_total',          100)
-        self.declare_parameter('publish_rate_hz',        1.0)
-        self.declare_parameter('transport_type',         'SHB')
-        self.declare_parameter('outgoing_object_topic',  '/parking/poim_outgoing')  # ← added param
+        self.declare_parameter('btp_port',             _POIM_BTP_PORT_DEFAULT)
+        self.declare_parameter('message_id',           _POIM_MESSAGE_ID_DEFAULT)
+        self.declare_parameter('protocol_version',     _POIM_PROTOCOL_VERSION_DEF)
+        self.declare_parameter('poi_id',               1)
+        self.declare_parameter('publish_rate_hz',      1.0)
+        self.declare_parameter('transport_type',       'SHB')
+        self.declare_parameter('outgoing_object_topic', '/parking/poim_outgoing')
 
         # --- Load ASN.1 Ruleset ---
         try:
@@ -74,6 +115,7 @@ class PoimProvider(Node):
         self._position_vector: Optional[PositionVector] = None
         self._spaces_available: int = 0
         self._spaces_occupied:  int = 0
+        self._subscription_data_received: bool = False
 
         # --- Subscriptions ---
         self.create_subscription(PositionVector, '/its/position_vector', self._on_pos, 1)
@@ -92,31 +134,72 @@ class PoimProvider(Node):
         rate = self.get_parameter('publish_rate_hz').value
         self.timer = self.create_timer(1.0 / rate, self._on_timer)
 
-    # --- Callbacks ---
-    def _on_pos(self, msg):   self._position_vector = msg
-    def _on_avail(self, msg): self._spaces_available = msg.data
-    def _on_occ(self, msg):   self._spaces_occupied  = msg.data
+    # --- Subscription Callbacks ---
+    def _on_pos(self, msg):
+        self._position_vector = msg
 
-    def _calculate_occupancy_percent(self) -> int:
-        parking_total = int(self.get_parameter('parking_total').value)
-        if parking_total <= 0:
-            return 0
-        occupied = self._spaces_occupied or 0
-        occupancy_percent = int(round((float(occupied) / parking_total) * 100.0))
-        return max(0, min(100, occupancy_percent))
+    def _on_avail(self, msg):
+        self._spaces_available = msg.data
+        self._subscription_data_received = True
 
+    def _on_occ(self, msg):
+        self._spaces_occupied = msg.data
+        self._subscription_data_received = True
+
+    # --- Simulation Helper (Section 2) ---
+    def _simulate_occupied_spots(self, total: int) -> int:
+        """Return a synthetic occupied-spot count using the Section 2 parameters."""
+        phase = (time.time() % SIM_CYCLE_SECONDS) / SIM_CYCLE_SECONDS
+        occupancy_pct = SIM_BASE_OCCUPANCY_PCT + SIM_AMPLITUDE_PCT * math.sin(2.0 * math.pi * phase)
+        return max(0, min(total, int(round(occupancy_pct * total / 100.0))))
+
+    # --- Main Publish Loop ---
     def _on_timer(self):
-        if self._position_vector is None:
-            self.get_logger().warn("Waiting for GPS/Position fix...", throttle_duration_sec=5)
-            return
+        # ── 1. Resolve position ───────────────────────────────────────────────
+        # GPS position from /its/position_vector takes priority.
+        # If no fix is available yet, fall back to the static coordinates
+        # defined in Section 1 (FACILITY_LAT_DEG / FACILITY_LON_DEG).
+        if self._position_vector is not None:
+            lat_deg = self._position_vector.latitude
+            lon_deg = self._position_vector.longitude
+        else:
+            self.get_logger().warn(
+                'No GPS fix – broadcasting POIM with static position from Section 1.',
+                throttle_duration_sec=10,
+            )
+            lat_deg = FACILITY_LAT_DEG   # ← Section 1
+            lon_deg = FACILITY_LON_DEG   # ← Section 1
 
         try:
-            now_ms = int(time.time() * 1000)
+            # ── 2. Resolve occupancy ──────────────────────────────────────────
+            # Real data from ROS subscriptions takes priority.
+            # If nothing has arrived yet, use the sinusoidal simulator defined
+            # in Section 2.
+            total_spots = FACILITY_TOTAL_SPOTS   # ← Section 1
+
+            if self._subscription_data_received:
+                occupied = max(0, min(total_spots, self._spaces_occupied or 0))
+            else:
+                occupied = self._simulate_occupied_spots(total_spots)   # ← Section 2
+
+            available     = max(0, total_spots - occupied)
+            occupancy_pct = int(round((occupied / max(1, total_spots)) * 100.0))
+
+            # ── 3. Derive status label ────────────────────────────────────────
+            if occupancy_pct >= 100:
+                facility_status = 'Full'
+            elif occupancy_pct >= 90:
+                facility_status = 'Almost Full'
+            else:
+                facility_status = 'Open'
+
+            # ── 4. Encode timestamps and coordinates ──────────────────────────
+            now_ms    = int(time.time() * 1000)
             timestamp = (now_ms - 1072915200000) % 4294967296
+            lat_e7    = int(round(lat_deg * 1e7))
+            lon_e7    = int(round(lon_deg * 1e7))
 
-            pv = self._position_vector
-            occupancy_percent = self._calculate_occupancy_percent()
-
+            # ── 5. Build ASN.1 parking block ──────────────────────────────────
             parking_block = {
                 'managementContainer': {
                     'serviceProviderId': {
@@ -128,33 +211,37 @@ class PoimProvider(Node):
                 },
                 'placeInfo': {
                     'position': {
-                        'latitude':  int(round(pv.latitude  * 1e7)),
-                        'longitude': int(round(pv.longitude * 1e7)),
+                        'latitude':  lat_e7,
+                        'longitude': lon_e7,
                         'altitude':  800001,
                     },
-                    'name': 'Parking',
+                    'name': FACILITY_NAME,         # ← Section 1
                 },
-                # ✅ Exact structure from File 1 — no currentOccupancy in ASN.1
                 'aggregatedStatus': {
                     'currentFacilityStatus': 1,
                 },
             }
 
-            # ✅ Publish JSON summary with occupancy (ROS topic, not ASN.1)
+            # ── 6. Build and publish rich JSON summary ────────────────────────
             outgoing_summary = {
-                'direction':        'outgoing',
-                'poi_id':           self.get_parameter('poi_id').value,
-                'latitude':         int(round(pv.latitude  * 1e7)),
-                'longitude':        int(round(pv.longitude * 1e7)),
-                'occupancy_percent': occupancy_percent,
-                'facility_name':    parking_block['placeInfo']['name'],
+                'direction':         'outgoing',
+                'poi_id':            self.get_parameter('poi_id').value,
+                'facility_name':     FACILITY_NAME,          # ← Section 1
+                'latitude':          lat_e7,
+                'longitude':         lon_e7,
+                'total_spots':       total_spots,            # ← Section 1
+                'available_spots':   available,
+                'occupancy_percent': occupancy_pct,
+                'parking_type':      FACILITY_PARKING_TYPE,  # ← Section 1
+                'status':            facility_status,
+                'amenities':         FACILITY_AMENITIES,     # ← Section 1
             }
             summary_msg = String()
             summary_msg.data = json.dumps(outgoing_summary, separators=(',', ':'))
             self._poim_object_publisher.publish(summary_msg)
 
+            # ── 7. ASN.1 encode and BTP broadcast ────────────────────────────
             parking_block_bytes = self._db.encode('ParkingAvailabilityBlock', parking_block)
-
             poim_data = {
                 'header': {
                     'protocolVersion': 2,
@@ -168,12 +255,11 @@ class PoimProvider(Node):
                     }
                 ],
             }
-
             payload = self._db.encode('POIM', poim_data)
             self._send_btp(payload)
 
         except Exception as e:
-            self.get_logger().error(f"Encoding Failure: {e}")
+            self.get_logger().error(f'Encoding Failure: {e}')
 
     def _send_btp(self, payload: bytes):
         if not self._btp_client.service_is_ready():

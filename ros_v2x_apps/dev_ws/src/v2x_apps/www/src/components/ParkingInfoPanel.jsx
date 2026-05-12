@@ -1,10 +1,10 @@
 import { Zap, Accessibility, Shield, Camera, CircleParking, Radio } from 'lucide-react'
 
 const AMENITY_CONFIG = {
-  'Electric Charging': { Icon: Zap,           color: '#facc15', label: 'EV Charging' },
-  'Handicap Access':   { Icon: Accessibility,  color: '#60a5fa', label: 'Accessible'  },
-  'CCTV':              { Icon: Camera,         color: '#a78bfa', label: 'CCTV'        },
-  '24h Security':      { Icon: Shield,         color: '#34d399', label: 'Security'    },
+  'Electric Charging': { Icon: Zap,          color: '#facc15', label: 'EV Charging' },
+  'Handicap Access':   { Icon: Accessibility, color: '#60a5fa', label: 'Accessible'  },
+  'CCTV':              { Icon: Camera,        color: '#a78bfa', label: 'CCTV'        },
+  '24h Security':      { Icon: Shield,        color: '#34d399', label: 'Security'    },
 }
 
 function getStatusStyle(status) {
@@ -21,7 +21,7 @@ function getOccupancyColor(pct) {
   return '#22c55e'
 }
 
-export default function ParkingOccupancyGauge({ poi }) {
+export default function ParkingInfoPanel({ poi }) {
   if (!poi) {
     return (
       <section

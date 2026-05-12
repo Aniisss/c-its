@@ -179,14 +179,31 @@ export function LDMProvider({ children }) {
           if (Array.isArray(payload.stations)) {
             setStations(payload.stations)
             setPerceivedObjects(Array.isArray(payload.perceived_objects) ? payload.perceived_objects : [])
-            setPois(Array.isArray(payload.pois) ? payload.pois : [])
+
+            const poisArray = Array.isArray(payload.pois) ? payload.pois : []
+            setPois(poisArray)
+
+            // Keep the map reference position in sync with the first POI received.
+            if (poisArray.length > 0 && poimReferencePositionRef.current === null) {
+              const firstPoi = poisArray[0]
+              if (firstPoi.latitude != null && firstPoi.longitude != null) {
+                const refPos = { latitude: firstPoi.latitude, longitude: firstPoi.longitude }
+                poimReferencePositionRef.current = refPos
+                setPoimReferencePosition(refPos)
+              }
+            }
+            // Clear reference position when all POIs have gone stale.
+            if (poisArray.length === 0 && poimReferencePositionRef.current !== null) {
+              poimReferencePositionRef.current = null
+              setPoimReferencePosition(null)
+            }
 
             if (payload.ego && typeof payload.ego === 'object') {
               setEgo(payload.ego)
             }
 
             const objCount = Array.isArray(payload.perceived_objects) ? payload.perceived_objects.length : 0
-            const poiCount = Array.isArray(payload.pois) ? payload.pois.length : 0
+            const poiCount = poisArray.length
             payload.stations.forEach((station) => {
               addFeedEntry('CAM', station.station_id, station)
             })
@@ -202,7 +219,7 @@ export function LDMProvider({ children }) {
               })
             }
             if (poiCount > 0) {
-              addFeedEntry('POIM', 'ref', payload.pois)
+              addFeedEntry('POIM', 'ref', poisArray)
             }
           }
         } catch {

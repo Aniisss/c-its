@@ -292,15 +292,41 @@ class LdmStore:
             occupancy = 0.0
         occupancy = max(0.0, min(100.0, occupancy))
 
+        total_spots_raw = (
+            payload.get('total_spots')
+            or payload.get('totalSpots')
+            or payload.get('spaces_total')
+        )
+        available_spots_raw = (
+            payload.get('available_spots')
+            or payload.get('availableSpots')
+            or payload.get('spaces_available')
+        )
+        total_spots_float     = _to_float_or_none(total_spots_raw)
+        available_spots_float = _to_float_or_none(available_spots_raw)
+        total_spots     = int(total_spots_float)     if total_spots_float     is not None else None
+        available_spots = int(available_spots_float) if available_spots_float is not None else None
+
+        parking_type     = _to_str_or_none(payload.get('parking_type') or payload.get('parkingType'))
+        facility_status  = _to_str_or_none(payload.get('status') or payload.get('facility_status'))
+        amenities = payload.get('amenities')
+        if not isinstance(amenities, list):
+            amenities = []
+
         key = str(poi_id)
         with self._lock:
             self._pois[key] = {
-                'id': key,
-                'name': payload.get('facility_name') or 'Parking',
-                'latitude': lat,
-                'longitude': lon,
+                'id':               key,
+                'name':             payload.get('facility_name') or 'Parking',
+                'latitude':         lat,
+                'longitude':        lon,
                 'occupancy_percent': occupancy,
-                'last_update': self._now(),
+                'total_spots':      total_spots,
+                'available_spots':  available_spots,
+                'parking_type':     parking_type,
+                'status':           facility_status,
+                'amenities':        amenities,
+                'last_update':      self._now(),
             }
         return True
 
