@@ -214,7 +214,6 @@ class PoimProvider(Node):
                 'longitude': lon_e7,
                 'totalNumberOfParkingSpaces': total_spots,  # ← Section 1
                 'availableParkingSpaces': available,
-                'occupiedParkingSpaces': occupied,
                 'occupancyRate': occupancy_pct,
                 'parkingFacilityType': FACILITY_PARKING_TYPE,  # ← Section 1
                 'currentFacilityStatus': facility_status,
