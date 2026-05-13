@@ -31,16 +31,16 @@ except ImportError:
 # config file, ROS parameter, REST API, …) and nothing else needs to change.
 # =============================================================================
 
-FACILITY_NAME        = 'Central Station Underground Parking'
-FACILITY_LAT_DEG     =  50.8366          # WGS-84 latitude  (decimal degrees)
-FACILITY_LON_DEG     =   4.3360          # WGS-84 longitude (decimal degrees)
-FACILITY_PARKING_TYPE = 'Underground'    # e.g. 'Underground', 'Surface', 'Multi-storey'
+FACILITY_NAME        = 'Gyrovía Parking'
+FACILITY_LAT_DEG     =  50.318326         # WGS-84 latitude  (decimal degrees)
+FACILITY_LON_DEG     =  3.511435         # WGS-84 longitude (decimal degrees)
+FACILITY_PARKING_TYPE = 'surface'        # e.g. 'Underground', 'Surface', 'Multi-storey'
 FACILITY_TOTAL_SPOTS =  320              # Total number of parking spaces
-FACILITY_AMENITIES   = [                 # List of available amenities
-    'Electric Charging',
-    'Handicap Access',
-    'CCTV',
-    '24h Security',
+FACILITY_AMENITIES    = [
+    'EV Charging (V2G)',
+    'V2X RSU Enabled',
+    'Automated Valet Area',
+    'Precision Positioning Anchor',
 ]
 
 # =============================================================================
